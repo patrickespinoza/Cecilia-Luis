@@ -228,8 +228,8 @@ export default function EventoDireccion() {
         background: `
           linear-gradient(
             180deg,
-            ${palette.paperLight} 0%,
-            ${palette.paper} 100%,
+            ${palette.paperLight} 100%,
+            ${palette.paper} 0%,
             ${palette.paperDark} 0%
           )
         `,
@@ -906,7 +906,7 @@ export default function EventoDireccion() {
                     color: palette.warmGray,
                   }}
                 >
-                  Ubicación
+                  Lugar
                 </p>
 
                 <p
@@ -924,12 +924,12 @@ export default function EventoDireccion() {
                     color: palette.inkSoft,
                   }}
                 >
-                  Parroquia de Guadalupe
+                  Parroquia de Nuestra Señora de Guadalupe
                 </p>
               </motion.div>
 
               <motion.a
-                href="https://maps.app.goo.gl/TsSDUBKAractwi8F8"
+                href="https://maps.app.goo.gl/7hzaiYD2FjTxAtt18"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Abrir ubicación de la ceremonia en Google Maps"
@@ -1164,7 +1164,7 @@ export default function EventoDireccion() {
                     color: palette.warmGray,
                   }}
                 >
-                  Ubicación
+                  Lugar
                 </p>
 
                 <p

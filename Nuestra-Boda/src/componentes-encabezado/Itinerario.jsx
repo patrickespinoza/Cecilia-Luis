@@ -497,7 +497,7 @@ function EventContent({ event, index, alignment }) {
             sm:block
           "
           style={{
-            backgroundColor: "rgba(179,106,54,0.55)",
+            backgroundColor: "rgba(179,106,54,0.58)",
           }}
         />
 
@@ -563,9 +563,9 @@ export default function ItinerarioRelojCentral() {
         background: `
           linear-gradient(
             180deg,
-            ${palette.paperLight} 0%,
-            ${palette.paper} 54%,
-            ${palette.paperLight} 100%
+            ${palette.paperLight} 30%,
+            ${palette.paper} 100%,
+            ${palette.paperLight} 0%
           )
         `,
       }}

@@ -758,7 +758,7 @@ export default function Regalos() {
               className="
                 mt-4
                 font-serif
-                text-[32px]
+                text-[25px]
                 tracking-[0.12em]
                 sm:text-[40px]
                 sm:tracking-[0.16em]
@@ -961,7 +961,7 @@ export default function Regalos() {
                   mt-8
                   break-words
                   font-mono
-                  text-[19px]
+                  text-[17px]
                   tracking-[0.12em]
                   sm:text-[23px]
                   sm:tracking-[0.16em]
@@ -987,7 +987,7 @@ export default function Regalos() {
                   className="
                     mt-2
                     font-serif
-                    text-[16px]
+                    text-[14px]
                     uppercase
                     tracking-[0.08em]
                     sm:text-[18px]

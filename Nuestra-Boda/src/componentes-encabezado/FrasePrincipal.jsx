@@ -179,7 +179,7 @@ export default function FrasePremium() {
         background: `
           linear-gradient(
             180deg,
-            ${palette.creamLight} 0%,
+            ${palette.creamLight} 90%,
             ${palette.cream} 100%,
             ${palette.sageLight} 0%
           )

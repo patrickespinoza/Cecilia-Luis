@@ -500,7 +500,7 @@ useEffect(() => {
               >
                 <p
                   className="
-                    text-[9px]
+                    text-[17px]
                     uppercase
                     tracking-[0.42em]
                     sm:text-[10px]
@@ -527,7 +527,7 @@ useEffect(() => {
                   className="
                     mt-3
                     font-serif
-                    text-[34px]
+                    text-[43px]
                     font-normal
                     leading-[0.95]
                     tracking-[-0.025em]
@@ -545,7 +545,7 @@ useEffect(() => {
                   className="
                     my-0.5
                     font-cursiveDancing
-                    text-2xl
+                    text-4xl
                     sm:text-4xl
                   "
                   style={{ color: palette.antiqueGold }}
@@ -556,7 +556,7 @@ useEffect(() => {
                 <h1
                   className="
                     font-serif
-                    text-[34px]
+                    text-[45px]
                     font-normal
                     leading-[0.95]
                     tracking-[-0.025em]
@@ -578,7 +578,7 @@ useEffect(() => {
                   className="
                     mt-3
                     font-serif
-                    text-[10px]
+                    text-[18px]
                     uppercase
                     tracking-[0.32em]
                     sm:text-sm
@@ -594,7 +594,7 @@ useEffect(() => {
                     max-w-md
                     px-3
                     font-serif
-                    text-[12px]
+                    text-[18px]
                     italic
                     leading-5
                     sm:text-base
@@ -755,7 +755,7 @@ useEffect(() => {
                     <p
                       className="
                         font-serif
-                        text-[18px]
+                        text-[25px]
                         leading-tight
                         sm:text-[25px]
                       "
@@ -769,7 +769,7 @@ useEffect(() => {
                         my-0.5
                         font-cursiveDancing
                         text-lg
-                        sm:text-xl
+                        sm:text-3xl
                       "
                       style={{ color: palette.antiqueGold }}
                     >
@@ -779,7 +779,7 @@ useEffect(() => {
                     <p
                       className="
                         font-serif
-                        text-[18px]
+                        text-[25px]
                         leading-tight
                         sm:text-[25px]
                       "
@@ -791,7 +791,7 @@ useEffect(() => {
                     <p
                       className="
                         mt-2
-                        text-[7px]
+                        text-[15px]
                         uppercase
                         tracking-[0.25em]
                         sm:text-[8px]
@@ -1041,7 +1041,7 @@ useEffect(() => {
                       top-4
                       z-40
                       text-center
-                      text-[8px]
+                      text-[15px]
                       uppercase
                       tracking-[0.4em]
                       sm:text-[9px]
@@ -1060,7 +1060,7 @@ useEffect(() => {
                   className="
                     mt-3
                     text-center
-                    text-[9px]
+                    text-[14px]
                     uppercase
                     tracking-[0.28em]
                     sm:text-[10px]
@@ -1100,7 +1100,7 @@ useEffect(() => {
                 >
                   <p
                     className="
-                      text-[8px]
+                      text-[14px]
                       uppercase
                       tracking-[0.33em]
                       sm:text-[9px]
@@ -1115,8 +1115,8 @@ useEffect(() => {
                       mt-2
                       break-words
                       font-serif
-                      text-lg
-                      sm:text-2xl
+                      text-xl
+                      sm:text-3xl
                     "
                     style={{ color: palette.ink }}
                   >
@@ -1138,9 +1138,9 @@ useEffect(() => {
                   <p
                     className="
                       font-serif
-                      text-sm
+                      text-lg
                       tracking-[0.08em]
-                      sm:text-base
+                      sm:text-xl
                     "
                     style={{ color: palette.inkSoft }}
                   >
