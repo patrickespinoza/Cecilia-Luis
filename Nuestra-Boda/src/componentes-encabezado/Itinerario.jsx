@@ -497,7 +497,7 @@ function EventContent({ event, index, alignment }) {
             sm:block
           "
           style={{
-            backgroundColor: "rgba(179,106,54,0.58)",
+            backgroundColor: "rgba(179,106,54,0.55)",
           }}
         />
 

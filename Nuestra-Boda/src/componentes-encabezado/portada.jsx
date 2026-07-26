@@ -527,7 +527,7 @@ useEffect(() => {
                   className="
                     mt-3
                     font-serif
-                    text-[43px]
+                    text-[35px]
                     font-normal
                     leading-[0.95]
                     tracking-[-0.025em]
@@ -538,7 +538,7 @@ useEffect(() => {
                   "
                   style={{ color: palette.ink }}
                 >
-                  Cecilia
+                  Cecilia Bedolla Morales
                 </h1>
 
                 <span
@@ -556,7 +556,7 @@ useEffect(() => {
                 <h1
                   className="
                     font-serif
-                    text-[45px]
+                    text-[35px]
                     font-normal
                     leading-[0.95]
                     tracking-[-0.025em]
@@ -567,7 +567,7 @@ useEffect(() => {
                   "
                   style={{ color: palette.ink }}
                 >
-                  Luis
+                  Luis Arturo Macías Espinosa
                 </h1>
 
                 <div className="mt-4 w-full max-w-[220px] sm:mt-7 sm:max-w-[260px]">
