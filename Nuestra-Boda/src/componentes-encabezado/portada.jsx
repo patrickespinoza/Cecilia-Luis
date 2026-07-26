@@ -275,6 +275,45 @@ useEffect(() => {
         <source src="/musica.mp3" type="audio/mpeg" />
       </audio>
 
+      {/* AJUSTE RESPONSIVO DEL SOBRE SIN SCROLL */}
+      <style>{`
+        .intro-content-shell {
+          --intro-scale: 1;
+          transform: scale(var(--intro-scale));
+          transform-origin: center center;
+        }
+
+        @media (max-width: 1023px) and (max-height: 860px) {
+          .intro-content-shell {
+            --intro-scale: 0.9;
+          }
+        }
+
+        @media (max-width: 1023px) and (max-height: 760px) {
+          .intro-content-shell {
+            --intro-scale: 0.8;
+          }
+        }
+
+        @media (max-width: 1023px) and (max-height: 680px) {
+          .intro-content-shell {
+            --intro-scale: 0.72;
+          }
+        }
+
+        @media (max-width: 1023px) and (max-height: 600px) {
+          .intro-content-shell {
+            --intro-scale: 0.64;
+          }
+        }
+
+        @media (max-width: 420px) and (min-height: 861px) {
+          .intro-content-shell {
+            --intro-scale: 0.94;
+          }
+        }
+      `}</style>
+
       {/* =========================================
           INTRO DEL SOBRE
       ========================================= */}
@@ -294,21 +333,15 @@ useEffect(() => {
     justify-center
     overflow-hidden
     overscroll-none
-    px-5
-    py-8
+    px-3
+    py-3
     sm:px-8
+    sm:py-6
     lg:px-12
   "
   style={{
-    backgroundColor: palette.creamLight,
+    backgroundColor: "#F3EBDD",
     backgroundImage: `
-      repeating-linear-gradient(
-        0deg,
-        rgba(48,40,33,0.025) 0px,
-        rgba(48,40,33,0.025) 1px,
-        transparent 1px,
-        transparent 5px
-      ),
       radial-gradient(
         circle at top left,
         rgba(174,180,156,0.45),
@@ -431,6 +464,7 @@ useEffect(() => {
 
             <div
               className="
+                intro-content-shell
                 relative
                 z-10
                 mx-auto
@@ -438,7 +472,8 @@ useEffect(() => {
                 w-full
                 max-w-6xl
                 items-center
-                gap-12
+                gap-4
+                sm:gap-8
                 lg:grid-cols-[0.95fr_1.05fr]
                 lg:gap-16
                 xl:gap-24
@@ -477,7 +512,7 @@ useEffect(() => {
 
                 <div
                   className="
-                    mt-6
+                    mt-3
                     h-px
                     w-16
                     lg:w-20
@@ -490,13 +525,13 @@ useEffect(() => {
 
                 <h1
                   className="
-                    mt-6
+                    mt-3
                     font-serif
-                    text-[43px]
+                    text-[34px]
                     font-normal
                     leading-[0.95]
                     tracking-[-0.025em]
-                    sm:text-[60px]
+                    sm:text-[54px]
                     md:text-[68px]
                     lg:text-[62px]
                     xl:text-[76px]
@@ -508,9 +543,9 @@ useEffect(() => {
 
                 <span
                   className="
-                    my-2
+                    my-0.5
                     font-cursiveDancing
-                    text-3xl
+                    text-2xl
                     sm:text-4xl
                   "
                   style={{ color: palette.antiqueGold }}
@@ -521,11 +556,11 @@ useEffect(() => {
                 <h1
                   className="
                     font-serif
-                    text-[43px]
+                    text-[34px]
                     font-normal
                     leading-[0.95]
                     tracking-[-0.025em]
-                    sm:text-[60px]
+                    sm:text-[54px]
                     md:text-[68px]
                     lg:text-[62px]
                     xl:text-[76px]
@@ -535,15 +570,15 @@ useEffect(() => {
                   Luis
                 </h1>
 
-                <div className="mt-8 w-full max-w-[260px]">
+                <div className="mt-4 w-full max-w-[220px] sm:mt-7 sm:max-w-[260px]">
                   <DecorativeDivider />
                 </div>
 
                 <p
                   className="
-                    mt-6
+                    mt-3
                     font-serif
-                    text-xs
+                    text-[10px]
                     uppercase
                     tracking-[0.32em]
                     sm:text-sm
@@ -555,12 +590,13 @@ useEffect(() => {
 
                 <p
                   className="
-                    mt-3
+                    mt-2
                     max-w-md
+                    px-3
                     font-serif
-                    text-[15px]
+                    text-[12px]
                     italic
-                    leading-7
+                    leading-5
                     sm:text-base
                   "
                   style={{ color: palette.warmGray }}
@@ -602,11 +638,11 @@ useEffect(() => {
                     group
                     relative
                     aspect-[350/235]
-                    w-[88vw]
-                    max-w-[355px]
+                    w-[76vw]
+                    max-w-[300px]
                     cursor-pointer
                     outline-none
-                    sm:max-w-[420px]
+                    sm:max-w-[390px]
                     lg:w-full
                     lg:max-w-[430px]
                   "
@@ -625,7 +661,7 @@ useEffect(() => {
                       w-[72%]
                       -translate-x-1/2
                       rounded-full
-                      bg-black/15
+                      bg-black
                       blur-2xl
                     "
                   />
@@ -647,8 +683,10 @@ useEffect(() => {
                       justify-center
                       overflow-hidden
                       border
-                      px-5
-                      py-5
+                      px-4
+                      py-3
+                      sm:px-5
+                      sm:py-5
                       text-center
                     "
                     style={{
@@ -705,7 +743,7 @@ useEffect(() => {
 
                     <div
                       className="
-                        my-4
+                        my-2
                         h-px
                         w-12
                       "
@@ -717,7 +755,7 @@ useEffect(() => {
                     <p
                       className="
                         font-serif
-                        text-[21px]
+                        text-[18px]
                         leading-tight
                         sm:text-[25px]
                       "
@@ -741,7 +779,7 @@ useEffect(() => {
                     <p
                       className="
                         font-serif
-                        text-[21px]
+                        text-[18px]
                         leading-tight
                         sm:text-[25px]
                       "
@@ -752,7 +790,7 @@ useEffect(() => {
 
                     <p
                       className="
-                        mt-4
+                        mt-2
                         text-[7px]
                         uppercase
                         tracking-[0.25em]
@@ -934,8 +972,8 @@ useEffect(() => {
                       className="
                         relative
                         flex
-                        h-[72px]
-                        w-[72px]
+                        h-[62px]
+                        w-[62px]
                         items-center
                         justify-center
                         rounded-full
@@ -1020,7 +1058,7 @@ useEffect(() => {
 
                 <motion.p
                   className="
-                    mt-6
+                    mt-3
                     text-center
                     text-[9px]
                     uppercase
@@ -1040,12 +1078,12 @@ useEffect(() => {
 
                 <motion.div
                   className="
-                    mt-7
+                    mt-3
                     w-full
                     max-w-[390px]
                     border-y
                     px-4
-                    py-5
+                    py-3
                     text-center
                     sm:mt-9
                     sm:px-7
@@ -1077,7 +1115,7 @@ useEffect(() => {
                       mt-2
                       break-words
                       font-serif
-                      text-xl
+                      text-lg
                       sm:text-2xl
                     "
                     style={{ color: palette.ink }}
@@ -1088,7 +1126,7 @@ useEffect(() => {
                   <div
                     className="
                       mx-auto
-                      my-4
+                      my-2
                       h-px
                       w-12
                     "

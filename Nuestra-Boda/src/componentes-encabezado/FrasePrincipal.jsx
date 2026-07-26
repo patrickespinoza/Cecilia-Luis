@@ -433,35 +433,6 @@ export default function FrasePremium() {
           <SmallDivider />
         </motion.div>
 
-        {/* REFERENCIA */}
-
-        <motion.p
-          className="
-            font-serif
-            text-[10px]
-            uppercase
-            tracking-[0.32em]
-            sm:text-xs
-          "
-          style={{
-            color: palette.terracottaDark,
-          }}
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            delay: 0.42,
-          }}
-        >
-          Eclesiastés 4:12
-        </motion.p>
       </div>
     </motion.section>
   );

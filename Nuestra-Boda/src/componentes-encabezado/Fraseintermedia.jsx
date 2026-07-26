@@ -485,13 +485,6 @@ export default function FraseFinal() {
               lg:hidden
             "
           >
-            <span className="text-[8px] uppercase tracking-[0.42em]">
-              Nuestro para siempre
-            </span>
-
-            <span className="mt-3 font-serif text-3xl italic">
-              Apenas comienza
-            </span>
           </div>
         </motion.div>
 
