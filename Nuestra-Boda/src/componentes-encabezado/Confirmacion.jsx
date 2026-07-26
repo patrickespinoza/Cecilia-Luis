@@ -565,6 +565,10 @@ const Confirmacion = () => {
     setError("");
     setEnviado(false);
     setLoading(true);
+    // Limpiar formulario después de enviar
+setAsistencia("");
+setInvitados(pasesAsignados);
+setMensajeInvitado("");
 
     const confirmationData = {
       nombre: nombreInvitado.trim(),
