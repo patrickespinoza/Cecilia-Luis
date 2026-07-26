@@ -5,14 +5,23 @@ import { motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#302821",
-  inkSoft: "#51463E",
-  paper: "#E2B488",
-  paperLight: "#F1D1B0",
-  paperDark: "#C3C8B4",
+  ink: "#211D1A",
+  inkSoft: "#403832",
+
+  // Verde Bétula — fondo principal de esta sección
+  paper: "#AEB49C",
+  paperLight: "#AEB49C",
+  paperDark: "#AEB49C",
+
+  // Especia Exótica — acentos, líneas y botones
   antiqueGold: "#B36A36",
   antiqueGoldDark: "#844820",
-  warmGray: "#66594F",
+
+  // Sorbete de Curuba — tarjeta de fecha y detalles cálidos
+  curuba: "#E2B488",
+
+  white: "#FFFFFF",
+  warmGray: "#51463E",
 };
 
 const fadeUp = {
@@ -225,14 +234,7 @@ export default function EventoDireccion() {
         lg:py-32
       "
       style={{
-        background: `
-          linear-gradient(
-            180deg,
-            ${palette.paperLight} 100%,
-            ${palette.paper} 0%,
-            ${palette.paperDark} 0%
-          )
-        `,
+        backgroundColor: palette.paper,
       }}
     >
       {/* TEXTURA DE PAPEL */}
@@ -248,8 +250,8 @@ export default function EventoDireccion() {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(48,40,33,0.028) 0px,
-              rgba(48,40,33,0.028) 1px,
+              rgba(33,29,26,0.035) 0px,
+              rgba(33,29,26,0.035) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -265,8 +267,8 @@ export default function EventoDireccion() {
           background: `
             radial-gradient(
               circle at center,
-              rgba(255,255,255,0.3) 0%,
-              rgba(255,255,255,0.1) 44%,
+              rgba(255,255,255,0.18) 0%,
+              rgba(255,255,255,0.06) 44%,
               transparent 74%
             )
           `,
@@ -285,7 +287,7 @@ export default function EventoDireccion() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(179,106,54,0.32)",
+          borderColor: "rgba(255,255,255,0.58)",
         }}
       />
 
@@ -299,7 +301,7 @@ export default function EventoDireccion() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(48,40,33,0.10)",
+          borderColor: "rgba(33,29,26,0.16)",
         }}
       />
 
@@ -313,7 +315,7 @@ export default function EventoDireccion() {
           top-6
           h-16
           w-16
-          text-[#B36A36]/28
+          text-white/45
           sm:left-9
           sm:top-9
           sm:h-20
@@ -330,7 +332,7 @@ export default function EventoDireccion() {
           h-16
           w-16
           rotate-90
-          text-[#B36A36]/28
+          text-white/45
           sm:right-9
           sm:top-9
           sm:h-20
@@ -347,7 +349,7 @@ export default function EventoDireccion() {
           h-16
           w-16
           -rotate-90
-          text-[#B36A36]/28
+          text-white/45
           sm:bottom-9
           sm:left-9
           sm:h-20
@@ -364,7 +366,7 @@ export default function EventoDireccion() {
           h-16
           w-16
           rotate-180
-          text-[#B36A36]/28
+          text-white/45
           sm:bottom-9
           sm:right-9
           sm:h-20
@@ -383,7 +385,7 @@ export default function EventoDireccion() {
           h-[250px]
           w-[145px]
           -rotate-12
-          text-[#879078]/18
+          text-[#E2B488]/30
           sm:h-[310px]
           sm:w-[180px]
           lg:left-2
@@ -399,7 +401,7 @@ export default function EventoDireccion() {
           h-[250px]
           w-[145px]
           rotate-[168deg]
-          text-[#879078]/18
+          text-[#E2B488]/30
           sm:h-[310px]
           sm:w-[180px]
           lg:right-2
@@ -491,7 +493,7 @@ export default function EventoDireccion() {
               sm:text-base
             "
             style={{
-              color: palette.warmGray,
+              color: palette.inkSoft,
             }}
           >
             Nos hará muy felices compartir con ustedes el comienzo de este
@@ -546,16 +548,9 @@ export default function EventoDireccion() {
               lg:px-9
             "
             style={{
-              background: `
-                linear-gradient(
-                  180deg,
-                  rgba(241,209,176,0.92) 0%,
-                  rgba(226,180,136,0.84) 100%,
-                  rgba(195,200,180,0.66) 0%
-                )
-              `,
-              borderColor: "rgba(179,106,54,0.42)",
-              boxShadow: "0 24px 58px rgba(48,40,33,0.14)",
+              backgroundColor: palette.curuba,
+              borderColor: "rgba(179,106,54,0.5)",
+              boxShadow: "0 24px 58px rgba(33,29,26,0.16)",
             }}
             whileHover={{
               y: -5,
@@ -572,7 +567,7 @@ export default function EventoDireccion() {
                 border
               "
               style={{
-                borderColor: "rgba(48,40,33,0.14)",
+                borderColor: "rgba(33,29,26,0.16)",
               }}
             />
 
@@ -739,15 +734,9 @@ export default function EventoDireccion() {
               lg:px-8
             "
             style={{
-              background: `
-                linear-gradient(
-                  180deg,
-                  rgba(255,255,255,0.78) 0%,
-                  rgba(255,255,255,0.58) 100%
-                )
-              `,
-              borderColor: "rgba(179,106,54,0.42)",
-              boxShadow: "0 24px 58px rgba(48,40,33,0.14)",
+              backgroundColor: palette.white,
+              borderColor: "rgba(179,106,54,0.5)",
+              boxShadow: "0 24px 58px rgba(33,29,26,0.16)",
               backdropFilter: "blur(3px)",
             }}
             whileHover={{
@@ -765,7 +754,7 @@ export default function EventoDireccion() {
                 border
               "
               style={{
-                borderColor: "rgba(48,40,33,0.12)",
+                borderColor: "rgba(33,29,26,0.14)",
               }}
             />
 
@@ -948,14 +937,14 @@ export default function EventoDireccion() {
                   sm:px-8
                 "
                 style={{
-                  backgroundColor: palette.ink,
-                  borderColor: palette.ink,
-                  color: palette.paperLight,
-                  boxShadow: "0 12px 28px rgba(48,40,33,0.16)",
+                  backgroundColor: palette.antiqueGold,
+                  borderColor: palette.antiqueGold,
+                  color: palette.white,
+                  boxShadow: "0 12px 28px rgba(33,29,26,0.18)",
                 }}
                 whileHover={{
                   y: -2,
-                  backgroundColor: palette.inkSoft,
+                  backgroundColor: palette.antiqueGoldDark,
                   transition: {
                     duration: 0.25,
                   },
@@ -997,15 +986,9 @@ export default function EventoDireccion() {
               lg:px-8
             "
             style={{
-              background: `
-                linear-gradient(
-                  180deg,
-                  rgba(255,255,255,0.78) 0%,
-                  rgba(241,209,176,0.48) 100%
-                )
-              `,
-              borderColor: "rgba(179,106,54,0.42)",
-              boxShadow: "0 24px 58px rgba(48,40,33,0.14)",
+              backgroundColor: palette.white,
+              borderColor: "rgba(179,106,54,0.5)",
+              boxShadow: "0 24px 58px rgba(33,29,26,0.16)",
               backdropFilter: "blur(3px)",
             }}
             whileHover={{
@@ -1023,7 +1006,7 @@ export default function EventoDireccion() {
                 border
               "
               style={{
-                borderColor: "rgba(48,40,33,0.12)",
+                borderColor: "rgba(33,29,26,0.14)",
               }}
             />
 
@@ -1206,14 +1189,14 @@ export default function EventoDireccion() {
                   sm:px-8
                 "
                 style={{
-                  backgroundColor: palette.ink,
-                  borderColor: palette.ink,
-                  color: palette.paperLight,
-                  boxShadow: "0 12px 28px rgba(48,40,33,0.16)",
+                  backgroundColor: palette.antiqueGold,
+                  borderColor: palette.antiqueGold,
+                  color: palette.white,
+                  boxShadow: "0 12px 28px rgba(33,29,26,0.18)",
                 }}
                 whileHover={{
                   y: -2,
-                  backgroundColor: palette.inkSoft,
+                  backgroundColor: palette.antiqueGoldDark,
                   transition: {
                     duration: 0.25,
                   },

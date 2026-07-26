@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#302821",
-  inkSoft: "#51463E",
+  ink: "#211D1A",
+  inkSoft: "#403832",
   paper: "#E2B488",
-  paperLight: "#F9F6EE",
-  paperDark: "#F1D1B0",
+  paperLight: "#FFFFFF",
+  paperDark: "#AEB49C",
   antiqueGold: "#B36A36",
-  antiqueGoldDark: "#844820",
-  warmGray: "#66594F",
+  antiqueGoldDark: "#8E4E27",
+  warmGray: "#5F554E",
 };
 
 const events = [
@@ -235,7 +235,7 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
 
@@ -250,7 +250,7 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
     </div>
@@ -358,14 +358,14 @@ function TimelineEvent({ event, index, isLast }) {
             justify-center
             rounded-full
             border
-            bg-[#F9F6EE]
+            bg-white
             sm:h-14
             sm:w-14
           "
           style={{
             borderColor: "rgba(179,106,54,0.55)",
             color: palette.antiqueGoldDark,
-            boxShadow: "0 7px 20px rgba(48,40,33,0.08)",
+            boxShadow: "0 7px 20px rgba(33,29,26,0.10)",
           }}
         >
           <EventIcon type={event.icon} />
@@ -444,7 +444,7 @@ function EventContent({ event, index, alignment }) {
         bg-white
         px-5
         py-6
-        shadow-[0_18px_45px_rgba(48,40,33,0.12)]
+        shadow-[0_18px_45px_rgba(33,29,26,0.12)]
         sm:px-7
         sm:py-7
         lg:px-8
@@ -560,14 +560,7 @@ export default function ItinerarioRelojCentral() {
         lg:py-32
       "
       style={{
-        background: `
-          linear-gradient(
-            180deg,
-            ${palette.paperLight} 30%,
-            ${palette.paper} 100%,
-            ${palette.paperLight} 0%
-          )
-        `,
+        backgroundColor: palette.paper,
       }}
     >
       {/* TEXTURA DE PAPEL */}
@@ -583,8 +576,8 @@ export default function ItinerarioRelojCentral() {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(48,40,33,0.025) 0px,
-              rgba(48,40,33,0.025) 1px,
+              rgba(33,29,26,0.025) 0px,
+              rgba(33,29,26,0.025) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -604,7 +597,7 @@ export default function ItinerarioRelojCentral() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(179,106,54,0.25)",
+          borderColor: "rgba(179,106,54,0.34)",
         }}
       />
 
@@ -618,7 +611,7 @@ export default function ItinerarioRelojCentral() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(179,106,54,0.1)",
+          borderColor: "rgba(33,29,26,0.10)",
         }}
       />
 
@@ -632,7 +625,7 @@ export default function ItinerarioRelojCentral() {
           top-6
           h-16
           w-16
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:left-9
           sm:top-9
           sm:h-20
@@ -649,7 +642,7 @@ export default function ItinerarioRelojCentral() {
           h-16
           w-16
           rotate-90
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:right-9
           sm:top-9
           sm:h-20
@@ -666,7 +659,7 @@ export default function ItinerarioRelojCentral() {
           h-16
           w-16
           -rotate-90
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:left-9
           sm:h-20
@@ -683,7 +676,7 @@ export default function ItinerarioRelojCentral() {
           h-16
           w-16
           rotate-180
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:right-9
           sm:h-20
@@ -700,7 +693,7 @@ export default function ItinerarioRelojCentral() {
           h-[250px]
           w-[145px]
           -rotate-12
-          text-[#B36A36]/10
+          text-[#AEB49C]/25
           sm:h-[310px]
           sm:w-[180px]
           lg:left-2
@@ -716,7 +709,7 @@ export default function ItinerarioRelojCentral() {
           h-[250px]
           w-[145px]
           rotate-[168deg]
-          text-[#B36A36]/10
+          text-[#AEB49C]/25
           sm:h-[310px]
           sm:w-[180px]
           lg:right-2

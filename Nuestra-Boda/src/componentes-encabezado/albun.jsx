@@ -6,14 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#302821",
-  inkSoft: "#51463E",
+  ink: "#211D1A",
+  inkSoft: "#403832",
   paper: "#E2B488",
-  paperLight: "#F9F6EE",
-  paperDark: "#F1D1B0",
+  paperLight: "#AEB49C",
+  paperDark: "#E2B488",
   antiqueGold: "#B36A36",
   antiqueGoldDark: "#844820",
-  warmGray: "#66594F",
+  warmGray: "#F7F7F7",
 };
 
 const albumCode = "ES929838dc";
@@ -153,7 +153,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
 
@@ -168,7 +168,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
     </div>
@@ -356,14 +356,7 @@ const Album = () => {
           lg:py-32
         "
         style={{
-          background: `
-            linear-gradient(
-              180deg,
-              ${palette.paperLight} 10%,
-              ${palette.paper} 100%,
-              ${palette.paperDark} 10%
-            )
-          `,
+          backgroundColor: palette.paperLight,
         }}
       >
         {/* TEXTURA DE PAPEL */}
@@ -379,8 +372,8 @@ const Album = () => {
             backgroundImage: `
               repeating-linear-gradient(
                 0deg,
-                rgba(48,40,33,0.025) 0px,
-                rgba(48,40,33,0.025) 1px,
+                rgba(255,255,255,0.06) 0px,
+                rgba(255,255,255,0.06) 1px,
                 transparent 1px,
                 transparent 5px
               )
@@ -496,7 +489,7 @@ const Album = () => {
             h-[250px]
             w-[145px]
             -rotate-12
-            text-[#AEB49C]/28
+            text-white/20
             sm:h-[310px]
             sm:w-[180px]
             lg:left-2
@@ -512,7 +505,7 @@ const Album = () => {
             h-[250px]
             w-[145px]
             rotate-[168deg]
-            text-[#AEB49C]/28
+            text-white/20
             sm:h-[310px]
             sm:w-[180px]
             lg:right-2
@@ -785,7 +778,7 @@ const Album = () => {
               items-center
               justify-center
               overflow-hidden
-              bg-[#302821]/78
+              bg-[#211D1A]/75
               px-4
               py-5
               backdrop-blur-sm
@@ -865,8 +858,8 @@ const Album = () => {
                   backgroundImage: `
                     repeating-linear-gradient(
                       0deg,
-                      rgba(48,40,33,0.025) 0px,
-                      rgba(48,40,33,0.025) 1px,
+                      rgba(255,255,255,0.06) 0px,
+                      rgba(255,255,255,0.06) 1px,
                       transparent 1px,
                       transparent 5px
                     )
@@ -905,7 +898,7 @@ const Album = () => {
                   items-center
                   justify-center
                   border
-                  bg-[#F9F6EE]
+                  bg-white
                   sm:right-6
                   sm:top-6
                 "
@@ -1144,7 +1137,7 @@ const Album = () => {
                         justify-between
                         gap-3
                         border
-                        bg-[#F9F6EE]
+                        bg-white
                         px-4
                         py-4
                       "

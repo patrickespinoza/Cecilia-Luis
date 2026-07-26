@@ -6,14 +6,14 @@ import { motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#302821",
-  inkSoft: "#51463E",
+  ink: "#211D1A",
+  inkSoft: "#403832",
   paper: "#E2B488",
-  paperLight: "#F9F6EE",
-  paperDark: "#F1D1B0",
+  paperLight: "#FFFFFF",
+  paperDark: "#E2B488",
   antiqueGold: "#B36A36",
-  antiqueGoldDark: "#844820",
-  warmGray: "#66594F",
+  antiqueGoldDark: "#8E4E27",
+  warmGray: "#5F554E",
   sage: "#AEB49C",
 };
 
@@ -47,7 +47,7 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
 
@@ -62,7 +62,7 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
     </div>
@@ -214,14 +214,7 @@ export default function DressCodePremium() {
         lg:py-32
       "
       style={{
-        background: `
-          linear-gradient(
-            180deg,
-            ${palette.paperLight} 0%,
-            ${palette.paperDark} 50%,
-            ${palette.paper} 100%
-          )
-        `,
+        backgroundColor: palette.paperLight,
       }}
     >
       {/* TEXTURA */}
@@ -236,8 +229,8 @@ export default function DressCodePremium() {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(48,40,33,0.025) 0px,
-              rgba(48,40,33,0.025) 1px,
+              rgba(33,29,26,0.025) 0px,
+              rgba(33,29,26,0.025) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -249,14 +242,7 @@ export default function DressCodePremium() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: `
-            radial-gradient(
-              circle at center,
-              rgba(255,255,255,0.45) 0%,
-              rgba(255,255,255,0.12) 42%,
-              transparent 72%
-            )
-          `,
+          backgroundColor: "transparent",
         }}
       />
 
@@ -271,7 +257,7 @@ export default function DressCodePremium() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(179,106,54,0.28)",
+          borderColor: "rgba(179,106,54,0.30)",
         }}
       />
 
@@ -285,7 +271,7 @@ export default function DressCodePremium() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(48,40,33,0.1)",
+          borderColor: "rgba(33,29,26,0.10)",
         }}
       />
 
@@ -366,7 +352,7 @@ export default function DressCodePremium() {
           h-[260px]
           w-[150px]
           -rotate-12
-          text-[#AEB49C]/30
+          text-[#AEB49C]/32
           sm:h-[330px]
           sm:w-[190px]
         "
@@ -381,7 +367,7 @@ export default function DressCodePremium() {
           h-[260px]
           w-[150px]
           rotate-[168deg]
-          text-[#AEB49C]/30
+          text-[#AEB49C]/32
           sm:h-[330px]
           sm:w-[190px]
         "
@@ -399,9 +385,9 @@ export default function DressCodePremium() {
           overflow-hidden
           rounded-[34px]
           border
-          bg-white/90
-          shadow-[0_28px_85px_rgba(48,40,33,0.18)]
-          backdrop-blur-[3px]
+          bg-white
+          shadow-[0_28px_85px_rgba(33,29,26,0.14)]
+          
           lg:grid-cols-[0.92fr_1.08fr]
         "
         style={{
@@ -489,13 +475,13 @@ export default function DressCodePremium() {
               absolute
               inset-0
               bg-gradient-to-t
-              from-[#302821]/45
+              from-[#211D1A]/45
               via-transparent
               to-transparent
               lg:bg-gradient-to-r
               lg:from-transparent
               lg:via-transparent
-              lg:to-[#302821]/12
+              lg:to-[#211D1A]/12
             "
           />
 
@@ -664,7 +650,7 @@ export default function DressCodePremium() {
                 sm:py-8
               "
               style={{
-                backgroundColor: "rgba(241,209,176,0.42)",
+                backgroundColor: "rgba(226,180,136,0.34)",
                 borderColor: "rgba(179,106,54,0.3)",
               }}
               initial={{

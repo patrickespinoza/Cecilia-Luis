@@ -9,14 +9,14 @@ const API_URL =
   "https://script.google.com/macros/s/AKfycbxlEh0BV6ZwOtBjgfu34voch5Hb5pUV7mbbtK1b5RypvV_ORjEfjnCU8CZ5DEmPUzbP/exec";
 
 const palette = {
-  ink: "#302821",
-  inkSoft: "#51463E",
+  ink: "#211D1A",
+  inkSoft: "#403832",
   paper: "#E2B488",
-  paperLight: "#F9F6EE",
-  paperDark: "#F1D1B0",
+  paperLight: "#FFFFFF",
+  paperDark: "#F4D5B8",
   antiqueGold: "#B36A36",
-  antiqueGoldDark: "#844820",
-  warmGray: "#66594F",
+  antiqueGoldDark: "#8E4E27",
+  warmGray: "#5F554E",
   error: "#8B3A3A",
   success: "#49644D",
 };
@@ -230,7 +230,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
 
@@ -245,7 +245,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
     </div>
@@ -338,8 +338,8 @@ function AttendanceOption({
       "
       style={{
         backgroundColor: isSelected
-          ? "rgba(48,40,33,0.055)"
-          : palette.paperLight,
+          ? "rgba(174,180,156,0.22)"
+          : "#FFFFFF",
         borderColor: isSelected
           ? palette.antiqueGold
           : "rgba(179,106,54,0.3)",
@@ -631,14 +631,7 @@ const Confirmacion = () => {
         lg:py-32
       "
       style={{
-        background: `
-          linear-gradient(
-            180deg,
-            ${palette.paperLight} 0%,
-            ${palette.paper} 56%,
-            ${palette.paperDark} 100%
-          )
-        `,
+        backgroundColor: palette.paper,
       }}
     >
       {/* TEXTURA */}
@@ -654,8 +647,8 @@ const Confirmacion = () => {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(48,40,33,0.025) 0px,
-              rgba(48,40,33,0.025) 1px,
+              rgba(33,29,26,0.025) 0px,
+              rgba(33,29,26,0.025) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -773,7 +766,7 @@ const Confirmacion = () => {
           h-[250px]
           w-[145px]
           -rotate-12
-          text-[#AEB49C]/28
+          text-white/22
           sm:h-[310px]
           sm:w-[180px]
           lg:left-2
@@ -789,7 +782,7 @@ const Confirmacion = () => {
           h-[250px]
           w-[145px]
           rotate-[168deg]
-          text-[#AEB49C]/28
+          text-white/22
           sm:h-[310px]
           sm:w-[180px]
           lg:right-2
@@ -923,9 +916,9 @@ const Confirmacion = () => {
             md:px-14
           "
           style={{
-            backgroundColor: "rgba(251,249,244,0.84)",
+            backgroundColor: "#FFFFFF",
             borderColor: "rgba(179,106,54,0.34)",
-            boxShadow: "0 24px 65px rgba(48,40,33,0.08)",
+            boxShadow: "0 24px 65px rgba(33,29,26,0.10)",
           }}
           initial={{
             opacity: 0,
@@ -1392,8 +1385,8 @@ const Confirmacion = () => {
                 style={{
                   backgroundColor: palette.ink,
                   borderColor: palette.ink,
-                  color: palette.paperLight,
-                  boxShadow: "0 12px 28px rgba(48,40,33,0.12)",
+                  color: "#FFFFFF",
+                  boxShadow: "0 12px 28px rgba(33,29,26,0.14)",
                 }}
                 whileHover={
                   loading

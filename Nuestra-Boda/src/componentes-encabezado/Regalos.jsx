@@ -6,14 +6,14 @@ import { useState } from "react";
 ========================================= */
 
 const palette = {
-  ink: "#302821",
-  inkSoft: "#51463E",
+  ink: "#211D1A",
+  inkSoft: "#403832",
   paper: "#E2B488",
-  paperLight: "#F9F6EE",
-  paperDark: "#F1D1B0",
+  paperLight: "#FFFFFF",
+  paperDark: "#F9F6EE",
   antiqueGold: "#B36A36",
-  antiqueGoldDark: "#844820",
-  warmGray: "#66594F",
+  antiqueGoldDark: "#8E4E27",
+  warmGray: "#5F554E",
   sage: "#AEB49C",
 };
 
@@ -52,7 +52,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
 
@@ -67,7 +67,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
     </div>
@@ -341,14 +341,7 @@ export default function Regalos() {
         lg:py-32
       "
       style={{
-        background: `
-          linear-gradient(
-            180deg,
-            ${palette.paperLight} 0%,
-            ${palette.paperDark} 50%,
-            ${palette.paper} 100%
-          )
-        `,
+        backgroundColor: palette.paperLight,
       }}
     >
       {/* TEXTURA */}
@@ -358,8 +351,8 @@ export default function Regalos() {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(48,40,33,0.025) 0px,
-              rgba(48,40,33,0.025) 1px,
+              rgba(33,29,26,0.022) 0px,
+              rgba(33,29,26,0.022) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -371,14 +364,7 @@ export default function Regalos() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: `
-            radial-gradient(
-              circle at center,
-              rgba(255,255,255,0.48) 0%,
-              rgba(255,255,255,0.12) 44%,
-              transparent 74%
-            )
-          `,
+          backgroundColor: "transparent",
         }}
       />
 
@@ -407,7 +393,7 @@ export default function Regalos() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(48,40,33,0.10)",
+          borderColor: "rgba(33,29,26,0.10)",
         }}
       />
 
@@ -488,7 +474,7 @@ export default function Regalos() {
           h-[270px]
           w-[155px]
           -rotate-12
-          text-[#AEB49C]/32
+          text-[#AEB49C]/36
           sm:h-[335px]
           sm:w-[195px]
         "
@@ -503,7 +489,7 @@ export default function Regalos() {
           h-[270px]
           w-[155px]
           rotate-[168deg]
-          text-[#AEB49C]/32
+          text-[#AEB49C]/36
           sm:h-[335px]
           sm:w-[195px]
         "
@@ -632,12 +618,12 @@ export default function Regalos() {
               overflow-hidden
               rounded-[30px]
               border
-              bg-white/90
+              bg-[#F9F6EE]
               px-7
               py-14
               text-center
-              shadow-[0_24px_65px_rgba(48,40,33,0.14)]
-              backdrop-blur-[3px]
+              shadow-[0_24px_65px_rgba(33,29,26,0.12)]
+              
               sm:px-10
               sm:py-16
             "
@@ -818,12 +804,12 @@ export default function Regalos() {
               overflow-hidden
               rounded-[30px]
               border
-              bg-white/90
+              bg-[#F9F6EE]
               px-7
               py-14
               text-center
-              shadow-[0_24px_65px_rgba(48,40,33,0.14)]
-              backdrop-blur-[3px]
+              shadow-[0_24px_65px_rgba(33,29,26,0.12)]
+              
               sm:px-10
               sm:py-16
             "
@@ -937,10 +923,9 @@ export default function Regalos() {
                 sm:px-7
               "
               style={{
-                background:
-                  "linear-gradient(145deg, rgba(48,40,33,0.98), rgba(81,70,62,0.95))",
+                backgroundColor: palette.ink,
                 borderColor: "rgba(179,106,54,0.42)",
-                boxShadow: "0 18px 42px rgba(48,40,33,0.2)",
+                boxShadow: "0 18px 42px rgba(33,29,26,0.20)",
               }}
             >
               <div className="flex items-start justify-between gap-4">
@@ -953,7 +938,7 @@ export default function Regalos() {
                   BBVA
                 </p>
 
-                <BankCardIcon className="h-5 w-5 text-[#F1D1B0]" />
+                <BankCardIcon className="h-5 w-5 text-[#E2B488]" />
               </div>
 
               <p

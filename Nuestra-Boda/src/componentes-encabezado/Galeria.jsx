@@ -6,14 +6,14 @@ import { motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#302821",
-  inkSoft: "#51463E",
+  ink: "#211D1A",
+  inkSoft: "#403832",
   paper: "#E2B488",
-  paperLight: "#F9F6EE",
-  paperDark: "#F1D1B0",
+  paperLight: "#FFFFFF",
+  paperDark: "#AEB49C",
   antiqueGold: "#B36A36",
-  antiqueGoldDark: "#844820",
-  warmGray: "#66594F",
+  antiqueGoldDark: "#8E4E27",
+  warmGray: "#5F554E",
 };
 
 /*
@@ -188,7 +188,7 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
 
@@ -203,7 +203,7 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+            palette.antiqueGold,
         }}
       />
     </div>
@@ -314,14 +314,7 @@ export default function Galeria() {
         lg:py-32
       "
       style={{
-        background: `
-          linear-gradient(
-            180deg,
-            ${palette.paperLight} 0%,
-            ${palette.paper} 55%,
-            ${palette.paperDark} 100%
-          )
-        `,
+        backgroundColor: palette.paperLight,
       }}
     >
       {/* TEXTURA DE PAPEL */}
@@ -337,8 +330,8 @@ export default function Galeria() {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(48,40,33,0.025) 0px,
-              rgba(48,40,33,0.025) 1px,
+              rgba(33,29,26,0.025) 0px,
+              rgba(33,29,26,0.025) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -358,7 +351,7 @@ export default function Galeria() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(179,106,54,0.25)",
+          borderColor: "rgba(179,106,54,0.30)",
         }}
       />
 
@@ -372,7 +365,7 @@ export default function Galeria() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(179,106,54,0.1)",
+          borderColor: "rgba(33,29,26,0.10)",
         }}
       />
 
@@ -386,7 +379,7 @@ export default function Galeria() {
           top-6
           h-16
           w-16
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:left-9
           sm:top-9
           sm:h-20
@@ -403,7 +396,7 @@ export default function Galeria() {
           h-16
           w-16
           rotate-90
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:right-9
           sm:top-9
           sm:h-20
@@ -420,7 +413,7 @@ export default function Galeria() {
           h-16
           w-16
           -rotate-90
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:left-9
           sm:h-20
@@ -437,7 +430,7 @@ export default function Galeria() {
           h-16
           w-16
           rotate-180
-          text-[#B36A36]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:right-9
           sm:h-20
@@ -454,7 +447,7 @@ export default function Galeria() {
           h-[250px]
           w-[145px]
           -rotate-12
-          text-[#B36A36]/10
+          text-[#AEB49C]/22
           sm:h-[310px]
           sm:w-[180px]
           lg:left-2
@@ -470,7 +463,7 @@ export default function Galeria() {
           h-[250px]
           w-[145px]
           rotate-[168deg]
-          text-[#B36A36]/10
+          text-[#AEB49C]/22
           sm:h-[310px]
           sm:w-[180px]
           lg:right-2
@@ -626,7 +619,7 @@ export default function Galeria() {
                 inset-0
                 scale-110
                 rounded-[32px]
-                bg-[#B36A36]/10
+                bg-[#AEB49C]/14
                 blur-3xl
               "
             />
@@ -654,7 +647,7 @@ export default function Galeria() {
                 h-[390px]
                 overflow-hidden
                 rounded-[26px]
-                bg-[#F8F5EF]
+                bg-white
                 sm:h-[540px]
                 md:h-[620px]
                 lg:h-[680px]
@@ -748,7 +741,7 @@ export default function Galeria() {
                   justify-center
                   rounded-full
                   border
-                  bg-[#F9F6EE]/92
+                  bg-white/92
                   backdrop-blur-sm
                   sm:left-5
                   sm:h-12
@@ -790,7 +783,7 @@ export default function Galeria() {
                   justify-center
                   rounded-full
                   border
-                  bg-[#F9F6EE]/92
+                  bg-white/92
                   backdrop-blur-sm
                   sm:right-5
                   sm:h-12
@@ -922,7 +915,7 @@ export default function Galeria() {
                         `}
                         style={{
                           background: isActive
-                            ? "linear-gradient(90deg, #B36A36, #844820)"
+                            ? "#B36A36"
                             : "rgba(102,89,79,0.32)",
                         }}
                       />

@@ -6,23 +6,12 @@ import { motion } from "framer-motion";
 
 const palette = {
   cream: "#E2B488",
-  creamLight: "#F1D1B0",
-  creamDark: "#C99468",
-
   sage: "#AEB49C",
-  sageLight: "#C3C8B4",
-  sageDark: "#879078",
-
   terracotta: "#B36A36",
-  terracottaLight: "#C98250",
-  terracottaDark: "#844820",
 
   white: "#FFFFFF",
-
-  dark: "#302821",
-  darkSoft: "#51463E",
-
-  line: "rgba(48,40,33,0.18)",
+  dark: "#211D1A",
+  darkSoft: "#403832",
 };
 
 const reveal = {
@@ -30,9 +19,11 @@ const reveal = {
     opacity: 0,
     y: 24,
   },
+
   show: {
     opacity: 1,
     y: 0,
+
     transition: {
       duration: 0.95,
       ease: [0.22, 1, 0.36, 1],
@@ -40,13 +31,17 @@ const reveal = {
   },
 };
 
-function BotanicalDetail({ className = "" }) {
+function BotanicalDetail({
+  className = "",
+  style = {},
+}) {
   return (
     <svg
       viewBox="0 0 130 210"
       fill="none"
       aria-hidden="true"
       className={className}
+      style={style}
     >
       <path
         d="M66 203C70 158 70 112 65 17"
@@ -124,23 +119,26 @@ function SmallDivider() {
       <span
         className="h-px w-10 sm:w-14"
         style={{
-          background:
-            "linear-gradient(to right, transparent, rgba(179,106,54,0.68))",
+          backgroundColor: palette.terracotta,
         }}
       />
 
       <span
-        className="h-[5px] w-[5px] rotate-45 border"
+        className="
+          h-[5px]
+          w-[5px]
+          rotate-45
+          border
+        "
         style={{
-          borderColor: "rgba(179,106,54,0.7)",
+          borderColor: palette.terracotta,
         }}
       />
 
       <span
         className="h-px w-10 sm:w-14"
         style={{
-          background:
-            "linear-gradient(to left, transparent, rgba(179,106,54,0.68))",
+          backgroundColor: palette.terracotta,
         }}
       />
     </div>
@@ -176,14 +174,7 @@ export default function FrasePremium() {
         lg:py-32
       "
       style={{
-        background: `
-          linear-gradient(
-            180deg,
-            ${palette.creamLight} 90%,
-            ${palette.cream} 100%,
-            ${palette.sageLight} 0%
-          )
-        `,
+        backgroundColor: palette.white,
       }}
     >
       {/* TEXTURA DE PAPEL */}
@@ -193,14 +184,14 @@ export default function FrasePremium() {
           pointer-events-none
           absolute
           inset-0
-          opacity-[0.18]
+          opacity-[0.12]
         "
         style={{
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(48,40,33,0.025) 0px,
-              rgba(48,40,33,0.025) 1px,
+              rgba(33,29,26,0.03) 0px,
+              rgba(33,29,26,0.03) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -220,8 +211,8 @@ export default function FrasePremium() {
           background: `
             radial-gradient(
               circle at center,
-              rgba(255,255,255,0.28) 0%,
-              rgba(255,255,255,0.08) 45%,
+              rgba(226,180,136,0.12) 0%,
+              rgba(226,180,136,0.04) 42%,
               transparent 72%
             )
           `,
@@ -240,7 +231,7 @@ export default function FrasePremium() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(179,106,54,0.34)",
+          borderColor: "rgba(179,106,54,0.28)",
         }}
       />
 
@@ -254,7 +245,7 @@ export default function FrasePremium() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(48,40,33,0.1)",
+          borderColor: "rgba(33,29,26,0.1)",
         }}
       />
 
@@ -269,7 +260,6 @@ export default function FrasePremium() {
           h-[210px]
           w-[130px]
           -rotate-12
-          text-[#879078]/30
           sm:-left-1
           sm:h-[260px]
           sm:w-[160px]
@@ -277,6 +267,10 @@ export default function FrasePremium() {
           lg:h-[310px]
           lg:w-[190px]
         "
+        style={{
+          color: palette.sage,
+          opacity: 0.4,
+        }}
       />
 
       <BotanicalDetail
@@ -288,7 +282,6 @@ export default function FrasePremium() {
           h-[210px]
           w-[130px]
           rotate-[168deg]
-          text-[#B36A36]/22
           sm:-right-1
           sm:h-[260px]
           sm:w-[160px]
@@ -296,6 +289,10 @@ export default function FrasePremium() {
           lg:h-[310px]
           lg:w-[190px]
         "
+        style={{
+          color: palette.terracotta,
+          opacity: 0.28,
+        }}
       />
 
       {/* CONTENIDO */}
@@ -323,7 +320,9 @@ export default function FrasePremium() {
             opacity: 1,
             y: 0,
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
           transition={{
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
@@ -348,17 +347,19 @@ export default function FrasePremium() {
             sm:text-[84px]
           "
           style={{
-            color: "rgba(179,106,54,0.25)",
+            color: palette.terracotta,
           }}
           initial={{
             opacity: 0,
             y: 12,
           }}
           whileInView={{
-            opacity: 1,
+            opacity: 0.38,
             y: 0,
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
           transition={{
             duration: 0.9,
             delay: 0.12,
@@ -387,7 +388,6 @@ export default function FrasePremium() {
           "
           style={{
             color: palette.dark,
-            textShadow: "0 1px 0 rgba(255,255,255,0.38)",
           }}
           initial={{
             opacity: 0,
@@ -397,7 +397,9 @@ export default function FrasePremium() {
             opacity: 1,
             y: 0,
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
           transition={{
             duration: 1,
             delay: 0.18,
@@ -405,11 +407,15 @@ export default function FrasePremium() {
           }}
         >
           Con Dios como guía,
-          <span className="block">comenzamos este hermoso</span>
-          <span className="block">camino juntos.</span>
+          <span className="block">
+            comenzamos este hermoso
+          </span>
+          <span className="block">
+            camino juntos.
+          </span>
         </motion.blockquote>
 
-        {/* SEPARADOR */}
+        {/* SEPARADOR INFERIOR */}
 
         <motion.div
           className="
@@ -424,7 +430,9 @@ export default function FrasePremium() {
             opacity: 1,
             scaleX: 1,
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
           transition={{
             duration: 0.9,
             delay: 0.32,
@@ -432,7 +440,6 @@ export default function FrasePremium() {
         >
           <SmallDivider />
         </motion.div>
-
       </div>
     </motion.section>
   );

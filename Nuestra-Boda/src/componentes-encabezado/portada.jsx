@@ -7,34 +7,34 @@ import Countdown from "./encabeza-cuenta";
 ========================================= */
 
 const palette = {
-  /* Paleta principal */
+  /* Tres colores seleccionados */
   cream: "#E2B488", // Sorbete de Curuba
   sage: "#AEB49C", // Verde Bétula
   terracotta: "#B36A36", // Especia Exótica
 
   /* Neutros para textos y contraste */
   white: "#FFFFFF",
-  dark: "#302821",
-  darkSoft: "#51463E",
+  black: "#111111",
+  dark: "#111111",
+  darkSoft: "#333333",
 
-  /* Variaciones para dar profundidad */
-  creamLight: "#F1D1B0",
-  creamDark: "#C99468",
-  sageLight: "#C3C8B4",
-  sageDark: "#879078",
-  terracottaLight: "#C98250",
-  terracottaDark: "#844820",
+  /* Se mantienen los alias para no cambiar el diseño */
+  creamLight: "#E2B488",
+  creamDark: "#E2B488",
+  sageLight: "#AEB49C",
+  sageDark: "#AEB49C",
+  terracottaLight: "#B36A36",
+  terracottaDark: "#B36A36",
 
-  /* Alias usados en algunos detalles del componente */
-  ink: "#302821",
-  inkSoft: "#51463E",
+  ink: "#111111",
+  inkSoft: "#333333",
   paper: "#E2B488",
-  paperLight: "#F1D1B0",
-  paperDark: "#C99468",
+  paperLight: "#E2B488",
+  paperDark: "#E2B488",
   antiqueGold: "#B36A36",
-  antiqueGoldDark: "#844820",
-  warmGray: "#51463E",
-  line: "rgba(48,40,33,0.18)",
+  antiqueGoldDark: "#B36A36",
+  warmGray: "#333333",
+  line: "rgba(17,17,17,0.18)",
 };
 
 const transition = {
@@ -86,8 +86,8 @@ function DecorativeDivider({ dark = false }) {
         className="h-px w-10 sm:w-16"
         style={{
           background: dark
-            ? "linear-gradient(to right, transparent, rgba(164,134,84,0.8))"
-            : "linear-gradient(to right, transparent, rgba(164,134,84,0.65))",
+            ? "linear-gradient(to right, transparent, rgba(179,106,54,0.80))"
+            : "linear-gradient(to right, transparent, rgba(179,106,54,0.65))",
         }}
       />
 
@@ -95,8 +95,8 @@ function DecorativeDivider({ dark = false }) {
         className="h-[5px] w-[5px] rotate-45 border"
         style={{
           borderColor: dark
-            ? "rgba(164,134,84,0.85)"
-            : "rgba(164,134,84,0.7)",
+            ? "rgba(179,106,54,0.85)"
+            : "rgba(179,106,54,0.70)",
         }}
       />
 
@@ -104,8 +104,8 @@ function DecorativeDivider({ dark = false }) {
         className="h-px w-10 sm:w-16"
         style={{
           background: dark
-            ? "linear-gradient(to left, transparent, rgba(164,134,84,0.8))"
-            : "linear-gradient(to left, transparent, rgba(164,134,84,0.65))",
+            ? "linear-gradient(to left, transparent, rgba(179,106,54,0.80))"
+            : "linear-gradient(to left, transparent, rgba(179,106,54,0.65))",
         }}
       />
     </div>
@@ -340,7 +340,7 @@ useEffect(() => {
     lg:px-12
   "
   style={{
-    backgroundColor: "#F3EBDD",
+    backgroundColor: "#E2B488",
     backgroundImage: `
       radial-gradient(
         circle at top left,
@@ -391,7 +391,7 @@ useEffect(() => {
                 lg:inset-[42px]
               "
               style={{
-                borderColor: "rgba(48,40,33,0.14)",
+                borderColor: "rgba(17,17,17,0.14)",
               }}
             />
 
@@ -518,7 +518,7 @@ useEffect(() => {
                     lg:w-20
                   "
                   style={{
-                    backgroundColor: "rgba(164,134,84,0.7)",
+                    backgroundColor: "rgba(179,106,54,0.70)",
                   }}
                 />
 
@@ -694,12 +694,12 @@ useEffect(() => {
                         linear-gradient(
                           145deg,
                           #FFFFFF 0%,
-                          #FAF4EE 55%,
-                          #F1E1D3 100%
+                          #FFFFFF 55%,
+                          #FFFFFF 100%
                         )
                       `,
                       borderColor: "rgba(179,106,54,0.35)",
-                      boxShadow: "0 14px 30px rgba(48,40,33,0.16)",
+                      boxShadow: "0 14px 30px rgba(17,17,17,0.16)",
                     }}
                     animate={
                       abrirSobre
@@ -748,7 +748,7 @@ useEffect(() => {
                         w-12
                       "
                       style={{
-                        backgroundColor: "rgba(164,134,84,0.65)",
+                        backgroundColor: "rgba(179,106,54,0.65)",
                       }}
                     />
 
@@ -820,9 +820,9 @@ useEffect(() => {
                           ${palette.sageDark} 100%
                         )
                       `,
-                      borderColor: "rgba(48,40,33,0.22)",
+                      borderColor: "rgba(17,17,17,0.22)",
                       boxShadow: `
-                        0 28px 55px rgba(48,40,33,0.22),
+                        0 28px 55px rgba(17,17,17,0.22),
                         inset 0 1px 0 rgba(255,255,255,0.40)
                       `,
                     }}
@@ -850,8 +850,8 @@ useEffect(() => {
                         backgroundImage: `
                           repeating-linear-gradient(
                             90deg,
-                            rgba(48,40,33,0.07) 0px,
-                            rgba(48,40,33,0.07) 1px,
+                            rgba(17,17,17,0.07) 0px,
+                            rgba(17,17,17,0.07) 1px,
                             transparent 1px,
                             transparent 5px
                           )
@@ -872,7 +872,7 @@ useEffect(() => {
                       "
                       style={{
                         clipPath: "polygon(0 0, 100% 100%, 0 100%)",
-                        borderColor: "rgba(48,40,33,0.14)",
+                        borderColor: "rgba(17,17,17,0.14)",
                         background:
                           "linear-gradient(145deg, rgba(255,255,255,0.16), rgba(179,106,54,0.10))",
                       }}
@@ -889,7 +889,7 @@ useEffect(() => {
                       "
                       style={{
                         clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
-                        borderColor: "rgba(48,40,33,0.14)",
+                        borderColor: "rgba(17,17,17,0.14)",
                         background:
                           "linear-gradient(215deg, rgba(255,255,255,0.14), rgba(179,106,54,0.10))",
                       }}
@@ -919,7 +919,7 @@ useEffect(() => {
                           ${palette.sageDark} 100%
                         )
                       `,
-                      boxShadow: "0 13px 24px rgba(48,40,33,0.18)",
+                      boxShadow: "0 13px 24px rgba(17,17,17,0.18)",
                       backfaceVisibility: "hidden",
                     }}
                     animate={
@@ -991,8 +991,8 @@ useEffect(() => {
                         `,
                         boxShadow: `
                           inset 0 2px 4px rgba(255,255,255,0.24),
-                          inset 0 -5px 9px rgba(48,40,33,0.30),
-                          0 10px 18px rgba(48,40,33,0.22)
+                          inset 0 -5px 9px rgba(17,17,17,0.30),
+                          0 10px 18px rgba(17,17,17,0.22)
                         `,
                       }}
                     >
@@ -1019,7 +1019,7 @@ useEffect(() => {
                         "
                         style={{
                           color: palette.white,
-                          textShadow: "0 1px 2px rgba(48,40,33,0.38)",
+                          textShadow: "0 1px 2px rgba(17,17,17,0.38)",
                         }}
                       >
                         C
@@ -1216,17 +1216,17 @@ useEffect(() => {
             background: `
               linear-gradient(
                 180deg,
-                rgba(18,24,31,0.46) 0%,
-                rgba(18,24,31,0.12) 32%,
-                rgba(18,24,31,0.20) 54%,
-                rgba(18,24,31,0.82) 100%
+                rgba(0,0,0,0.46) 0%,
+                rgba(0,0,0,0.12) 32%,
+                rgba(0,0,0,0.20) 54%,
+                rgba(0,0,0,0.82) 100%
               ),
               linear-gradient(
                 90deg,
-                rgba(18,24,31,0.18) 0%,
+                rgba(0,0,0,0.18) 0%,
                 transparent 35%,
                 transparent 65%,
-                rgba(18,24,31,0.18) 100%
+                rgba(0,0,0,0.18) 100%
               )
             `,
           }}
@@ -1328,7 +1328,7 @@ useEffect(() => {
                 font-normal
                 leading-[0.9]
                 tracking-[-0.035em]
-                text-[#FBF9F4]
+                text-[#FFFFFF]
                 sm:text-[62px]
                 md:text-[72px]
                 lg:text-[82px]
@@ -1349,7 +1349,7 @@ useEffect(() => {
                 "
                 style={{
                   background:
-                    "linear-gradient(to right, transparent, rgba(216,198,166,0.8))",
+                    "linear-gradient(to right, transparent, rgba(226,180,136,0.80))",
                 }}
               />
 
@@ -1357,7 +1357,7 @@ useEffect(() => {
                 className="
                   font-cursiveDancing
                   text-3xl
-                  text-[#D8C6A6]
+                  text-[#E2B488]
                   sm:text-4xl
                 "
               >
@@ -1372,7 +1372,7 @@ useEffect(() => {
                 "
                 style={{
                   background:
-                    "linear-gradient(to left, transparent, rgba(216,198,166,0.8))",
+                    "linear-gradient(to left, transparent, rgba(226,180,136,0.80))",
                 }}
               />
             </div>
@@ -1384,7 +1384,7 @@ useEffect(() => {
                 font-normal
                 leading-[0.9]
                 tracking-[-0.035em]
-                text-[#FBF9F4]
+                text-[#FFFFFF]
                 sm:text-[62px]
                 md:text-[72px]
                 lg:text-[82px]
@@ -1434,7 +1434,7 @@ useEffect(() => {
               "
               style={{
                 background:
-                  "linear-gradient(to right, transparent, rgba(216,198,166,0.8), transparent)",
+                  "linear-gradient(to right, transparent, rgba(226,180,136,0.80), transparent)",
               }}
             />
 
@@ -1464,7 +1464,7 @@ useEffect(() => {
                   h-9
                   w-px
                   overflow-hidden
-                  bg-[#F5F1E8]/25
+                  bg-[#FFFFFF]/25
                 "
               >
                 <motion.span
@@ -1472,7 +1472,7 @@ useEffect(() => {
                     block
                     h-4
                     w-px
-                    bg-[#F5F1E8]/80
+                    bg-[#FFFFFF]/80
                   "
                   animate={{
                     y: [-16, 36],
