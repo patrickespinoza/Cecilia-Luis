@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E5DED2",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F1D1B0",
+  paperDark: "#C3C8B4",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#66594F",
 };
 
 const fadeUp = {
@@ -150,14 +150,14 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.68))",
         }}
       />
 
       <span
         className="h-[5px] w-[5px] rotate-45 border"
         style={{
-          borderColor: "rgba(164,134,84,0.72)",
+          borderColor: "rgba(179,106,54,0.68)",
         }}
       />
 
@@ -165,7 +165,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.68))",
         }}
       />
     </div>
@@ -229,8 +229,8 @@ export default function EventoDireccion() {
           linear-gradient(
             180deg,
             ${palette.paperLight} 0%,
-            ${palette.paper} 58%,
-            ${palette.paperDark} 100%
+            ${palette.paper} 100%,
+            ${palette.paperDark} 0%
           )
         `,
       }}
@@ -248,10 +248,26 @@ export default function EventoDireccion() {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(29,39,51,0.025) 0px,
-              rgba(29,39,51,0.025) 1px,
+              rgba(48,40,33,0.028) 0px,
+              rgba(48,40,33,0.028) 1px,
               transparent 1px,
               transparent 5px
+            )
+          `,
+        }}
+      />
+
+      {/* LUZ SUAVE CENTRAL */}
+
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(
+              circle at center,
+              rgba(255,255,255,0.3) 0%,
+              rgba(255,255,255,0.1) 44%,
+              transparent 74%
             )
           `,
         }}
@@ -269,7 +285,7 @@ export default function EventoDireccion() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(164,134,84,0.25)",
+          borderColor: "rgba(179,106,54,0.32)",
         }}
       />
 
@@ -283,7 +299,7 @@ export default function EventoDireccion() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(164,134,84,0.1)",
+          borderColor: "rgba(48,40,33,0.10)",
         }}
       />
 
@@ -297,7 +313,7 @@ export default function EventoDireccion() {
           top-6
           h-16
           w-16
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:left-9
           sm:top-9
           sm:h-20
@@ -314,7 +330,7 @@ export default function EventoDireccion() {
           h-16
           w-16
           rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:right-9
           sm:top-9
           sm:h-20
@@ -331,7 +347,7 @@ export default function EventoDireccion() {
           h-16
           w-16
           -rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:left-9
           sm:h-20
@@ -348,7 +364,7 @@ export default function EventoDireccion() {
           h-16
           w-16
           rotate-180
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:right-9
           sm:h-20
@@ -367,7 +383,7 @@ export default function EventoDireccion() {
           h-[250px]
           w-[145px]
           -rotate-12
-          text-[#A48654]/10
+          text-[#879078]/18
           sm:h-[310px]
           sm:w-[180px]
           lg:left-2
@@ -383,7 +399,7 @@ export default function EventoDireccion() {
           h-[250px]
           w-[145px]
           rotate-[168deg]
-          text-[#A48654]/10
+          text-[#879078]/18
           sm:h-[310px]
           sm:w-[180px]
           lg:right-2
@@ -483,21 +499,17 @@ export default function EventoDireccion() {
           </p>
         </motion.div>
 
-        {/* TARJETA DE INFORMACIÓN */}
+        {/* TARJETAS INDIVIDUALES */}
 
         <motion.div
           className="
-            relative
-            overflow-hidden
-            border
-            lg:grid
-            lg:grid-cols-[0.88fr_1.12fr]
+            grid
+            items-stretch
+            gap-7
+            sm:gap-9
+            lg:grid-cols-[0.78fr_1fr_1fr]
+            lg:gap-7
           "
-          style={{
-            backgroundColor: "rgba(251,249,244,0.82)",
-            borderColor: "rgba(164,134,84,0.34)",
-            boxShadow: "0 24px 65px rgba(29,39,51,0.09)",
-          }}
           initial={{
             opacity: 0,
             y: 26,
@@ -508,7 +520,7 @@ export default function EventoDireccion() {
           }}
           viewport={{
             once: true,
-            amount: 0.15,
+            amount: 0.12,
           }}
           transition={{
             duration: 1,
@@ -516,434 +528,715 @@ export default function EventoDireccion() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          {/* BORDE INTERIOR */}
+          {/* TARJETA DE FECHA */}
 
-          <div
-            className="
-              pointer-events-none
-              absolute
-              inset-[7px]
-              border
-            "
-            style={{
-              borderColor: "rgba(164,134,84,0.12)",
-            }}
-          />
-
-          {/* COLUMNA DE FECHA */}
-
-          <div
+          <motion.article
             className="
               relative
               flex
               min-h-[430px]
-              flex-col
-              items-center
-              justify-center
-              border-b
+              overflow-hidden
+              border
               px-7
               py-16
               text-center
               sm:min-h-[470px]
               sm:px-10
               lg:min-h-[570px]
-              lg:border-b-0
-              lg:border-r
-              lg:px-12
+              lg:px-9
             "
             style={{
-              borderColor: "rgba(164,134,84,0.24)",
               background: `
                 linear-gradient(
                   180deg,
-                  rgba(245,241,232,0.62),
-                  rgba(228,221,209,0.5)
+                  rgba(241,209,176,0.92) 0%,
+                  rgba(226,180,136,0.84) 100%,
+                  rgba(195,200,180,0.66) 0%
                 )
               `,
+              borderColor: "rgba(179,106,54,0.42)",
+              boxShadow: "0 24px 58px rgba(48,40,33,0.14)",
+            }}
+            whileHover={{
+              y: -5,
+              transition: {
+                duration: 0.3,
+              },
             }}
           >
-            <motion.p
-              className="
-                text-[8px]
-                uppercase
-                tracking-[0.4em]
-                sm:text-[10px]
-                sm:tracking-[0.5em]
-              "
-              style={{
-                color: palette.antiqueGoldDark,
-              }}
-              initial={{
-                opacity: 0,
-                y: -10,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: 0.2,
-              }}
-            >
-              Reserve la fecha
-            </motion.p>
-
             <div
               className="
-                my-7
-                h-px
-                w-14
-                sm:w-20
+                pointer-events-none
+                absolute
+                inset-[7px]
+                border
               "
               style={{
-                backgroundColor: "rgba(164,134,84,0.58)",
+                borderColor: "rgba(48,40,33,0.14)",
               }}
             />
 
-            <motion.p
+            <div
               className="
-                font-serif
-                text-lg
-                uppercase
-                tracking-[0.18em]
-                sm:text-xl
+                relative
+                z-10
+                flex
+                w-full
+                flex-col
+                items-center
+                justify-center
               "
-              style={{
-                color: palette.inkSoft,
-              }}
-              initial={{
-                opacity: 0,
-                y: 12,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.85,
-                delay: 0.25,
-              }}
             >
-              Domingo
-            </motion.p>
-
-            <motion.p
-              className="
-                my-3
-                font-serif
-                text-[98px]
-                font-normal
-                leading-none
-                tracking-[-0.06em]
-                sm:text-[122px]
-                lg:text-[136px]
-              "
-              style={{
-                color: palette.ink,
-              }}
-              initial={{
-                opacity: 0,
-                scale: 0.96,
-              }}
-              whileInView={{
-                opacity: 1,
-                scale: 1,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.95,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              11
-            </motion.p>
-
-            <motion.p
-              className="
-                font-serif
-                text-[12px]
-                uppercase
-                tracking-[0.4em]
-                sm:text-sm
-                sm:tracking-[0.52em]
-              "
-              style={{
-                color: palette.antiqueGoldDark,
-              }}
-              initial={{
-                opacity: 0,
-                y: 10,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.85,
-                delay: 0.35,
-              }}
-            >
-              Junio · 2026
-            </motion.p>
-
-            <div className="mt-8">
-              <DecorativeDivider compact />
-            </div>
-          </div>
-
-          {/* COLUMNA DE CEREMONIA */}
-
-          <div
-            className="
-              relative
-              flex
-              min-h-[520px]
-              flex-col
-              items-center
-              justify-center
-              px-7
-              py-16
-              text-center
-              sm:px-12
-              lg:min-h-[570px]
-              lg:px-16
-            "
-          >
-            <motion.p
-              className="
-                text-[9px]
-                uppercase
-                tracking-[0.42em]
-                sm:text-[10px]
-                sm:tracking-[0.52em]
-              "
-              style={{
-                color: palette.antiqueGoldDark,
-              }}
-              initial={{
-                opacity: 0,
-                y: -10,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: 0.28,
-              }}
-            >
-              Ceremonia
-            </motion.p>
-
-            <motion.h3
-              className="
-                mt-6
-                font-serif
-                text-[35px]
-                font-normal
-                leading-tight
-                tracking-[-0.02em]
-                sm:text-[45px]
-              "
-              style={{
-                color: palette.ink,
-              }}
-              initial={{
-                opacity: 0,
-                y: 14,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.9,
-                delay: 0.32,
-              }}
-            >
-              Nuestra ceremonia
-            </motion.h3>
-
-            <div className="my-8 sm:my-9">
-              <DecorativeDivider />
-            </div>
-
-            {/* HORA */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 16,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.9,
-                delay: 0.38,
-              }}
-            >
-              <p
+              <motion.p
                 className="
-                  text-[8px]
-                  uppercase
-                  tracking-[0.36em]
-                  sm:text-[9px]
-                "
-                style={{
-                  color: palette.warmGray,
-                }}
-              >
-                Hora
-              </p>
-
-              <p
-                className="
-                  mt-3
-                  font-serif
-                  text-[52px]
-                  font-normal
-                  leading-none
-                  tracking-[-0.035em]
-                  sm:text-[66px]
-                  lg:text-[72px]
-                "
-                style={{
-                  color: palette.ink,
-                }}
-              >
-                16:30
-              </p>
-
-              <p
-                className="
-                  mt-3
                   text-[8px]
                   uppercase
                   tracking-[0.4em]
-                  sm:text-[9px]
+                  sm:text-[10px]
+                  sm:tracking-[0.5em]
                 "
                 style={{
                   color: palette.antiqueGoldDark,
                 }}
-              >
-                Horas
-              </p>
-            </motion.div>
-
-            {/* UBICACIÓN */}
-
-            <motion.div
-              className="mt-10 sm:mt-11"
-              initial={{
-                opacity: 0,
-                y: 16,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.9,
-                delay: 0.46,
-              }}
-            >
-              <p
-                className="
-                  text-[8px]
-                  uppercase
-                  tracking-[0.38em]
-                  sm:text-[9px]
-                "
-                style={{
-                  color: palette.warmGray,
+                initial={{
+                  opacity: 0,
+                  y: -10,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.2,
                 }}
               >
-                Ubicación
-              </p>
+                Reserve la fecha
+              </motion.p>
 
-              <p
+              <div
                 className="
-                  mx-auto
-                  mt-4
-                  max-w-md
+                  my-7
+                  h-px
+                  w-14
+                  sm:w-20
+                "
+                style={{
+                  backgroundColor: "rgba(179,106,54,0.62)",
+                }}
+              />
+
+              <motion.p
+                className="
                   font-serif
-                  text-xl
-                  leading-relaxed
-                  sm:text-[24px]
+                  text-lg
+                  uppercase
+                  tracking-[0.18em]
+                  sm:text-xl
                 "
                 style={{
                   color: palette.inkSoft,
                 }}
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.85,
+                  delay: 0.25,
+                }}
               >
-                Consulta la ubicación de nuestra ceremonia
-              </p>
-            </motion.div>
+                Sábado
+              </motion.p>
 
-            {/* BOTÓN */}
+              <motion.p
+                className="
+                  my-3
+                  font-serif
+                  text-[98px]
+                  font-normal
+                  leading-none
+                  tracking-[-0.06em]
+                  sm:text-[122px]
+                  lg:text-[126px]
+                "
+                style={{
+                  color: palette.ink,
+                }}
+                initial={{
+                  opacity: 0,
+                  scale: 0.96,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.95,
+                  delay: 0.3,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                21
+              </motion.p>
 
-            <motion.a
-              href="https://maps.app.goo.gl/TsSDUBKAractwi8F8"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Abrir ubicación de la ceremonia en Google Maps"
+              <motion.p
+                className="
+                  font-serif
+                  text-[12px]
+                  uppercase
+                  tracking-[0.34em]
+                  sm:text-sm
+                  sm:tracking-[0.42em]
+                "
+                style={{
+                  color: palette.antiqueGoldDark,
+                }}
+                initial={{
+                  opacity: 0,
+                  y: 10,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.85,
+                  delay: 0.35,
+                }}
+              >
+                Noviembre · 2026
+              </motion.p>
+
+              <div className="mt-8">
+                <DecorativeDivider compact />
+              </div>
+            </div>
+          </motion.article>
+
+          {/* TARJETA DE CEREMONIA */}
+
+          <motion.article
+            className="
+              relative
+              flex
+              min-h-[520px]
+              overflow-hidden
+              border
+              px-7
+              py-16
+              text-center
+              sm:px-10
+              lg:min-h-[570px]
+              lg:px-8
+            "
+            style={{
+              background: `
+                linear-gradient(
+                  180deg,
+                  rgba(255,255,255,0.78) 0%,
+                  rgba(255,255,255,0.58) 100%
+                )
+              `,
+              borderColor: "rgba(179,106,54,0.42)",
+              boxShadow: "0 24px 58px rgba(48,40,33,0.14)",
+              backdropFilter: "blur(3px)",
+            }}
+            whileHover={{
+              y: -5,
+              transition: {
+                duration: 0.3,
+              },
+            }}
+          >
+            <div
               className="
-                group
-                mt-10
-                inline-flex
-                min-w-[220px]
-                items-center
-                justify-center
-                gap-3
+                pointer-events-none
+                absolute
+                inset-[7px]
                 border
-                px-8
-                py-4
-                sm:min-w-[250px]
-                sm:px-10
               "
               style={{
-                backgroundColor: palette.ink,
-                borderColor: palette.ink,
-                color: palette.paperLight,
-                boxShadow: "0 12px 28px rgba(29,39,51,0.12)",
+                borderColor: "rgba(48,40,33,0.12)",
               }}
-              whileHover={{
-                y: -2,
-                backgroundColor: palette.inkSoft,
-                transition: {
-                  duration: 0.25,
-                },
-              }}
-              whileTap={{
-                scale: 0.985,
-              }}
-            >
-              <LocationIcon />
+            />
 
-              <span
+            <div
+              className="
+                relative
+                z-10
+                flex
+                w-full
+                flex-col
+                items-center
+                justify-center
+              "
+            >
+ 
+
+              <motion.h3
                 className="
-                  text-[9px]
-                  uppercase
-                  tracking-[0.28em]
-                  sm:text-[10px]
-                  sm:tracking-[0.34em]
+                  mt-6
+                  font-serif
+                  text-[35px]
+                  font-normal
+                  leading-tight
+                  tracking-[-0.02em]
+                  sm:text-[43px]
                 "
+                style={{
+                  color: palette.ink,
+                }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.32,
+                }}
               >
-                Ver ubicación
-              </span>
-            </motion.a>
-          </div>
+                Nuestra ceremonia
+              </motion.h3>
+
+              <div className="my-8 sm:my-9">
+                <DecorativeDivider />
+              </div>
+
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 16,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.38,
+                }}
+              >
+                <p
+                  className="
+                    text-[8px]
+                    uppercase
+                    tracking-[0.36em]
+                    sm:text-[9px]
+                  "
+                  style={{
+                    color: palette.warmGray,
+                  }}
+                >
+                  Hora
+                </p>
+
+                <p
+                  className="
+                    mt-3
+                    font-serif
+                    text-[52px]
+                    font-normal
+                    leading-none
+                    tracking-[-0.035em]
+                    sm:text-[66px]
+                    lg:text-[64px]
+                  "
+                  style={{
+                    color: palette.ink,
+                  }}
+                >
+                  12:00
+                </p>
+
+                <p
+                  className="
+                    mt-3
+                    text-[8px]
+                    uppercase
+                    tracking-[0.4em]
+                    sm:text-[9px]
+                  "
+                  style={{
+                    color: palette.antiqueGoldDark,
+                  }}
+                >
+                  PM
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="mt-10 sm:mt-11"
+                initial={{
+                  opacity: 0,
+                  y: 16,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.46,
+                }}
+              >
+                <p
+                  className="
+                    text-[8px]
+                    uppercase
+                    tracking-[0.38em]
+                    sm:text-[9px]
+                  "
+                  style={{
+                    color: palette.warmGray,
+                  }}
+                >
+                  Ubicación
+                </p>
+
+                <p
+                  className="
+                    mx-auto
+                    mt-4
+                    min-h-[68px]
+                    max-w-[280px]
+                    font-serif
+                    text-xl
+                    leading-relaxed
+                    sm:text-[23px]
+                  "
+                  style={{
+                    color: palette.inkSoft,
+                  }}
+                >
+                  Parroquia de Guadalupe
+                </p>
+              </motion.div>
+
+              <motion.a
+                href="https://maps.app.goo.gl/TsSDUBKAractwi8F8"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir ubicación de la ceremonia en Google Maps"
+                className="
+                  group
+                  mt-10
+                  inline-flex
+                  min-w-[210px]
+                  items-center
+                  justify-center
+                  gap-3
+                  border
+                  px-7
+                  py-4
+                  sm:min-w-[230px]
+                  sm:px-8
+                "
+                style={{
+                  backgroundColor: palette.ink,
+                  borderColor: palette.ink,
+                  color: palette.paperLight,
+                  boxShadow: "0 12px 28px rgba(48,40,33,0.16)",
+                }}
+                whileHover={{
+                  y: -2,
+                  backgroundColor: palette.inkSoft,
+                  transition: {
+                    duration: 0.25,
+                  },
+                }}
+                whileTap={{
+                  scale: 0.985,
+                }}
+              >
+                <LocationIcon />
+
+                <span
+                  className="
+                    text-[9px]
+                    uppercase
+                    tracking-[0.26em]
+                    sm:text-[10px]
+                  "
+                >
+                  Ver ubicación
+                </span>
+              </motion.a>
+            </div>
+          </motion.article>
+
+          {/* TARJETA DE RECEPCIÓN */}
+
+          <motion.article
+            className="
+              relative
+              flex
+              min-h-[520px]
+              overflow-hidden
+              border
+              px-7
+              py-16
+              text-center
+              sm:px-10
+              lg:min-h-[570px]
+              lg:px-8
+            "
+            style={{
+              background: `
+                linear-gradient(
+                  180deg,
+                  rgba(255,255,255,0.78) 0%,
+                  rgba(241,209,176,0.48) 100%
+                )
+              `,
+              borderColor: "rgba(179,106,54,0.42)",
+              boxShadow: "0 24px 58px rgba(48,40,33,0.14)",
+              backdropFilter: "blur(3px)",
+            }}
+            whileHover={{
+              y: -5,
+              transition: {
+                duration: 0.3,
+              },
+            }}
+          >
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-[7px]
+                border
+              "
+              style={{
+                borderColor: "rgba(48,40,33,0.12)",
+              }}
+            />
+
+            <div
+              className="
+                relative
+                z-10
+                flex
+                w-full
+                flex-col
+                items-center
+                justify-center
+              "
+            >
+
+
+              <motion.h3
+                className="
+                  mt-6
+                  font-serif
+                  text-[35px]
+                  font-normal
+                  leading-tight
+                  tracking-[-0.02em]
+                  sm:text-[43px]
+                "
+                style={{
+                  color: palette.ink,
+                }}
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.38,
+                }}
+              >
+                Nuestra recepción
+              </motion.h3>
+
+              <div className="my-8 sm:my-9">
+                <DecorativeDivider />
+              </div>
+
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 16,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.44,
+                }}
+              >
+                <p
+                  className="
+                    text-[8px]
+                    uppercase
+                    tracking-[0.36em]
+                    sm:text-[9px]
+                  "
+                  style={{
+                    color: palette.warmGray,
+                  }}
+                >
+                  Hora
+                </p>
+
+                <p
+                  className="
+                    mt-3
+                    font-serif
+                    text-[52px]
+                    font-normal
+                    leading-none
+                    tracking-[-0.035em]
+                    sm:text-[66px]
+                    lg:text-[64px]
+                  "
+                  style={{
+                    color: palette.ink,
+                  }}
+                >
+                  2:00
+                </p>
+
+                <p
+                  className="
+                    mt-3
+                    text-[8px]
+                    uppercase
+                    tracking-[0.4em]
+                    sm:text-[9px]
+                  "
+                  style={{
+                    color: palette.antiqueGoldDark,
+                  }}
+                >
+                  PM
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="mt-10 sm:mt-11"
+                initial={{
+                  opacity: 0,
+                  y: 16,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.5,
+                }}
+              >
+                <p
+                  className="
+                    text-[8px]
+                    uppercase
+                    tracking-[0.38em]
+                    sm:text-[9px]
+                  "
+                  style={{
+                    color: palette.warmGray,
+                  }}
+                >
+                  Ubicación
+                </p>
+
+                <p
+                  className="
+                    mx-auto
+                    mt-4
+                    min-h-[68px]
+                    max-w-[280px]
+                    font-serif
+                    text-xl
+                    leading-relaxed
+                    sm:text-[23px]
+                  "
+                  style={{
+                    color: palette.inkSoft,
+                  }}
+                >
+                  Quinta El Paraiso
+                </p>
+              </motion.div>
+
+              <motion.a
+                href="https://maps.app.goo.gl/dyQjuFNY1SQDRxUf9AQUI-COLOCA-EL-LINK-DE-GOOGLE-MAPS"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir ubicación de la recepción en Google Maps"
+                className="
+                  group
+                  mt-10
+                  inline-flex
+                  min-w-[210px]
+                  items-center
+                  justify-center
+                  gap-3
+                  border
+                  px-7
+                  py-4
+                  sm:min-w-[230px]
+                  sm:px-8
+                "
+                style={{
+                  backgroundColor: palette.ink,
+                  borderColor: palette.ink,
+                  color: palette.paperLight,
+                  boxShadow: "0 12px 28px rgba(48,40,33,0.16)",
+                }}
+                whileHover={{
+                  y: -2,
+                  backgroundColor: palette.inkSoft,
+                  transition: {
+                    duration: 0.25,
+                  },
+                }}
+                whileTap={{
+                  scale: 0.985,
+                }}
+              >
+                <LocationIcon />
+
+                <span
+                  className="
+                    text-[9px]
+                    uppercase
+                    tracking-[0.26em]
+                    sm:text-[10px]
+                  "
+                >
+                  Ver ubicación
+                </span>
+              </motion.a>
+            </div>
+          </motion.article>
         </motion.div>
 
         {/* CIERRE */}

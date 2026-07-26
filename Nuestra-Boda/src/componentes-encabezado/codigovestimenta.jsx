@@ -2,38 +2,72 @@ import React from "react";
 import { motion } from "framer-motion";
 
 /* =========================================
-   CÓDIGO DE VESTIMENTA — CLÁSICO SIN IMÁGENES
+   CÓDIGO DE VESTIMENTA — TARJETA ÚNICA
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E5DED2",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F9F6EE",
+  paperDark: "#F1D1B0",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#66594F",
+  sage: "#AEB49C",
+};
+
+const dressImage = {
+  src: "/dresscode.png",
+
+  // Puedes mover la imagen sin deformarla.
+  mobilePosition: "center center",
+  desktopPosition: "center center",
 };
 
 const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 28,
   },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.9,
+      duration: 0.95,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-/* =========================================
-   ORNAMENTO DE ESQUINA
-========================================= */
+function DecorativeDivider() {
+  return (
+    <div className="flex items-center justify-center gap-3">
+      <span
+        className="h-px w-10 sm:w-16"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+        }}
+      />
+
+      <span
+        className="h-[5px] w-[5px] rotate-45 border"
+        style={{
+          borderColor: "rgba(179,106,54,0.72)",
+        }}
+      />
+
+      <span
+        className="h-px w-10 sm:w-16"
+        style={{
+          background:
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+        }}
+      />
+    </div>
+  );
+}
 
 function CornerOrnament({ className = "" }) {
   return (
@@ -65,10 +99,6 @@ function CornerOrnament({ className = "" }) {
     </svg>
   );
 }
-
-/* =========================================
-   RAMA BOTÁNICA
-========================================= */
 
 function BotanicalBranch({ className = "" }) {
   return (
@@ -140,297 +170,25 @@ function BotanicalBranch({ className = "" }) {
   );
 }
 
-/* =========================================
-   SEPARADOR CLÁSICO
-========================================= */
-
-function DecorativeDivider({ compact = false }) {
-  return (
-    <div className="flex items-center justify-center gap-3">
-      <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
-        style={{
-          background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
-        }}
-      />
-
-      <span
-        className="h-[5px] w-[5px] rotate-45 border"
-        style={{
-          borderColor: "rgba(164,134,84,0.72)",
-        }}
-      />
-
-      <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
-        style={{
-          background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
-        }}
-      />
-    </div>
-  );
-}
-
-/* =========================================
-   ICONOS
-========================================= */
-
-function SuitIcon() {
+function HangerIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-10 w-10 sm:h-12 sm:w-12"
-    >
-      <path d="M16 8 8 13v27h32V13l-8-5" />
-      <path d="m16 8 8 8 8-8" />
-      <path d="m19 13 5 7 5-7" />
-      <path d="M24 20v20" />
-      <path d="M16 8V4h16v4" />
-      <path d="M8 23h9" />
-      <path d="M31 23h9" />
-    </svg>
-  );
-}
-
-function DressIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-10 w-10 sm:h-12 sm:w-12"
-    >
-      <path d="M19 5h10" />
-      <path d="M20 5c0 6-2 10-5 14" />
-      <path d="M28 5c0 6 2 10 5 14" />
-      <path d="M15 19h18" />
-      <path d="m15 19-7 23h32l-7-23" />
-      <path d="M19 5c1 3 2.5 5 5 7 2.5-2 4-4 5-7" />
-      <path d="M16 27h16" />
-    </svg>
-  );
-}
-
-function AdultEventIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.25"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className="h-5 w-5"
+      className="h-7 w-7 sm:h-8 sm:w-8"
     >
-      <path d="M7 4h10" />
-      <path d="m8.5 4 1.2 6a4.3 4.3 0 0 0 8.5 0l1.2-6" />
-      <path d="M14 14v6" />
-      <path d="M10.5 20h7" />
-      <path d="M9.5 8h9" />
+      <path d="M24 12c0-4 5-4 5-8 0-2.2-1.8-4-4-4-2.4 0-4 1.7-4 4" />
+      <path d="M24 12 5 31c-1.4 1.4-.4 3.8 1.6 3.8h34.8c2 0 3-2.4 1.6-3.8L24 12Z" />
     </svg>
   );
 }
 
-/* =========================================
-   OPCIÓN DE VESTIMENTA
-========================================= */
-
-function DressOption({
-  title,
-  subtitle,
-  description,
-  details,
-  icon,
-  index,
-}) {
-  return (
-    <motion.article
-      className="
-        relative
-        flex
-        min-h-[390px]
-        w-full
-        flex-col
-        items-center
-        justify-center
-        border
-        px-7
-        py-12
-        text-center
-        sm:min-h-[430px]
-        sm:px-10
-        sm:py-14
-      "
-      style={{
-        backgroundColor: "rgba(251,249,244,0.76)",
-        borderColor: "rgba(164,134,84,0.3)",
-        boxShadow: "0 18px 45px rgba(29,39,51,0.06)",
-      }}
-      initial={{
-        opacity: 0,
-        y: 20,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.2,
-      }}
-      transition={{
-        duration: 0.85,
-        delay: 0.12 + index * 0.12,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-    >
-      {/* BORDE INTERIOR */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-[7px]
-          border
-        "
-        style={{
-          borderColor: "rgba(164,134,84,0.11)",
-        }}
-      />
-
-      {/* NÚMERO EDITORIAL */}
-
-      <p
-        className="
-          absolute
-          left-5
-          top-5
-          font-serif
-          text-xs
-          tracking-[0.2em]
-          sm:left-7
-          sm:top-7
-        "
-        style={{
-          color: "rgba(164,134,84,0.65)",
-        }}
-      >
-        {String(index + 1).padStart(2, "0")}
-      </p>
-
-      {/* ICONO */}
-
-      <div
-        className="
-          flex
-          h-20
-          w-20
-          items-center
-          justify-center
-          rounded-full
-          border
-          sm:h-24
-          sm:w-24
-        "
-        style={{
-          borderColor: "rgba(164,134,84,0.42)",
-          color: palette.antiqueGoldDark,
-        }}
-      >
-        {icon}
-      </div>
-
-      <div className="mt-8">
-        <DecorativeDivider compact />
-      </div>
-
-      <h3
-        className="
-          mt-7
-          font-serif
-          text-[31px]
-          font-normal
-          tracking-[-0.02em]
-          sm:text-[38px]
-        "
-        style={{
-          color: palette.ink,
-        }}
-      >
-        {title}
-      </h3>
-
-      <p
-        className="
-          mt-3
-          text-[8px]
-          uppercase
-          tracking-[0.36em]
-          sm:text-[9px]
-        "
-        style={{
-          color: palette.antiqueGoldDark,
-        }}
-      >
-        {subtitle}
-      </p>
-
-      <p
-        className="
-          mx-auto
-          mt-6
-          max-w-sm
-          font-serif
-          text-[15px]
-          leading-7
-          sm:text-base
-        "
-        style={{
-          color: palette.inkSoft,
-        }}
-      >
-        {description}
-      </p>
-
-      <p
-        className="
-          mx-auto
-          mt-4
-          max-w-xs
-          font-serif
-          text-[13px]
-          italic
-          leading-6
-          sm:text-[14px]
-        "
-        style={{
-          color: palette.warmGray,
-        }}
-      >
-        {details}
-      </p>
-    </motion.article>
-  );
-}
-
-/* =========================================
-   COMPONENTE PRINCIPAL
-========================================= */
-
-const DressCodePremium = () => {
+export default function DressCodePremium() {
   return (
     <motion.section
       variants={fadeUp}
@@ -438,7 +196,7 @@ const DressCodePremium = () => {
       whileInView="show"
       viewport={{
         once: true,
-        amount: 0.1,
+        amount: 0.12,
       }}
       className="
         relative
@@ -460,27 +218,26 @@ const DressCodePremium = () => {
           linear-gradient(
             180deg,
             ${palette.paperLight} 0%,
-            ${palette.paper} 56%,
-            ${palette.paperDark} 100%
+            ${palette.paperDark} 50%,
+            ${palette.paper} 100%
           )
         `,
       }}
     >
-      {/* TEXTURA DE PAPEL */}
-
+      {/* TEXTURA */}
       <div
         className="
           pointer-events-none
           absolute
           inset-0
-          opacity-[0.16]
+          opacity-[0.15]
         "
         style={{
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(29,39,51,0.025) 0px,
-              rgba(29,39,51,0.025) 1px,
+              rgba(48,40,33,0.025) 0px,
+              rgba(48,40,33,0.025) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -488,8 +245,22 @@ const DressCodePremium = () => {
         }}
       />
 
-      {/* MARCOS DE LA SECCIÓN */}
+      {/* LUZ SUAVE */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(
+              circle at center,
+              rgba(255,255,255,0.45) 0%,
+              rgba(255,255,255,0.12) 42%,
+              transparent 72%
+            )
+          `,
+        }}
+      />
 
+      {/* MARCOS */}
       <div
         className="
           pointer-events-none
@@ -500,7 +271,7 @@ const DressCodePremium = () => {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(164,134,84,0.25)",
+          borderColor: "rgba(179,106,54,0.28)",
         }}
       />
 
@@ -514,12 +285,11 @@ const DressCodePremium = () => {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(164,134,84,0.1)",
+          borderColor: "rgba(48,40,33,0.1)",
         }}
       />
 
-      {/* ORNAMENTOS DE ESQUINA */}
-
+      {/* ORNAMENTOS */}
       <CornerOrnament
         className="
           pointer-events-none
@@ -528,7 +298,7 @@ const DressCodePremium = () => {
           top-6
           h-16
           w-16
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:left-9
           sm:top-9
           sm:h-20
@@ -545,7 +315,7 @@ const DressCodePremium = () => {
           h-16
           w-16
           rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:right-9
           sm:top-9
           sm:h-20
@@ -562,7 +332,7 @@ const DressCodePremium = () => {
           h-16
           w-16
           -rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:left-9
           sm:h-20
@@ -579,7 +349,7 @@ const DressCodePremium = () => {
           h-16
           w-16
           rotate-180
-          text-[#A48654]/25
+          text-[#B36A36]/28
           sm:bottom-9
           sm:right-9
           sm:h-20
@@ -587,21 +357,18 @@ const DressCodePremium = () => {
         "
       />
 
-      {/* DETALLES BOTÁNICOS */}
-
       <BotanicalBranch
         className="
           pointer-events-none
           absolute
-          -bottom-16
-          -left-8
-          h-[250px]
-          w-[145px]
+          -bottom-20
+          -left-10
+          h-[260px]
+          w-[150px]
           -rotate-12
-          text-[#A48654]/10
-          sm:h-[310px]
-          sm:w-[180px]
-          lg:left-2
+          text-[#AEB49C]/30
+          sm:h-[330px]
+          sm:w-[190px]
         "
       />
 
@@ -609,304 +376,361 @@ const DressCodePremium = () => {
         className="
           pointer-events-none
           absolute
-          -right-8
-          -top-16
-          h-[250px]
-          w-[145px]
+          -right-10
+          -top-20
+          h-[260px]
+          w-[150px]
           rotate-[168deg]
-          text-[#A48654]/10
-          sm:h-[310px]
-          sm:w-[180px]
-          lg:right-2
+          text-[#AEB49C]/30
+          sm:h-[330px]
+          sm:w-[190px]
         "
       />
 
-      {/* CONTENIDO */}
-
-      <div
+      {/* TARJETA ÚNICA */}
+      <motion.article
         className="
           relative
           z-10
           mx-auto
+          grid
           w-full
-          max-w-6xl
+          max-w-5xl
+          overflow-hidden
+          rounded-[34px]
+          border
+          bg-white/90
+          shadow-[0_28px_85px_rgba(48,40,33,0.18)]
+          backdrop-blur-[3px]
+          lg:grid-cols-[0.92fr_1.08fr]
         "
+        style={{
+          borderColor: "rgba(179,106,54,0.34)",
+        }}
+        initial={{
+          opacity: 0,
+          y: 28,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.2,
+        }}
+        transition={{
+          duration: 1,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       >
-        {/* ENCABEZADO */}
-
+        {/* IMAGEN */}
         <motion.div
           className="
-            mx-auto
-            mb-14
-            flex
-            max-w-3xl
-            flex-col
-            items-center
-            text-center
-            sm:mb-16
-            lg:mb-20
+            relative
+            min-h-[420px]
+            overflow-hidden
+            sm:min-h-[540px]
+            lg:min-h-[680px]
           "
           initial={{
             opacity: 0,
-            y: 18,
+            scale: 1.04,
           }}
           whileInView={{
             opacity: 1,
-            y: 0,
+            scale: 1,
           }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.9,
+            duration: 1.2,
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <p
+          <img
+            src="/dresscode.png"
+            alt="Inspiración para el código de vestimenta"
+            loading="lazy"
             className="
-              text-[8px]
-              uppercase
-              tracking-[0.44em]
-              sm:text-[10px]
-              sm:tracking-[0.55em]
+              absolute
+              inset-0
+              h-full
+              w-full
+              object-cover
+              lg:hidden
             "
             style={{
-              color: palette.antiqueGoldDark,
+              objectPosition: dressImage.mobilePosition,
             }}
-          >
-            Detalles de la celebración
-          </p>
+          />
 
-          <div className="mt-5">
-            <DecorativeDivider />
+          <img
+            src="/dresscode.png"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="
+              absolute
+              inset-0
+              hidden
+              h-full
+              w-full
+              object-cover
+              lg:block
+            "
+            style={{
+              objectPosition: dressImage.desktopPosition,
+            }}
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-[#302821]/45
+              via-transparent
+              to-transparent
+              lg:bg-gradient-to-r
+              lg:from-transparent
+              lg:via-transparent
+              lg:to-[#302821]/12
+            "
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-4
+              border
+              sm:inset-6
+            "
+            style={{
+              borderColor: "rgba(255,255,255,0.58)",
+            }}
+          />
+
+          <div
+            className="
+              absolute
+              bottom-8
+              left-1/2
+              flex
+              -translate-x-1/2
+              flex-col
+              items-center
+              text-center
+              text-white
+              lg:hidden
+            "
+          >
+            <span className="text-[8px] uppercase tracking-[0.42em]">
+              Código de vestimenta
+            </span>
+
+            <span className="mt-3 font-serif text-3xl italic">
+              Formal &amp; semiformal
+            </span>
           </div>
-
-          <h2
-            className="
-              mt-7
-              font-serif
-              text-[39px]
-              font-normal
-              leading-tight
-              tracking-[-0.025em]
-              sm:text-[54px]
-              md:text-[64px]
-            "
-            style={{
-              color: palette.ink,
-            }}
-          >
-            Código de vestimenta
-          </h2>
-
-          <p
-            className="
-              mx-auto
-              mt-5
-              max-w-2xl
-              font-serif
-              text-[14px]
-              italic
-              leading-7
-              sm:text-base
-            "
-            style={{
-              color: palette.warmGray,
-            }}
-          >
-            Nos encantará verlos elegantes y acordes con la ocasión en este
-            día tan importante para nosotros.
-          </p>
         </motion.div>
 
-        {/* OPCIONES */}
-
-        <div
-          className="
-            mx-auto
-            grid
-            max-w-5xl
-            gap-7
-            sm:gap-9
-            md:grid-cols-2
-          "
-        >
-          <DressOption
-            title="Caballeros"
-            subtitle="Vestimenta formal"
-            description="Traje formal en tonos oscuros acompañado de camisa, corbata y calzado elegante."
-            details="Sugerimos negro, azul marino, gris oscuro o tonalidades similares."
-            icon={<SuitIcon />}
-            index={0}
-          />
-
-          <DressOption
-            title="Damas"
-            subtitle="Vestimenta formal"
-            description="Vestido largo o atuendo de noche elegante, apropiado para una celebración formal."
-            details="Agradecemos reservar los colores demasiado claros para la novia."
-            icon={<DressIcon />}
-            index={1}
-          />
-        </div>
-
-        {/* NOTA DE ETIQUETA */}
-
+        {/* INFORMACIÓN */}
         <motion.div
           className="
-            mx-auto
-            mt-12
-            max-w-2xl
-            border-y
-            px-5
-            py-8
-            text-center
-            sm:mt-16
-            sm:px-8
-          "
-          style={{
-            borderColor: "rgba(164,134,84,0.3)",
-          }}
-          initial={{
-            opacity: 0,
-            y: 16,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.85,
-            delay: 0.28,
-          }}
-        >
-          <p
-            className="
-              text-[8px]
-              uppercase
-              tracking-[0.38em]
-              sm:text-[9px]
-            "
-            style={{
-              color: palette.antiqueGoldDark,
-            }}
-          >
-            Etiqueta formal
-          </p>
-
-          <p
-            className="
-              mx-auto
-              mt-4
-              max-w-lg
-              font-serif
-              text-[15px]
-              leading-7
-              sm:text-base
-            "
-            style={{
-              color: palette.inkSoft,
-            }}
-          >
-            Elegante y acorde con la ocasión. Agradecemos evitar vestimenta
-            casual, mezclilla y calzado deportivo.
-          </p>
-        </motion.div>
-
-        {/* SOLO ADULTOS */}
-
-        <motion.div
-          className="
-            mx-auto
-            mt-12
+            relative
             flex
-            max-w-xl
-            flex-col
+            min-h-[560px]
             items-center
+            justify-center
+            overflow-hidden
+            px-7
+            py-16
             text-center
-            sm:mt-14
+            sm:px-12
+            sm:py-20
+            lg:min-h-[680px]
+            lg:px-14
+            lg:py-24
           "
           initial={{
             opacity: 0,
-            y: 14,
+            x: 26,
           }}
           whileInView={{
             opacity: 1,
-            y: 0,
+            x: 0,
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
           transition={{
-            duration: 0.85,
-            delay: 0.36,
+            duration: 1,
+            delay: 0.14,
+            ease: [0.22, 1, 0.36, 1],
           }}
         >
           <div
             className="
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              rounded-full
+              pointer-events-none
+              absolute
+              inset-[9px]
               border
             "
             style={{
-              borderColor: "rgba(164,134,84,0.42)",
-              color: palette.antiqueGoldDark,
+              borderColor: "rgba(179,106,54,0.16)",
             }}
+          />
+
+          <div
+            className="
+              relative
+              z-10
+              flex
+              max-w-xl
+              flex-col
+              items-center
+            "
           >
-            <AdultEventIcon />
+
+            <p
+              className="
+                mt-7
+                text-[8px]
+                uppercase
+                tracking-[0.42em]
+                sm:text-[10px]
+                sm:tracking-[0.52em]
+              "
+              style={{
+                color: palette.antiqueGoldDark,
+              }}
+            >
+              Detalles de la celebración
+            </p>
+
+            <div className="mt-5">
+              <DecorativeDivider />
+            </div>
+
+            <h2
+              className="
+                mt-8
+                font-serif
+                text-[40px]
+                font-normal
+                leading-tight
+                tracking-[-0.025em]
+                sm:text-[54px]
+                lg:text-[58px]
+              "
+              style={{
+                color: palette.ink,
+              }}
+            >
+              Código de vestimenta
+            </h2>
+
+            <p
+              className="
+                mt-5
+                font-serif
+                text-[24px]
+                italic
+                sm:text-[29px]
+              "
+              style={{
+                color: palette.antiqueGoldDark,
+              }}
+            >
+              Formal &amp; semiformal
+            </p>
+
+
+
+            {/* NOTA DE COLOR */}
+            <motion.div
+              className="
+                mt-10
+                w-full
+                max-w-md
+                rounded-[24px]
+                border
+                px-6
+                py-7
+                sm:px-8
+                sm:py-8
+              "
+              style={{
+                backgroundColor: "rgba(241,209,176,0.42)",
+                borderColor: "rgba(179,106,54,0.3)",
+              }}
+              initial={{
+                opacity: 0,
+                y: 14,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.85,
+                delay: 0.28,
+              }}
+            >
+              <p
+                className="
+                  text-[8px]
+                  uppercase
+                  tracking-[0.36em]
+                  sm:text-[9px]
+                "
+                style={{
+                  color: palette.antiqueGoldDark,
+                }}
+              >
+                Consideración especial
+              </p>
+
+              <p
+                className="
+                  mt-4
+                  font-serif
+                  text-[16px]
+                  leading-7
+                  sm:text-[18px]
+                "
+                style={{
+                  color: palette.ink,
+                }}
+              >
+                Agradecemos evitar el uso de blanco total y tonos cálidos,
+                colores reservados para la novia.
+              </p>
+            </motion.div>
+
+            <p
+              className="
+                mt-9
+                max-w-sm
+                font-serif
+                text-[13px]
+                italic
+                leading-6
+                sm:text-[14px]
+              "
+              style={{
+                color: palette.warmGray,
+              }}
+            >
+              Gracias por acompañarnos en este día tan especial.
+            </p>
           </div>
-
-          <p
-            className="
-              mt-5
-              text-[8px]
-              uppercase
-              tracking-[0.4em]
-              sm:text-[9px]
-            "
-            style={{
-              color: palette.antiqueGoldDark,
-            }}
-          >
-            Consideración especial
-          </p>
-
-          <p
-            className="
-              mt-3
-              font-serif
-              text-[22px]
-              italic
-              sm:text-[26px]
-            "
-            style={{
-              color: palette.ink,
-            }}
-          >
-            Celebración exclusiva para adultos
-          </p>
-
-          <p
-            className="
-              mt-3
-              max-w-md
-              font-serif
-              text-[14px]
-              leading-7
-              sm:text-[15px]
-            "
-            style={{
-              color: palette.warmGray,
-            }}
-          >
-            Deseamos que esta noche sea una oportunidad para celebrar,
-            conversar y disfrutar juntos.
-          </p>
         </motion.div>
-      </div>
+      </motion.article>
     </motion.section>
   );
-};
-
-export default DressCodePremium;
+}

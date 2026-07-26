@@ -5,15 +5,24 @@ import { motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E5DED2",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
-  line: "#C9BEAC",
+  cream: "#E2B488",
+  creamLight: "#F1D1B0",
+  creamDark: "#C99468",
+
+  sage: "#AEB49C",
+  sageLight: "#C3C8B4",
+  sageDark: "#879078",
+
+  terracotta: "#B36A36",
+  terracottaLight: "#C98250",
+  terracottaDark: "#844820",
+
+  white: "#FFFFFF",
+
+  dark: "#302821",
+  darkSoft: "#51463E",
+
+  line: "rgba(48,40,33,0.18)",
 };
 
 const reveal = {
@@ -116,14 +125,14 @@ function SmallDivider() {
         className="h-px w-10 sm:w-14"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.68))",
         }}
       />
 
       <span
         className="h-[5px] w-[5px] rotate-45 border"
         style={{
-          borderColor: "rgba(164,134,84,0.72)",
+          borderColor: "rgba(179,106,54,0.7)",
         }}
       />
 
@@ -131,7 +140,7 @@ function SmallDivider() {
         className="h-px w-10 sm:w-14"
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.68))",
         }}
       />
     </div>
@@ -170,9 +179,9 @@ export default function FrasePremium() {
         background: `
           linear-gradient(
             180deg,
-            ${palette.paperLight} 0%,
-            ${palette.paper} 55%,
-            ${palette.paperDark} 100%
+            ${palette.creamLight} 0%,
+            ${palette.cream} 100%,
+            ${palette.sageLight} 0%
           )
         `,
       }}
@@ -184,16 +193,36 @@ export default function FrasePremium() {
           pointer-events-none
           absolute
           inset-0
-          opacity-[0.16]
+          opacity-[0.18]
         "
         style={{
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(29,39,51,0.025) 0px,
-              rgba(29,39,51,0.025) 1px,
+              rgba(48,40,33,0.025) 0px,
+              rgba(48,40,33,0.025) 1px,
               transparent 1px,
               transparent 5px
+            )
+          `,
+        }}
+      />
+
+      {/* LUZ SUAVE CENTRAL */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+        "
+        style={{
+          background: `
+            radial-gradient(
+              circle at center,
+              rgba(255,255,255,0.28) 0%,
+              rgba(255,255,255,0.08) 45%,
+              transparent 72%
             )
           `,
         }}
@@ -211,7 +240,7 @@ export default function FrasePremium() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(164,134,84,0.26)",
+          borderColor: "rgba(179,106,54,0.34)",
         }}
       />
 
@@ -225,7 +254,7 @@ export default function FrasePremium() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(164,134,84,0.1)",
+          borderColor: "rgba(48,40,33,0.1)",
         }}
       />
 
@@ -240,7 +269,7 @@ export default function FrasePremium() {
           h-[210px]
           w-[130px]
           -rotate-12
-          text-[#A48654]/20
+          text-[#879078]/30
           sm:-left-1
           sm:h-[260px]
           sm:w-[160px]
@@ -259,7 +288,7 @@ export default function FrasePremium() {
           h-[210px]
           w-[130px]
           rotate-[168deg]
-          text-[#A48654]/20
+          text-[#B36A36]/22
           sm:-right-1
           sm:h-[260px]
           sm:w-[160px]
@@ -283,7 +312,7 @@ export default function FrasePremium() {
           items-center
         "
       >
-        {/* ETIQUETA */}
+        {/* SEPARADOR SUPERIOR */}
 
         <motion.div
           initial={{
@@ -300,21 +329,6 @@ export default function FrasePremium() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <p
-            className="
-              text-[8px]
-              uppercase
-              tracking-[0.42em]
-              sm:text-[10px]
-              sm:tracking-[0.52em]
-            "
-            style={{
-              color: palette.antiqueGoldDark,
-            }}
-          >
-            Una historia de amor
-          </p>
-
           <div className="mt-5">
             <SmallDivider />
           </div>
@@ -327,14 +341,14 @@ export default function FrasePremium() {
             mt-8
             block
             font-serif
-            text-[68px]
+            text-[66px]
             font-light
             leading-[0.65]
             sm:mt-10
-            sm:text-[86px]
+            sm:text-[84px]
           "
           style={{
-            color: "rgba(164,134,84,0.28)",
+            color: "rgba(179,106,54,0.25)",
           }}
           initial={{
             opacity: 0,
@@ -361,18 +375,19 @@ export default function FrasePremium() {
             mt-3
             max-w-4xl
             font-serif
-            text-[26px]
+            text-[24px]
             font-normal
             leading-[1.55]
             tracking-[-0.015em]
-            sm:text-[35px]
+            sm:text-[32px]
             sm:leading-[1.5]
-            md:text-[41px]
-            lg:text-[46px]
+            md:text-[38px]
+            lg:text-[44px]
             lg:leading-[1.42]
           "
           style={{
-            color: palette.ink,
+            color: palette.dark,
+            textShadow: "0 1px 0 rgba(255,255,255,0.38)",
           }}
           initial={{
             opacity: 0,
@@ -389,13 +404,9 @@ export default function FrasePremium() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          Te quiero no por quien eres,
-          <span className="block">
-            sino por quien soy
-          </span>
-          <span className="block">
-            cuando estoy contigo.
-          </span>
+          Con Dios como guía,
+          <span className="block">comenzamos este hermoso</span>
+          <span className="block">camino juntos.</span>
         </motion.blockquote>
 
         {/* SEPARADOR */}
@@ -422,18 +433,18 @@ export default function FrasePremium() {
           <SmallDivider />
         </motion.div>
 
-        {/* AUTOR */}
+        {/* REFERENCIA */}
 
         <motion.p
           className="
-            text-[9px]
+            font-serif
+            text-[10px]
             uppercase
-            tracking-[0.28em]
-            sm:text-[11px]
-            sm:tracking-[0.4em]
+            tracking-[0.32em]
+            sm:text-xs
           "
           style={{
-            color: palette.warmGray,
+            color: palette.terracottaDark,
           }}
           initial={{
             opacity: 0,
@@ -445,63 +456,12 @@ export default function FrasePremium() {
           }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.85,
-            delay: 0.4,
+            duration: 0.8,
+            delay: 0.42,
           }}
         >
-          Gabriel García Márquez
+          Eclesiastés 4:12
         </motion.p>
-
-        {/* CIERRE NARRATIVO */}
-
-        <motion.div
-          className="
-            mt-12
-            max-w-lg
-            sm:mt-14
-          "
-          initial={{
-            opacity: 0,
-            y: 12,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.9,
-            delay: 0.5,
-          }}
-        >
-          <div
-            className="
-              mx-auto
-              mb-6
-              h-px
-              w-16
-            "
-            style={{
-              backgroundColor: "rgba(164,134,84,0.48)",
-            }}
-          />
-
-          <p
-            className="
-              font-serif
-              text-[14px]
-              italic
-              leading-7
-              sm:text-base
-            "
-            style={{
-              color: palette.inkSoft,
-            }}
-          >
-            Desde que nuestros caminos se encontraron, aprendimos que el amor
-            también se construye en los pequeños momentos.
-          </p>
-        </motion.div>
       </div>
     </motion.section>
   );

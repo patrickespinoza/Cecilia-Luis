@@ -1,31 +1,55 @@
-import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 
 /* =========================================
-   FRASE EN MODAL — ESTILO CLÁSICO
+   FRASE FINAL CON IMAGEN — ESTILO CLÁSICO
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E5DED2",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F9F6EE",
+  paperDark: "#F1D1B0",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#66594F",
+};
+
+const finalImage = {
+  src: "/imagenfinal.jpg",
+
+  // Ajusta estos valores para mover la imagen.
+  // Ejemplos: "center", "center 30%", "70% center", "right center".
+  mobilePosition: "center center",
+  desktopPosition: "center center",
 };
 
 const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 30,
   },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.9,
+      duration: 0.95,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const imageReveal = {
+  hidden: {
+    opacity: 0,
+    scale: 1.04,
+  },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 1.25,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -38,14 +62,14 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
         }}
       />
 
       <span
         className="h-[5px] w-[5px] rotate-45 border"
         style={{
-          borderColor: "rgba(164,134,84,0.72)",
+          borderColor: "rgba(179,106,54,0.72)",
         }}
       />
 
@@ -53,10 +77,41 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
         }}
       />
     </div>
+  );
+}
+
+function CornerOrnament({ className = "" }) {
+  return (
+    <svg
+      viewBox="0 0 90 90"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M5 85V30C5 16.2 16.2 5 30 5h55"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+
+      <path
+        d="M15 72V34c0-10.5 8.5-19 19-19h38"
+        stroke="currentColor"
+        strokeWidth="0.65"
+      />
+
+      <path
+        d="M30 5C30 18.8 18.8 30 5 30"
+        stroke="currentColor"
+        strokeWidth="0.75"
+      />
+
+      <circle cx="15" cy="15" r="2" fill="currentColor" />
+    </svg>
   );
 }
 
@@ -130,629 +185,531 @@ function BotanicalBranch({ className = "" }) {
   );
 }
 
-function QuoteIcon() {
+function HeartMark() {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.25"
+      strokeWidth="1.15"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className="h-5 w-5"
+      className="h-6 w-6"
     >
-      <path d="M9 11H5.5A2.5 2.5 0 0 0 3 13.5V18h6v-7Z" />
-      <path d="M21 11h-3.5a2.5 2.5 0 0 0-2.5 2.5V18h6v-7Z" />
-      <path d="M9 11c0-3.2-1.2-5.3-3.6-6.5" />
-      <path d="M21 11c0-3.2-1.2-5.3-3.6-6.5" />
+      <path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z" />
     </svg>
   );
 }
 
-function CloseIcon() {
+export default function FraseFinal() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      aria-hidden="true"
-      className="h-5 w-5"
+    <motion.section
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{
+        once: true,
+        amount: 0.12,
+      }}
+      className="
+        relative
+        w-full
+        overflow-hidden
+        px-5
+        py-20
+        sm:px-8
+        sm:py-24
+        lg:px-12
+        lg:py-28
+      "
+      style={{
+        background: `
+          linear-gradient(
+            180deg,
+            ${palette.paperLight} 0%,
+            ${palette.paperDark} 48%,
+            ${palette.paper} 100%
+          )
+        `,
+      }}
     >
-      <path d="m6 6 12 12" />
-      <path d="M18 6 6 18" />
-    </svg>
-  );
-}
-
-export default function FraseModal() {
-  const [modalAbierto, setModalAbierto] = useState(false);
-
-  /* BLOQUEAR SCROLL CUANDO EL MODAL ESTÁ ABIERTO */
-
-  useEffect(() => {
-    if (!modalAbierto) return undefined;
-
-    const overflowAnterior = document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = overflowAnterior;
-    };
-  }, [modalAbierto]);
-
-  /* CERRAR CON ESCAPE */
-
-  useEffect(() => {
-    if (!modalAbierto) return undefined;
-
-    const cerrarConEscape = (event) => {
-      if (event.key === "Escape") {
-        setModalAbierto(false);
-      }
-    };
-
-    window.addEventListener("keydown", cerrarConEscape);
-
-    return () => {
-      window.removeEventListener("keydown", cerrarConEscape);
-    };
-  }, [modalAbierto]);
-
-  return (
-    <>
-      {/* =========================================
-          SECCIÓN PRINCIPAL
-      ========================================= */}
-
-      <motion.section
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{
-          once: true,
-          amount: 0.2,
-        }}
+      {/* TEXTURA */}
+      <div
         className="
-          relative
-          flex
-          min-h-[520px]
-          w-full
-          items-center
-          justify-center
-          overflow-hidden
-          px-6
-          py-24
-          text-center
-          sm:min-h-[600px]
-          sm:px-8
-          sm:py-28
-          lg:px-12
-          lg:py-32
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.15]
         "
         style={{
-          background: `
-            linear-gradient(
-              180deg,
-              ${palette.paperLight} 0%,
-              ${palette.paper} 58%,
-              ${palette.paperDark} 100%
+          backgroundImage: `
+            repeating-linear-gradient(
+              0deg,
+              rgba(48,40,33,0.025) 0px,
+              rgba(48,40,33,0.025) 1px,
+              transparent 1px,
+              transparent 5px
             )
           `,
         }}
+      />
+
+      {/* LUZ SUAVE */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(
+              circle at 50% 36%,
+              rgba(255,255,255,0.52) 0%,
+              rgba(255,255,255,0.15) 42%,
+              transparent 72%
+            )
+          `,
+        }}
+      />
+
+      {/* MARCO EXTERIOR */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-5
+          border
+          sm:inset-8
+          lg:inset-10
+        "
+        style={{
+          borderColor: "rgba(179,106,54,0.3)",
+        }}
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-[26px]
+          border
+          sm:inset-[38px]
+          lg:inset-[46px]
+        "
+        style={{
+          borderColor: "rgba(48,40,33,0.1)",
+        }}
+      />
+
+      {/* ORNAMENTOS */}
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          left-6
+          top-6
+          h-16
+          w-16
+          text-[#B36A36]/30
+          sm:left-9
+          sm:top-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          right-6
+          top-6
+          h-16
+          w-16
+          rotate-90
+          text-[#B36A36]/30
+          sm:right-9
+          sm:top-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          bottom-6
+          left-6
+          h-16
+          w-16
+          -rotate-90
+          text-[#B36A36]/30
+          sm:bottom-9
+          sm:left-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          bottom-6
+          right-6
+          h-16
+          w-16
+          rotate-180
+          text-[#B36A36]/30
+          sm:bottom-9
+          sm:right-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <BotanicalBranch
+        className="
+          pointer-events-none
+          absolute
+          -bottom-20
+          -left-10
+          h-[260px]
+          w-[150px]
+          -rotate-12
+          text-[#AEB49C]/35
+          sm:h-[330px]
+          sm:w-[190px]
+        "
+      />
+
+      <BotanicalBranch
+        className="
+          pointer-events-none
+          absolute
+          -right-10
+          -top-20
+          h-[260px]
+          w-[150px]
+          rotate-[168deg]
+          text-[#AEB49C]/35
+          sm:h-[330px]
+          sm:w-[190px]
+        "
+      />
+
+      {/* CONTENIDO PRINCIPAL */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          grid
+          w-full
+          max-w-6xl
+          overflow-hidden
+          rounded-[34px]
+          border
+          bg-white/90
+          shadow-[0_28px_85px_rgba(48,40,33,0.18)]
+          backdrop-blur-[3px]
+          lg:grid-cols-[1.05fr_0.95fr]
+        "
+        style={{
+          borderColor: "rgba(179,106,54,0.32)",
+        }}
       >
-        {/* TEXTURA DE PAPEL */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-0
-            opacity-[0.16]
-          "
-          style={{
-            backgroundImage: `
-              repeating-linear-gradient(
-                0deg,
-                rgba(29,39,51,0.025) 0px,
-                rgba(29,39,51,0.025) 1px,
-                transparent 1px,
-                transparent 5px
-              )
-            `,
-          }}
-        />
-
-        {/* MARCOS */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-5
-            border
-            sm:inset-8
-            lg:inset-10
-          "
-          style={{
-            borderColor: "rgba(164,134,84,0.25)",
-          }}
-        />
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-[26px]
-            border
-            sm:inset-[38px]
-            lg:inset-[46px]
-          "
-          style={{
-            borderColor: "rgba(164,134,84,0.1)",
-          }}
-        />
-
-        {/* RAMAS DECORATIVAS */}
-
-        <BotanicalBranch
-          className="
-            pointer-events-none
-            absolute
-            -bottom-14
-            -left-8
-            h-[250px]
-            w-[145px]
-            -rotate-12
-            text-[#A48654]/12
-            sm:h-[310px]
-            sm:w-[180px]
-          "
-        />
-
-        <BotanicalBranch
-          className="
-            pointer-events-none
-            absolute
-            -right-8
-            -top-16
-            h-[250px]
-            w-[145px]
-            rotate-[168deg]
-            text-[#A48654]/12
-            sm:h-[310px]
-            sm:w-[180px]
-          "
-        />
-
-        {/* CONTENIDO */}
-
-        <div
+        {/* IMAGEN */}
+        <motion.div
+          variants={imageReveal}
           className="
             relative
-            z-10
-            mx-auto
-            flex
-            max-w-3xl
-            flex-col
-            items-center
+            min-h-[430px]
+            overflow-hidden
+            sm:min-h-[560px]
+            lg:min-h-[720px]
           "
         >
-          <motion.p
+          {/* IMAGEN MÓVIL */}
+          <img
+            src="/FOTOFINAL.jpg"
+            alt="Un recuerdo especial de nuestra historia"
+            loading="lazy"
             className="
-              text-[8px]
-              uppercase
-              tracking-[0.44em]
-              sm:text-[10px]
-              sm:tracking-[0.55em]
+              absolute
+              inset-0
+              h-full
+              w-full
+              object-cover
+              lg:hidden
             "
             style={{
-              color: palette.antiqueGoldDark,
+              objectPosition: finalImage.mobilePosition,
             }}
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-            }}
-          >
-            Palabras que nos representan
-          </motion.p>
+          />
 
-          <div className="mt-5">
-            <DecorativeDivider />
-          </div>
-
-          <motion.h2
+          {/* IMAGEN COMPUTADORA */}
+          <img
+            src="/FOTOFINAL.jpg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
             className="
-              mt-8
-              font-serif
-              text-[39px]
-              font-normal
-              leading-tight
-              tracking-[-0.025em]
-              sm:text-[53px]
-              md:text-[62px]
+              absolute
+              inset-0
+              hidden
+              h-full
+              w-full
+              object-cover
+              lg:block
             "
             style={{
-              color: palette.ink,
+              objectPosition: finalImage.desktopPosition,
             }}
-            initial={{
-              opacity: 0,
-              y: 16,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.9,
-              delay: 0.1,
-            }}
-          >
-            Una frase para nuestra historia
-          </motion.h2>
+          />
 
-          <motion.p
-            className="
-              mx-auto
-              mt-6
-              max-w-xl
-              font-serif
-              text-[15px]
-              italic
-              leading-7
-              sm:text-base
-            "
-            style={{
-              color: palette.warmGray,
-            }}
-            initial={{
-              opacity: 0,
-              y: 14,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.9,
-              delay: 0.18,
-            }}
-          >
-            Hay palabras que parecen haber sido escritas para describir aquello
-            que sentimos cuando estamos juntos.
-          </motion.p>
 
-          <motion.button
-            type="button"
-            onClick={() => setModalAbierto(true)}
+
+         
+
+          <div
             className="
-              mt-10
-              inline-flex
-              min-w-[230px]
+              absolute
+              bottom-8
+              left-1/2
+              flex
+              -translate-x-1/2
+              flex-col
               items-center
-              justify-center
-              gap-3
-              border
-              px-8
-              py-4
-              sm:min-w-[260px]
-              sm:px-10
+              text-center
+              text-white
+              lg:hidden
+            "
+          >
+            <span className="text-[8px] uppercase tracking-[0.42em]">
+              Nuestro para siempre
+            </span>
+
+            <span className="mt-3 font-serif text-3xl italic">
+              Apenas comienza
+            </span>
+          </div>
+        </motion.div>
+
+        {/* FRASE */}
+        <motion.div
+          className="
+            relative
+            flex
+            min-h-[520px]
+            items-center
+            justify-center
+            overflow-hidden
+            px-7
+            py-16
+            text-center
+            sm:px-12
+            sm:py-20
+            lg:min-h-[720px]
+            lg:px-14
+            lg:py-24
+          "
+          initial={{
+            opacity: 0,
+            x: 25,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.14,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          {/* FONDO DECORATIVO */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              opacity-[0.16]
             "
             style={{
-              backgroundColor: palette.ink,
-              borderColor: palette.ink,
-              color: palette.paperLight,
-              boxShadow: "0 12px 28px rgba(29,39,51,0.12)",
+              backgroundImage: `
+                repeating-linear-gradient(
+                  0deg,
+                  rgba(48,40,33,0.03) 0px,
+                  rgba(48,40,33,0.03) 1px,
+                  transparent 1px,
+                  transparent 5px
+                )
+              `,
             }}
-            whileHover={{
-              y: -2,
-              backgroundColor: palette.inkSoft,
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-[9px]
+              border
+            "
+            style={{
+              borderColor: "rgba(179,106,54,0.16)",
             }}
-            whileTap={{
-              scale: 0.985,
-            }}
+          />
+
+          <div
+            className="
+              relative
+              z-10
+              flex
+              max-w-xl
+              flex-col
+              items-center
+            "
           >
-            <QuoteIcon />
+
+
+            <div className="mt-5">
+              <DecorativeDivider />
+            </div>
 
             <span
               className="
-                text-[9px]
-                uppercase
-                tracking-[0.28em]
-                sm:text-[10px]
-                sm:tracking-[0.34em]
-              "
-            >
-              Leer nuestra frase
-            </span>
-          </motion.button>
-        </div>
-      </motion.section>
-
-      {/* =========================================
-          MODAL
-      ========================================= */}
-
-      <AnimatePresence>
-        {modalAbierto && (
-          <motion.div
-            className="
-              fixed
-              inset-0
-              z-[9999]
-              flex
-              h-[100dvh]
-              w-full
-              items-center
-              justify-center
-              overflow-hidden
-              bg-[#111820]/75
-              px-4
-              py-6
-              backdrop-blur-sm
-              sm:px-8
-            "
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
-            exit={{
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.3,
-            }}
-            onMouseDown={(event) => {
-              if (event.target === event.currentTarget) {
-                setModalAbierto(false);
-              }
-            }}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="titulo-frase-modal"
-          >
-            <motion.div
-              className="
-                relative
-                flex
-                max-h-[90dvh]
-                w-full
-                max-w-4xl
-                flex-col
-                items-center
-                overflow-y-auto
-                border
-                px-7
-                py-16
-                text-center
-                sm:px-12
-                sm:py-20
-                lg:px-20
+                mt-8
+                block
+                font-serif
+                text-[68px]
+                leading-[0.55]
+                sm:text-[88px]
               "
               style={{
-                backgroundColor: palette.paperLight,
-                borderColor: "rgba(164,134,84,0.45)",
-                boxShadow: "0 30px 100px rgba(0,0,0,0.32)",
+                color: "rgba(179,106,54,0.24)",
+              }}
+            >
+              “
+            </span>
+
+            <blockquote
+              className="
+                mt-5
+                font-serif
+                text-[27px]
+                font-normal
+                leading-[1.55]
+                tracking-[-0.025em]
+                sm:text-[35px]
+                sm:leading-[1.5]
+                lg:text-[39px]
+              "
+              style={{
+                color: palette.ink,
+              }}
+            >
+              Reservamos tu lugar con mucho amor.
+              <span className="block">Te esperamos a ti y a las personas incluidas en tu invitacion.</span>
+            </blockquote>
+
+
+            <motion.div
+              className="
+                mt-10
+                border-y
+                px-7
+                py-5
+                sm:px-10
+              "
+              style={{
+                borderColor: "rgba(179,106,54,0.28)",
               }}
               initial={{
                 opacity: 0,
-                y: 24,
-                scale: 0.97,
+                y: 12,
               }}
-              animate={{
+              whileInView={{
                 opacity: 1,
                 y: 0,
-                scale: 1,
               }}
-              exit={{
-                opacity: 0,
-                y: 16,
-                scale: 0.98,
-              }}
+              viewport={{ once: true }}
               transition={{
-                duration: 0.45,
-                ease: [0.22, 1, 0.36, 1],
+                duration: 0.85,
+                delay: 0.32,
               }}
             >
-              {/* BORDE INTERIOR */}
-
-              <div
+              <p
                 className="
-                  pointer-events-none
-                  absolute
-                  inset-[7px]
-                  border
+                  font-serif
+                  text-[25px]
+                  italic
+                  sm:text-[30px]
                 "
                 style={{
-                  borderColor: "rgba(164,134,84,0.15)",
+                  color: palette.antiqueGoldDark,
                 }}
-              />
+              >
+                Con amor,
+              </p>
 
-              {/* TEXTURA */}
-
-              <div
+              <p
                 className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  opacity-[0.14]
-                "
-                style={{
-                  backgroundImage: `
-                    repeating-linear-gradient(
-                      0deg,
-                      rgba(29,39,51,0.025) 0px,
-                      rgba(29,39,51,0.025) 1px,
-                      transparent 1px,
-                      transparent 5px
-                    )
-                  `,
-                }}
-              />
-
-              {/* CERRAR */}
-
-              <motion.button
-                type="button"
-                onClick={() => setModalAbierto(false)}
-                aria-label="Cerrar frase"
-                className="
-                  absolute
-                  right-4
-                  top-4
-                  z-20
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  border
-                  bg-[#FBF9F4]
-                  sm:right-6
-                  sm:top-6
+                  mt-2
+                  font-serif
+                  text-[31px]
+                  tracking-[-0.02em]
+                  sm:text-[38px]
                 "
                 style={{
                   color: palette.ink,
-                  borderColor: "rgba(164,134,84,0.4)",
-                }}
-                whileHover={{
-                  scale: 1.04,
-                  backgroundColor: palette.paper,
-                }}
-                whileTap={{
-                  scale: 0.96,
                 }}
               >
-                <CloseIcon />
-              </motion.button>
-
-              {/* CONTENIDO DEL MODAL */}
-
-              <div
-                className="
-                  relative
-                  z-10
-                  flex
-                  w-full
-                  flex-col
-                  items-center
-                "
-              >
-                <p
-                  className="
-                    text-[8px]
-                    uppercase
-                    tracking-[0.42em]
-                    sm:text-[10px]
-                  "
-                  style={{
-                    color: palette.antiqueGoldDark,
-                  }}
-                >
-                  Una historia de amor
-                </p>
-
-                <div className="mt-5">
-                  <DecorativeDivider />
-                </div>
-
-                <span
-                  className="
-                    mt-8
-                    block
-                    font-serif
-                    text-[72px]
-                    leading-[0.6]
-                    sm:text-[90px]
-                  "
-                  style={{
-                    color: "rgba(164,134,84,0.25)",
-                  }}
-                >
-                  “
-                </span>
-
-                <blockquote
-                  id="titulo-frase-modal"
-                  className="
-                    mx-auto
-                    mt-5
-                    max-w-3xl
-                    font-serif
-                    text-[27px]
-                    font-normal
-                    leading-[1.55]
-                    tracking-[-0.02em]
-                    sm:text-[37px]
-                    sm:leading-[1.5]
-                    md:text-[43px]
-                  "
-                  style={{
-                    color: palette.ink,
-                  }}
-                >
-                  Sea cual sea la materia de que están hechas nuestras almas,
-                  <span className="block">
-                    la suya y la mía son iguales.
-                  </span>
-                </blockquote>
-
-                <div className="my-9 sm:my-11">
-                  <DecorativeDivider />
-                </div>
-
-                <p
-                  className="
-                    text-[9px]
-                    uppercase
-                    tracking-[0.3em]
-                    sm:text-[11px]
-                    sm:tracking-[0.42em]
-                  "
-                  style={{
-                    color: palette.warmGray,
-                  }}
-                >
-                  Emily Brontë
-                </p>
-
-                <p
-                  className="
-                    mt-9
-                    max-w-lg
-                    font-serif
-                    text-[14px]
-                    italic
-                    leading-7
-                    sm:text-base
-                  "
-                  style={{
-                    color: palette.inkSoft,
-                  }}
-                >
-                  Una frase que nos recuerda que algunas almas simplemente se
-                  reconocen.
-                </p>
-              </div>
+                Cecilia &amp; Luis
+              </p>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* CIERRE INFERIOR */}
+      <motion.p
+        className="
+          relative
+          z-10
+          mx-auto
+          mt-10
+          max-w-xl
+          text-center
+          font-serif
+          text-[13px]
+          italic
+          leading-7
+          sm:mt-12
+          sm:text-[15px]
+        "
+        style={{
+          color: palette.warmGray,
+        }}
+        initial={{
+          opacity: 0,
+          y: 12,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.9,
+          delay: 0.3,
+        }}
+      >
+        El final de esta invitación es apenas el comienzo de nuestra historia.
+      </motion.p>
+    </motion.section>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ItinerarioRelojCentral from "./componentes-encabezado/Itinerario";
-import Preguntas from "./componentes-encabezado/Preguntas";
 import Regalos from "./componentes-encabezado/Regalos";
 import Confirmacion from "./componentes-encabezado/Confirmacion";
 import FrasePremium from "./componentes-encabezado/FrasePrincipal";
@@ -55,18 +54,16 @@ export default function PaginaPrincipal() {
 
 <ItinerarioRelojCentral/>
   
-<FraseModal/> 
 
 <DressCodePremium/>
 
 <Album/>
 
-<Preguntas/>
-
 <Regalos/>
 
 <Confirmacion/>
   
+<FraseModal/> 
 
       </div>      
   );

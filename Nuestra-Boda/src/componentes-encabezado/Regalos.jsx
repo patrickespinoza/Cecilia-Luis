@@ -1,39 +1,78 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 /* =========================================
-   MESA DE REGALOS — ESTILO CLÁSICO
+   MESA DE REGALOS — LIVERPOOL + BBVA
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E5DED2",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F9F6EE",
+  paperDark: "#F1D1B0",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#66594F",
+  sage: "#AEB49C",
+};
+
+const giftData = {
+  liverpool: {
+
+    eventNumber: "60006046",
+  },
+
+  bbva: {
+    // Sustituye estos datos por los definitivos.
+    cardNumber: "4152 3146 3799 6128",
+    holder: "CECILIA BEDOLLA MORALES",
+  },
 };
 
 const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 28,
   },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.9,
+      duration: 0.95,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-/* =========================================
-   ORNAMENTO DE ESQUINA
-========================================= */
+function DecorativeDivider({ compact = false }) {
+  return (
+    <div className="flex items-center justify-center gap-3">
+      <span
+        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
+        style={{
+          background:
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
+        }}
+      />
+
+      <span
+        className="h-[5px] w-[5px] rotate-45 border"
+        style={{
+          borderColor: "rgba(179,106,54,0.72)",
+        }}
+      />
+
+      <span
+        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
+        style={{
+          background:
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
+        }}
+      />
+    </div>
+  );
+}
 
 function CornerOrnament({ className = "" }) {
   return (
@@ -48,27 +87,20 @@ function CornerOrnament({ className = "" }) {
         stroke="currentColor"
         strokeWidth="1"
       />
-
       <path
         d="M15 72V34c0-10.5 8.5-19 19-19h38"
         stroke="currentColor"
         strokeWidth="0.65"
       />
-
       <path
         d="M30 5C30 18.8 18.8 30 5 30"
         stroke="currentColor"
         strokeWidth="0.75"
       />
-
       <circle cx="15" cy="15" r="2" fill="currentColor" />
     </svg>
   );
 }
-
-/* =========================================
-   RAMA BOTÁNICA
-========================================= */
 
 function BotanicalBranch({ className = "" }) {
   return (
@@ -84,53 +116,45 @@ function BotanicalBranch({ className = "" }) {
         strokeWidth="1"
         strokeLinecap="round"
       />
-
       <path
         d="M76 205C54 192 41 174 35 151"
         stroke="currentColor"
         strokeWidth="0.8"
         strokeLinecap="round"
       />
-
       <path
         d="M75 167C97 153 109 133 113 109"
         stroke="currentColor"
         strokeWidth="0.8"
         strokeLinecap="round"
       />
-
       <path
         d="M73 123C53 110 43 93 39 72"
         stroke="currentColor"
         strokeWidth="0.8"
         strokeLinecap="round"
       />
-
       <path
         d="M72 83C91 71 101 53 103 34"
         stroke="currentColor"
         strokeWidth="0.8"
         strokeLinecap="round"
       />
-
       <path
         d="M35 151C49 150 60 158 67 173C52 172 41 165 35 151Z"
         stroke="currentColor"
         strokeWidth="0.7"
       />
-
       <path
         d="M113 109C99 109 88 117 80 132C96 131 107 123 113 109Z"
         stroke="currentColor"
         strokeWidth="0.7"
       />
-
       <path
         d="M39 72C53 73 63 81 69 95C54 94 44 86 39 72Z"
         stroke="currentColor"
         strokeWidth="0.7"
       />
-
       <path
         d="M103 34C90 35 80 42 74 55C88 54 98 47 103 34Z"
         stroke="currentColor"
@@ -139,43 +163,6 @@ function BotanicalBranch({ className = "" }) {
     </svg>
   );
 }
-
-/* =========================================
-   SEPARADOR
-========================================= */
-
-function DecorativeDivider({ compact = false }) {
-  return (
-    <div className="flex items-center justify-center gap-3">
-      <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
-        style={{
-          background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
-        }}
-      />
-
-      <span
-        className="h-[5px] w-[5px] rotate-45 border"
-        style={{
-          borderColor: "rgba(164,134,84,0.72)",
-        }}
-      />
-
-      <span
-        className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
-        style={{
-          background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
-        }}
-      />
-    </div>
-  );
-}
-
-/* =========================================
-   ICONOS
-========================================= */
 
 function GiftIcon({ className = "h-6 w-6" }) {
   return (
@@ -194,6 +181,26 @@ function GiftIcon({ className = "h-6 w-6" }) {
       <path d="M3 12h18" />
       <path d="M7.5 8C5.6 8 4 6.7 4 5.2 4 4 5 3 6.3 3 9.2 3 12 8 12 8" />
       <path d="M16.5 8C18.4 8 20 6.7 20 5.2 20 4 19 3 17.7 3 14.8 3 12 8 12 8" />
+    </svg>
+  );
+}
+
+function BankCardIcon({ className = "h-6 w-6" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <rect x="2.5" y="5" width="19" height="14" rx="2" />
+      <path d="M2.5 9h19" />
+      <path d="M6 15h4" />
+      <path d="M15.5 14.5h2.5" />
     </svg>
   );
 }
@@ -217,278 +224,321 @@ function ExternalLinkIcon() {
   );
 }
 
-function CloseIcon() {
+function CopyIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.4"
+      strokeWidth="1.3"
       strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
-      className="h-5 w-5"
+      className="h-4 w-4"
     >
-      <path d="m6 6 12 12" />
-      <path d="M18 6 6 18" />
+      <rect x="8" y="8" width="11" height="11" rx="1.5" />
+      <path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-10A1.5 1.5 0 0 0 3 5.5v10A1.5 1.5 0 0 0 4.5 17H8" />
     </svg>
   );
 }
 
-/* =========================================
-   COMPONENTE PRINCIPAL
-========================================= */
+function CheckIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="h-4 w-4"
+    >
+      <path d="m5 12 4 4L19 6" />
+    </svg>
+  );
+}
 
-const Regalos = () => {
-  const [mostrarModal, setMostrarModal] = useState(false);
-
-  const numeroEvento = "12345678";
-
-  const linkLiverpool = `https://www.liverpool.com.mx/tienda/giftregistry/giftRegistryDetail.jsp?eventNo=${numeroEvento}`;
-
-  /* BLOQUEAR SCROLL CUANDO EL MODAL ESTÁ ABIERTO */
-
-  useEffect(() => {
-    if (!mostrarModal) return undefined;
-
-    const bodyOverflowAnterior = document.body.style.overflow;
-    const htmlOverflowAnterior = document.documentElement.style.overflow;
-
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = bodyOverflowAnterior;
-      document.documentElement.style.overflow = htmlOverflowAnterior;
-    };
-  }, [mostrarModal]);
-
-  /* CERRAR CON ESCAPE */
-
-  useEffect(() => {
-    if (!mostrarModal) return undefined;
-
-    const cerrarConEscape = (event) => {
-      if (event.key === "Escape") {
-        setMostrarModal(false);
-      }
-    };
-
-    window.addEventListener("keydown", cerrarConEscape);
-
-    return () => {
-      window.removeEventListener("keydown", cerrarConEscape);
-    };
-  }, [mostrarModal]);
+function CopyButton({ value, label, copiedKey, onCopy }) {
+  const copied = copiedKey === label;
 
   return (
-    <>
-      {/* =========================================
-          SECCIÓN PRINCIPAL
-      ========================================= */}
+    <motion.button
+      type="button"
+      onClick={() => onCopy(value, label)}
+      className="
+        inline-flex
+        min-w-[180px]
+        items-center
+        justify-center
+        gap-3
+        border
+        px-6
+        py-3
+      "
+      style={{
+        backgroundColor: copied ? palette.sage : palette.ink,
+        borderColor: copied ? palette.sage : palette.ink,
+        color: palette.paperLight,
+      }}
+      whileHover={{
+        y: -2,
+        backgroundColor: copied ? palette.sage : palette.inkSoft,
+      }}
+      whileTap={{
+        scale: 0.985,
+      }}
+    >
+      {copied ? <CheckIcon /> : <CopyIcon />}
 
-      <motion.section
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{
-          once: true,
-          amount: 0.12,
-        }}
-        className="
-          relative
-          flex
-          min-h-[680px]
-          w-full
-          items-center
-          justify-center
-          overflow-hidden
-          px-5
-          py-24
-          sm:px-8
-          sm:py-28
-          lg:px-12
-          lg:py-32
-        "
+      <span className="text-[8px] uppercase tracking-[0.28em] sm:text-[9px]">
+        {copied ? "Copiado" : "Copiar datos"}
+      </span>
+    </motion.button>
+  );
+}
+
+export default function Regalos() {
+  const [copiedKey, setCopiedKey] = useState("");
+
+  const liverpoolLink = `https://mesaderegalos.liverpool.com.mx/milistaderegalos/60006046`;
+
+  const copyValue = async (value, key) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedKey(key);
+
+      window.setTimeout(() => {
+        setCopiedKey("");
+      }, 1800);
+    } catch (error) {
+      console.error("No se pudieron copiar los datos:", error);
+    }
+  };
+
+  return (
+    <motion.section
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{
+        once: true,
+        amount: 0.1,
+      }}
+      className="
+        relative
+        flex
+        min-h-[780px]
+        w-full
+        items-center
+        justify-center
+        overflow-hidden
+        px-5
+        py-24
+        sm:px-8
+        sm:py-28
+        lg:px-12
+        lg:py-32
+      "
+      style={{
+        background: `
+          linear-gradient(
+            180deg,
+            ${palette.paperLight} 0%,
+            ${palette.paperDark} 50%,
+            ${palette.paper} 100%
+          )
+        `,
+      }}
+    >
+      {/* TEXTURA */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.15]"
         style={{
-          background: `
-            linear-gradient(
-              180deg,
-              ${palette.paperLight} 0%,
-              ${palette.paper} 56%,
-              ${palette.paperDark} 100%
+          backgroundImage: `
+            repeating-linear-gradient(
+              0deg,
+              rgba(48,40,33,0.025) 0px,
+              rgba(48,40,33,0.025) 1px,
+              transparent 1px,
+              transparent 5px
             )
           `,
         }}
-      >
-        {/* TEXTURA DE PAPEL */}
+      />
 
-        <div
+      {/* LUZ CENTRAL */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(
+              circle at center,
+              rgba(255,255,255,0.48) 0%,
+              rgba(255,255,255,0.12) 44%,
+              transparent 74%
+            )
+          `,
+        }}
+      />
+
+      {/* MARCOS */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-5
+          border
+          sm:inset-8
+          lg:inset-10
+        "
+        style={{
+          borderColor: "rgba(179,106,54,0.28)",
+        }}
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-[26px]
+          border
+          sm:inset-[38px]
+          lg:inset-[46px]
+        "
+        style={{
+          borderColor: "rgba(48,40,33,0.10)",
+        }}
+      />
+
+      {/* ORNAMENTOS */}
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          left-6
+          top-6
+          h-16
+          w-16
+          text-[#B36A36]/28
+          sm:left-9
+          sm:top-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          right-6
+          top-6
+          h-16
+          w-16
+          rotate-90
+          text-[#B36A36]/28
+          sm:right-9
+          sm:top-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          bottom-6
+          left-6
+          h-16
+          w-16
+          -rotate-90
+          text-[#B36A36]/28
+          sm:bottom-9
+          sm:left-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <CornerOrnament
+        className="
+          pointer-events-none
+          absolute
+          bottom-6
+          right-6
+          h-16
+          w-16
+          rotate-180
+          text-[#B36A36]/28
+          sm:bottom-9
+          sm:right-9
+          sm:h-20
+          sm:w-20
+        "
+      />
+
+      <BotanicalBranch
+        className="
+          pointer-events-none
+          absolute
+          -bottom-20
+          -left-10
+          h-[270px]
+          w-[155px]
+          -rotate-12
+          text-[#AEB49C]/32
+          sm:h-[335px]
+          sm:w-[195px]
+        "
+      />
+
+      <BotanicalBranch
+        className="
+          pointer-events-none
+          absolute
+          -right-10
+          -top-20
+          h-[270px]
+          w-[155px]
+          rotate-[168deg]
+          text-[#AEB49C]/32
+          sm:h-[335px]
+          sm:w-[195px]
+        "
+      />
+
+      {/* CONTENIDO */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
+        {/* ENCABEZADO */}
+        <motion.div
           className="
-            pointer-events-none
-            absolute
-            inset-0
-            opacity-[0.16]
-          "
-          style={{
-            backgroundImage: `
-              repeating-linear-gradient(
-                0deg,
-                rgba(29,39,51,0.025) 0px,
-                rgba(29,39,51,0.025) 1px,
-                transparent 1px,
-                transparent 5px
-              )
-            `,
-          }}
-        />
-
-        {/* MARCOS */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-5
-            border
-            sm:inset-8
-            lg:inset-10
-          "
-          style={{
-            borderColor: "rgba(164,134,84,0.25)",
-          }}
-        />
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-[26px]
-            border
-            sm:inset-[38px]
-            lg:inset-[46px]
-          "
-          style={{
-            borderColor: "rgba(164,134,84,0.1)",
-          }}
-        />
-
-        {/* ORNAMENTOS */}
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            left-6
-            top-6
-            h-16
-            w-16
-            text-[#A48654]/25
-            sm:left-9
-            sm:top-9
-            sm:h-20
-            sm:w-20
-          "
-        />
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            right-6
-            top-6
-            h-16
-            w-16
-            rotate-90
-            text-[#A48654]/25
-            sm:right-9
-            sm:top-9
-            sm:h-20
-            sm:w-20
-          "
-        />
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            bottom-6
-            left-6
-            h-16
-            w-16
-            -rotate-90
-            text-[#A48654]/25
-            sm:bottom-9
-            sm:left-9
-            sm:h-20
-            sm:w-20
-          "
-        />
-
-        <CornerOrnament
-          className="
-            pointer-events-none
-            absolute
-            bottom-6
-            right-6
-            h-16
-            w-16
-            rotate-180
-            text-[#A48654]/25
-            sm:bottom-9
-            sm:right-9
-            sm:h-20
-            sm:w-20
-          "
-        />
-
-        <BotanicalBranch
-          className="
-            pointer-events-none
-            absolute
-            -bottom-16
-            -left-8
-            h-[250px]
-            w-[145px]
-            -rotate-12
-            text-[#A48654]/10
-            sm:h-[310px]
-            sm:w-[180px]
-            lg:left-2
-          "
-        />
-
-        <BotanicalBranch
-          className="
-            pointer-events-none
-            absolute
-            -right-8
-            -top-16
-            h-[250px]
-            w-[145px]
-            rotate-[168deg]
-            text-[#A48654]/10
-            sm:h-[310px]
-            sm:w-[180px]
-            lg:right-2
-          "
-        />
-
-        {/* CONTENIDO */}
-
-        <div
-          className="
-            relative
-            z-10
             mx-auto
+            mb-14
             flex
-            w-full
-            max-w-4xl
+            max-w-3xl
             flex-col
             items-center
             text-center
+            sm:mb-16
+            lg:mb-20
           "
+          initial={{
+            opacity: 0,
+            y: 18,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
-          <motion.div
+          <div
             className="
               flex
               h-16
@@ -502,25 +552,14 @@ const Regalos = () => {
             "
             style={{
               color: palette.antiqueGoldDark,
-              borderColor: "rgba(164,134,84,0.42)",
-            }}
-            initial={{
-              opacity: 0,
-              scale: 0.92,
-            }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
+              borderColor: "rgba(179,106,54,0.42)",
+              backgroundColor: "rgba(226,180,136,0.18)",
             }}
           >
             <GiftIcon className="h-7 w-7 sm:h-8 sm:w-8" />
-          </motion.div>
+          </div>
 
-          <motion.p
+          <p
             className="
               mt-7
               text-[8px]
@@ -532,28 +571,15 @@ const Regalos = () => {
             style={{
               color: palette.antiqueGoldDark,
             }}
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              delay: 0.08,
-            }}
           >
             Un detalle para nuestro hogar
-          </motion.p>
+          </p>
 
           <div className="mt-5">
             <DecorativeDivider />
           </div>
 
-          <motion.h2
+          <h2
             className="
               mt-8
               font-serif
@@ -567,24 +593,11 @@ const Regalos = () => {
             style={{
               color: palette.ink,
             }}
-            initial={{
-              opacity: 0,
-              y: 16,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.9,
-              delay: 0.12,
-            }}
           >
             Mesa de regalos
-          </motion.h2>
+          </h2>
 
-          <motion.p
+          <p
             className="
               mx-auto
               mt-6
@@ -599,497 +612,475 @@ const Regalos = () => {
             style={{
               color: palette.warmGray,
             }}
-            initial={{
-              opacity: 0,
-              y: 14,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.9,
-              delay: 0.18,
-            }}
           >
-            Su presencia en este día es el regalo más importante para nosotros.
-            Para quienes deseen tener un detalle adicional, hemos preparado una
-            mesa de regalos en Liverpool.
-          </motion.p>
+            Su presencia es nuestro mejor regalo. Para quienes deseen tener un
+            detalle adicional, ponemos a su disposición las siguientes opciones.
+          </p>
+        </motion.div>
 
-          {/* INFORMACIÓN BREVE */}
-
-          <motion.div
+        {/* OPCIONES */}
+        <div className="grid gap-7 sm:gap-9 lg:grid-cols-2">
+          {/* LIVERPOOL */}
+          <motion.article
             className="
-              mx-auto
-              mt-10
-              w-full
-              max-w-xl
-              border-y
-              px-5
-              py-7
-              sm:mt-12
+              relative
+              flex
+              min-h-[560px]
+              flex-col
+              items-center
+              justify-center
+              overflow-hidden
+              rounded-[30px]
+              border
+              bg-white/90
+              px-7
+              py-14
+              text-center
+              shadow-[0_24px_65px_rgba(48,40,33,0.14)]
+              backdrop-blur-[3px]
               sm:px-10
+              sm:py-16
             "
             style={{
-              borderColor: "rgba(164,134,84,0.3)",
+              borderColor: "rgba(179,106,54,0.34)",
             }}
             initial={{
               opacity: 0,
-              y: 14,
+              x: -24,
             }}
             whileInView={{
               opacity: 1,
-              y: 0,
+              x: 0,
             }}
-            viewport={{ once: true }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
             transition={{
-              duration: 0.85,
-              delay: 0.24,
+              duration: 0.9,
+              delay: 0.08,
+              ease: [0.22, 1, 0.36, 1],
             }}
           >
+            <div
+              className="pointer-events-none absolute inset-[8px] border"
+              style={{
+                borderColor: "rgba(179,106,54,0.14)",
+              }}
+            />
+
             <p
               className="
+                absolute
+                left-6
+                top-6
+                font-serif
+                text-xs
+                tracking-[0.2em]
+              "
+              style={{
+                color: "rgba(179,106,54,0.65)",
+              }}
+            >
+              01
+            </p>
+
+            <div
+              className="
+                flex
+                h-20
+                w-20
+                items-center
+                justify-center
+                rounded-full
+                border
+              "
+              style={{
+                color: palette.antiqueGoldDark,
+                borderColor: "rgba(179,106,54,0.42)",
+                backgroundColor: "rgba(226,180,136,0.16)",
+              }}
+            >
+              <GiftIcon className="h-8 w-8" />
+            </div>
+
+            <p
+              className="
+                mt-7
                 text-[8px]
                 uppercase
-                tracking-[0.38em]
+                tracking-[0.4em]
                 sm:text-[9px]
               "
               style={{
                 color: palette.antiqueGoldDark,
               }}
             >
+              Mesa departamental
+            </p>
+
+            <h3
+              className="
+                mt-5
+                font-serif
+                text-[38px]
+                font-normal
+                tracking-[-0.025em]
+                sm:text-[46px]
+              "
+              style={{
+                color: palette.ink,
+              }}
+            >
               Liverpool
+            </h3>
+
+            <div className="mt-6">
+              <DecorativeDivider compact />
+            </div>
+
+            <p
+              className="
+                mt-8
+                text-[8px]
+                uppercase
+                tracking-[0.36em]
+                sm:text-[9px]
+              "
+              style={{
+                color: palette.warmGray,
+              }}
+            >
+              Número de evento
             </p>
 
             <p
               className="
                 mt-4
                 font-serif
-                text-[15px]
-                leading-7
-                sm:text-base
+                text-[32px]
+                tracking-[0.12em]
+                sm:text-[40px]
+                sm:tracking-[0.16em]
               "
               style={{
-                color: palette.inkSoft,
+                color: palette.ink,
               }}
             >
-              Consulta el número de evento y el acceso directo dentro de
-              nuestra tarjeta de regalos.
+              {giftData.liverpool.eventNumber}
             </p>
-          </motion.div>
 
-          {/* BOTÓN */}
-
-          <motion.button
-            type="button"
-            onClick={() => setMostrarModal(true)}
-            className="
-              mt-10
-              inline-flex
-              min-w-[240px]
-              items-center
-              justify-center
-              gap-3
-              border
-              px-8
-              py-4
-              sm:min-w-[280px]
-              sm:px-10
-            "
-            style={{
-              backgroundColor: palette.ink,
-              borderColor: palette.ink,
-              color: palette.paperLight,
-              boxShadow: "0 12px 28px rgba(29,39,51,0.12)",
-            }}
-            whileHover={{
-              y: -2,
-              backgroundColor: palette.inkSoft,
-            }}
-            whileTap={{
-              scale: 0.985,
-            }}
-          >
-            <GiftIcon className="h-4 w-4" />
-
-            <span
+            <motion.a
+              href={liverpoolLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="
-                text-[9px]
-                uppercase
-                tracking-[0.28em]
-                sm:text-[10px]
-                sm:tracking-[0.34em]
+                mt-10
+                inline-flex
+                min-w-[230px]
+                items-center
+                justify-center
+                gap-3
+                border
+                px-8
+                py-4
               "
+              style={{
+                backgroundColor: palette.ink,
+                borderColor: palette.ink,
+                color: palette.paperLight,
+              }}
+              whileHover={{
+                y: -2,
+                backgroundColor: palette.inkSoft,
+              }}
+              whileTap={{
+                scale: 0.985,
+              }}
             >
-              Ver mesa de regalos
-            </span>
-          </motion.button>
-        </div>
-      </motion.section>
+              <ExternalLinkIcon />
 
-      {/* =========================================
-          MODAL
-      ========================================= */}
+              <span className="text-[9px] uppercase tracking-[0.28em] sm:text-[10px]">
+                Abrir mesa
+              </span>
+            </motion.a>
+          </motion.article>
 
-      <AnimatePresence>
-        {mostrarModal && (
-          <motion.div
+          {/* BBVA */}
+          <motion.article
             className="
-              fixed
-              inset-0
-              z-[9999]
+              relative
               flex
-              h-[100dvh]
-              w-full
+              min-h-[560px]
+              flex-col
               items-center
               justify-center
               overflow-hidden
-              bg-[#111820]/78
-              px-4
-              py-5
-              backdrop-blur-sm
-              sm:px-8
+              rounded-[30px]
+              border
+              bg-white/90
+              px-7
+              py-14
+              text-center
+              shadow-[0_24px_65px_rgba(48,40,33,0.14)]
+              backdrop-blur-[3px]
+              sm:px-10
+              sm:py-16
             "
+            style={{
+              borderColor: "rgba(179,106,54,0.34)",
+            }}
             initial={{
               opacity: 0,
+              x: 24,
             }}
-            animate={{
+            whileInView={{
               opacity: 1,
+              x: 0,
             }}
-            exit={{
-              opacity: 0,
+            viewport={{
+              once: true,
+              amount: 0.2,
             }}
             transition={{
-              duration: 0.3,
+              duration: 0.9,
+              delay: 0.16,
+              ease: [0.22, 1, 0.36, 1],
             }}
-            onMouseDown={(event) => {
-              if (event.target === event.currentTarget) {
-                setMostrarModal(false);
-              }
-            }}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="gift-modal-title"
           >
-            <motion.div
+            <div
+              className="pointer-events-none absolute inset-[8px] border"
+              style={{
+                borderColor: "rgba(179,106,54,0.14)",
+              }}
+            />
+
+            <p
               className="
-                relative
-                max-h-[92dvh]
-                w-full
-                max-w-2xl
-                overflow-y-auto
-                border
-                px-6
-                py-14
-                text-center
-                sm:px-10
-                sm:py-16
-                md:px-14
+                absolute
+                left-6
+                top-6
+                font-serif
+                text-xs
+                tracking-[0.2em]
               "
               style={{
-                backgroundColor: palette.paperLight,
-                borderColor: "rgba(164,134,84,0.48)",
-                boxShadow: "0 30px 100px rgba(0,0,0,0.34)",
-              }}
-              initial={{
-                opacity: 0,
-                y: 24,
-                scale: 0.97,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                y: 16,
-                scale: 0.98,
-              }}
-              transition={{
-                duration: 0.45,
-                ease: [0.22, 1, 0.36, 1],
+                color: "rgba(179,106,54,0.65)",
               }}
             >
-              {/* TEXTURA */}
+              02
+            </p>
 
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  opacity-[0.14]
-                "
-                style={{
-                  backgroundImage: `
-                    repeating-linear-gradient(
-                      0deg,
-                      rgba(29,39,51,0.025) 0px,
-                      rgba(29,39,51,0.025) 1px,
-                      transparent 1px,
-                      transparent 5px
-                    )
-                  `,
-                }}
-              />
+            <div
+              className="
+                flex
+                h-20
+                w-20
+                items-center
+                justify-center
+                rounded-full
+                border
+              "
+              style={{
+                color: palette.antiqueGoldDark,
+                borderColor: "rgba(179,106,54,0.42)",
+                backgroundColor: "rgba(174,180,156,0.2)",
+              }}
+            >
+              <BankCardIcon className="h-8 w-8" />
+            </div>
 
-              {/* BORDE INTERIOR */}
+            <p
+              className="
+                mt-7
+                text-[8px]
+                uppercase
+                tracking-[0.4em]
+                sm:text-[9px]
+              "
+              style={{
+                color: palette.antiqueGoldDark,
+              }}
+            >
+              Aportación directa
+            </p>
 
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[7px]
-                  border
-                "
-                style={{
-                  borderColor: "rgba(164,134,84,0.15)",
-                }}
-              />
+            <h3
+              className="
+                mt-5
+                font-serif
+                text-[38px]
+                font-normal
+                tracking-[-0.025em]
+                sm:text-[46px]
+              "
+              style={{
+                color: palette.ink,
+              }}
+            >
+              Depósito BBVA
+            </h3>
 
-              {/* CERRAR */}
+            <div className="mt-6">
+              <DecorativeDivider compact />
+            </div>
 
-              <motion.button
-                type="button"
-                onClick={() => setMostrarModal(false)}
-                aria-label="Cerrar mesa de regalos"
-                className="
-                  absolute
-                  right-4
-                  top-4
-                  z-30
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  border
-                  bg-[#FBF9F4]
-                  sm:right-6
-                  sm:top-6
-                "
-                style={{
-                  color: palette.ink,
-                  borderColor: "rgba(164,134,84,0.42)",
-                }}
-                whileHover={{
-                  scale: 1.04,
-                  backgroundColor: palette.paper,
-                }}
-                whileTap={{
-                  scale: 0.96,
-                }}
-              >
-                <CloseIcon />
-              </motion.button>
-
-              {/* CONTENIDO */}
-
-              <div
-                className="
-                  relative
-                  z-10
-                  flex
-                  w-full
-                  flex-col
-                  items-center
-                "
-              >
-                <div
-                  className="
-                    flex
-                    h-14
-                    w-14
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                  "
+            <div
+              className="
+                mt-8
+                w-full
+                max-w-md
+                rounded-[24px]
+                border
+                px-5
+                py-7
+                sm:px-7
+              "
+              style={{
+                background:
+                  "linear-gradient(145deg, rgba(48,40,33,0.98), rgba(81,70,62,0.95))",
+                borderColor: "rgba(179,106,54,0.42)",
+                boxShadow: "0 18px 42px rgba(48,40,33,0.2)",
+              }}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <p
+                  className="text-[8px] uppercase tracking-[0.34em]"
                   style={{
-                    color: palette.antiqueGoldDark,
-                    borderColor: "rgba(164,134,84,0.42)",
+                    color: palette.paperDark,
                   }}
                 >
-                  <GiftIcon />
-                </div>
+                  BBVA
+                </p>
+
+                <BankCardIcon className="h-5 w-5 text-[#F1D1B0]" />
+              </div>
+
+              <p
+                className="
+                  mt-8
+                  break-words
+                  font-mono
+                  text-[19px]
+                  tracking-[0.12em]
+                  sm:text-[23px]
+                  sm:tracking-[0.16em]
+                "
+                style={{
+                  color: palette.paperLight,
+                }}
+              >
+                {giftData.bbva.cardNumber}
+              </p>
+
+              <div className="mt-8 text-left">
+                <p
+                  className="text-[7px] uppercase tracking-[0.3em]"
+                  style={{
+                    color: palette.paperDark,
+                  }}
+                >
+                  Titular
+                </p>
 
                 <p
                   className="
-                    mt-6
-                    text-[8px]
+                    mt-2
+                    font-serif
+                    text-[16px]
                     uppercase
-                    tracking-[0.42em]
-                    sm:text-[9px]
+                    tracking-[0.08em]
+                    sm:text-[18px]
                   "
                   style={{
-                    color: palette.antiqueGoldDark,
-                  }}
-                >
-                  Mesa de regalos
-                </p>
-
-                <div className="mt-5">
-                  <DecorativeDivider />
-                </div>
-
-                <h2
-                  id="gift-modal-title"
-                  className="
-                    mt-7
-                    font-serif
-                    text-[36px]
-                    font-normal
-                    tracking-[-0.02em]
-                    sm:text-[46px]
-                  "
-                  style={{
-                    color: palette.ink,
-                  }}
-                >
-                  Liverpool
-                </h2>
-
-                <p
-                  className="
-                    mx-auto
-                    mt-5
-                    max-w-lg
-                    font-serif
-                    text-[14px]
-                    italic
-                    leading-7
-                    sm:text-base
-                  "
-                  style={{
-                    color: palette.warmGray,
-                  }}
-                >
-                  Hemos seleccionado algunos detalles que serán parte del hogar
-                  y de la nueva etapa que comenzaremos juntos.
-                </p>
-
-                {/* NÚMERO DE EVENTO */}
-
-                <div
-                  className="
-                    mx-auto
-                    mt-10
-                    w-full
-                    max-w-md
-                    border-y
-                    px-5
-                    py-8
-                  "
-                  style={{
-                    borderColor: "rgba(164,134,84,0.32)",
-                  }}
-                >
-                  <p
-                    className="
-                      text-[8px]
-                      uppercase
-                      tracking-[0.38em]
-                      sm:text-[9px]
-                    "
-                    style={{
-                      color: palette.warmGray,
-                    }}
-                  >
-                    Número de evento
-                  </p>
-
-                  <p
-                    className="
-                      mt-4
-                      break-all
-                      font-serif
-                      text-[32px]
-                      tracking-[0.12em]
-                      sm:text-[40px]
-                      sm:tracking-[0.18em]
-                    "
-                    style={{
-                      color: palette.ink,
-                    }}
-                  >
-                    {numeroEvento}
-                  </p>
-                </div>
-
-                {/* BOTÓN LIVERPOOL */}
-
-                <motion.a
-                  href={linkLiverpool}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    mt-10
-                    inline-flex
-                    min-w-[230px]
-                    items-center
-                    justify-center
-                    gap-3
-                    border
-                    px-8
-                    py-4
-                    sm:min-w-[270px]
-                  "
-                  style={{
-                    backgroundColor: palette.ink,
-                    borderColor: palette.ink,
                     color: palette.paperLight,
                   }}
-                  whileHover={{
-                    y: -2,
-                    backgroundColor: palette.inkSoft,
-                  }}
-                  whileTap={{
-                    scale: 0.985,
-                  }}
                 >
-                  <ExternalLinkIcon />
-
-                  <span
-                    className="
-                      text-[9px]
-                      uppercase
-                      tracking-[0.28em]
-                      sm:text-[10px]
-                    "
-                  >
-                    Abrir mesa en Liverpool
-                  </span>
-                </motion.a>
-
-                <div className="mt-10">
-                  <DecorativeDivider compact />
-                </div>
-
-                <p
-                  className="
-                    mt-6
-                    max-w-lg
-                    font-serif
-                    text-[14px]
-                    italic
-                    leading-7
-                  "
-                  style={{
-                    color: palette.inkSoft,
-                  }}
-                >
-                  Gracias por acompañarnos y por formar parte de este nuevo
-                  capítulo de nuestra historia.
+                  {giftData.bbva.holder}
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
+            </div>
 
-export default Regalos;
+            <div className="mt-8">
+              <CopyButton
+                value={`${giftData.bbva.cardNumber} - ${giftData.bbva.holder}`}
+                label="bbva"
+                copiedKey={copiedKey}
+                onCopy={copyValue}
+              />
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={copiedKey === "bbva" ? "copied" : "idle"}
+                className="
+                  mt-4
+                  text-[8px]
+                  uppercase
+                  tracking-[0.28em]
+                "
+                style={{
+                  color:
+                    copiedKey === "bbva"
+                      ? palette.antiqueGoldDark
+                      : palette.warmGray,
+                }}
+                initial={{
+                  opacity: 0,
+                  y: 4,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -4,
+                }}
+              >
+                {copiedKey === "bbva"
+                  ? "Datos copiados"
+                  : "Copia el número y titular"}
+              </motion.p>
+            </AnimatePresence>
+          </motion.article>
+        </div>
+
+        {/* CIERRE */}
+        <motion.p
+          className="
+            mx-auto
+            mt-12
+            max-w-xl
+            text-center
+            font-serif
+            text-[14px]
+            italic
+            leading-7
+            sm:mt-16
+            sm:text-base
+          "
+          style={{
+            color: palette.warmGray,
+          }}
+          initial={{
+            opacity: 0,
+            y: 14,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.85,
+            delay: 0.28,
+          }}
+        >
+          Gracias por acompañarnos y por formar parte de este nuevo capítulo de
+          nuestra historia.
+        </motion.p>
+      </div>
+    </motion.section>
+  );
+}

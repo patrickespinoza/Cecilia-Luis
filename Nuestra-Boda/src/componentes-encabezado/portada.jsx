@@ -7,15 +7,34 @@ import Countdown from "./encabeza-cuenta";
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#35404B",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#DED6C8",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#755E39",
-  warmGray: "#777168",
-  line: "#C8BDAA",
+  /* Paleta principal */
+  cream: "#E2B488", // Sorbete de Curuba
+  sage: "#AEB49C", // Verde Bétula
+  terracotta: "#B36A36", // Especia Exótica
+
+  /* Neutros para textos y contraste */
+  white: "#FFFFFF",
+  dark: "#302821",
+  darkSoft: "#51463E",
+
+  /* Variaciones para dar profundidad */
+  creamLight: "#F1D1B0",
+  creamDark: "#C99468",
+  sageLight: "#C3C8B4",
+  sageDark: "#879078",
+  terracottaLight: "#C98250",
+  terracottaDark: "#844820",
+
+  /* Alias usados en algunos detalles del componente */
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F1D1B0",
+  paperDark: "#C99468",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#51463E",
+  line: "rgba(48,40,33,0.18)",
 };
 
 const transition = {
@@ -167,7 +186,7 @@ export default function Portada() {
     );
 
     setInvitados("Invitado");
-    setPases("");
+    setPases(1);
   }
 }, []);
 
@@ -253,7 +272,7 @@ useEffect(() => {
       {/* AUDIO */}
 
       <audio ref={audioRef} loop preload="auto">
-        <source src="/TylerShaw.mp3" type="audio/mpeg" />
+        <source src="/musica.mp3" type="audio/mpeg" />
       </audio>
 
       {/* =========================================
@@ -281,14 +300,24 @@ useEffect(() => {
     lg:px-12
   "
   style={{
-    backgroundColor: palette.paperLight,
+    backgroundColor: palette.creamLight,
     backgroundImage: `
       repeating-linear-gradient(
         0deg,
-        rgba(53,64,75,0.018) 0px,
-        rgba(53,64,75,0.018) 1px,
+        rgba(48,40,33,0.025) 0px,
+        rgba(48,40,33,0.025) 1px,
         transparent 1px,
         transparent 5px
+      ),
+      radial-gradient(
+        circle at top left,
+        rgba(174,180,156,0.45),
+        transparent 38%
+      ),
+      radial-gradient(
+        circle at bottom right,
+        rgba(179,106,54,0.22),
+        transparent 42%
       )
     `,
     touchAction: "none",
@@ -315,7 +344,7 @@ useEffect(() => {
                 lg:inset-9
               "
               style={{
-                borderColor: "rgba(164,134,84,0.3)",
+                borderColor: "rgba(179,106,54,0.45)",
               }}
             />
 
@@ -329,7 +358,7 @@ useEffect(() => {
                 lg:inset-[42px]
               "
               style={{
-                borderColor: "rgba(164,134,84,0.12)",
+                borderColor: "rgba(48,40,33,0.14)",
               }}
             />
 
@@ -341,7 +370,7 @@ useEffect(() => {
                 top-5
                 h-16
                 w-16
-                text-[#A48654]/50
+                text-[#B36A36]/55
                 sm:left-8
                 sm:top-8
                 sm:h-20
@@ -358,7 +387,7 @@ useEffect(() => {
                 h-16
                 w-16
                 rotate-90
-                text-[#A48654]/50
+                text-[#B36A36]/55
                 sm:right-8
                 sm:top-8
                 sm:h-20
@@ -375,7 +404,7 @@ useEffect(() => {
                 h-16
                 w-16
                 -rotate-90
-                text-[#A48654]/50
+                text-[#B36A36]/55
                 sm:bottom-8
                 sm:left-8
                 sm:h-20
@@ -392,7 +421,7 @@ useEffect(() => {
                 h-16
                 w-16
                 rotate-180
-                text-[#A48654]/50
+                text-[#B36A36]/55
                 sm:bottom-8
                 sm:right-8
                 sm:h-20
@@ -458,19 +487,6 @@ useEffect(() => {
                   }}
                 />
 
-                <p
-                  className="
-                    mt-7
-                    font-serif
-                    text-[13px]
-                    uppercase
-                    tracking-[0.22em]
-                    sm:text-sm
-                  "
-                  style={{ color: palette.warmGray }}
-                >
-                  Junto con nuestras familias
-                </p>
 
                 <h1
                   className="
@@ -487,7 +503,7 @@ useEffect(() => {
                   "
                   style={{ color: palette.ink }}
                 >
-                  Valeria
+                  Cecilia
                 </h1>
 
                 <span
@@ -516,7 +532,7 @@ useEffect(() => {
                   "
                   style={{ color: palette.ink }}
                 >
-                  Alejandro
+                  Luis
                 </h1>
 
                 <div className="mt-8 w-full max-w-[260px]">
@@ -534,12 +550,12 @@ useEffect(() => {
                   "
                   style={{ color: palette.inkSoft }}
                 >
-                  11 · Junio · 2027
+                  21 · Noviembre · 2026
                 </p>
 
                 <p
                   className="
-                    mt-5
+                    mt-3
                     max-w-md
                     font-serif
                     text-[15px]
@@ -636,9 +652,16 @@ useEffect(() => {
                       text-center
                     "
                     style={{
-                      backgroundColor: palette.paperLight,
-                      borderColor: "rgba(164,134,84,0.32)",
-                      boxShadow: "0 14px 30px rgba(29,39,51,0.13)",
+                      background: `
+                        linear-gradient(
+                          145deg,
+                          #FFFFFF 0%,
+                          #FAF4EE 55%,
+                          #F1E1D3 100%
+                        )
+                      `,
+                      borderColor: "rgba(179,106,54,0.35)",
+                      boxShadow: "0 14px 30px rgba(48,40,33,0.16)",
                     }}
                     animate={
                       abrirSobre
@@ -664,7 +687,7 @@ useEffect(() => {
                         top-2
                         h-10
                         w-10
-                        text-[#A48654]/35
+                        text-[#B36A36]/40
                       "
                     />
 
@@ -676,21 +699,9 @@ useEffect(() => {
                         h-10
                         w-10
                         rotate-180
-                        text-[#A48654]/35
+                        text-[#B36A36]/40
                       "
                     />
-
-                    <p
-                      className="
-                        text-[7px]
-                        uppercase
-                        tracking-[0.38em]
-                        sm:text-[8px]
-                      "
-                      style={{ color: palette.antiqueGoldDark }}
-                    >
-                      The wedding of
-                    </p>
 
                     <div
                       className="
@@ -712,7 +723,7 @@ useEffect(() => {
                       "
                       style={{ color: palette.ink }}
                     >
-                      Valeria
+                      Cecilia
                     </p>
 
                     <span
@@ -736,7 +747,7 @@ useEffect(() => {
                       "
                       style={{ color: palette.ink }}
                     >
-                      Alejandro
+                      Luis
                     </p>
 
                     <p
@@ -749,7 +760,7 @@ useEffect(() => {
                       "
                       style={{ color: palette.warmGray }}
                     >
-                      11 · 06 · 2027
+                      21 · 11 · 2026
                     </p>
                   </motion.div>
 
@@ -766,15 +777,15 @@ useEffect(() => {
                       background: `
                         linear-gradient(
                           145deg,
-                          #E8E0D2 0%,
-                          #DCD2C1 52%,
-                          #CFC3B0 100%
+                          ${palette.sageLight} 0%,
+                          ${palette.sage} 52%,
+                          ${palette.sageDark} 100%
                         )
                       `,
-                      borderColor: "rgba(117,94,57,0.25)",
+                      borderColor: "rgba(48,40,33,0.22)",
                       boxShadow: `
-                        0 28px 55px rgba(29,39,51,0.16),
-                        inset 0 1px 0 rgba(255,255,255,0.65)
+                        0 28px 55px rgba(48,40,33,0.22),
+                        inset 0 1px 0 rgba(255,255,255,0.40)
                       `,
                     }}
                     animate={
@@ -801,8 +812,8 @@ useEffect(() => {
                         backgroundImage: `
                           repeating-linear-gradient(
                             90deg,
-                            rgba(53,64,75,0.08) 0px,
-                            rgba(53,64,75,0.08) 1px,
+                            rgba(48,40,33,0.07) 0px,
+                            rgba(48,40,33,0.07) 1px,
                             transparent 1px,
                             transparent 5px
                           )
@@ -823,9 +834,9 @@ useEffect(() => {
                       "
                       style={{
                         clipPath: "polygon(0 0, 100% 100%, 0 100%)",
-                        borderColor: "rgba(117,94,57,0.15)",
+                        borderColor: "rgba(48,40,33,0.14)",
                         background:
-                          "linear-gradient(145deg, rgba(255,255,255,0.16), transparent)",
+                          "linear-gradient(145deg, rgba(255,255,255,0.16), rgba(179,106,54,0.10))",
                       }}
                     />
 
@@ -840,9 +851,9 @@ useEffect(() => {
                       "
                       style={{
                         clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
-                        borderColor: "rgba(117,94,57,0.15)",
+                        borderColor: "rgba(48,40,33,0.14)",
                         background:
-                          "linear-gradient(215deg, rgba(255,255,255,0.12), transparent)",
+                          "linear-gradient(215deg, rgba(255,255,255,0.14), rgba(179,106,54,0.10))",
                       }}
                     />
                   </motion.div>
@@ -865,11 +876,12 @@ useEffect(() => {
                       background: `
                         linear-gradient(
                           180deg,
-                          #E6DDCE 0%,
-                          #D5C9B7 100%
+                          ${palette.sageLight} 0%,
+                          ${palette.sage} 58%,
+                          ${palette.sageDark} 100%
                         )
                       `,
-                      boxShadow: "0 13px 24px rgba(29,39,51,0.12)",
+                      boxShadow: "0 13px 24px rgba(48,40,33,0.18)",
                       backfaceVisibility: "hidden",
                     }}
                     animate={
@@ -934,15 +946,15 @@ useEffect(() => {
                         background: `
                           radial-gradient(
                             circle at 35% 28%,
-                            #B59A68 0%,
-                            #927545 45%,
-                            #6D5532 100%
+                            ${palette.terracottaLight} 0%,
+                            ${palette.terracotta} 48%,
+                            ${palette.terracottaDark} 100%
                           )
                         `,
                         boxShadow: `
                           inset 0 2px 4px rgba(255,255,255,0.24),
-                          inset 0 -5px 9px rgba(45,34,19,0.28),
-                          0 10px 18px rgba(29,39,51,0.17)
+                          inset 0 -5px 9px rgba(48,40,33,0.30),
+                          0 10px 18px rgba(48,40,33,0.22)
                         `,
                       }}
                     >
@@ -954,7 +966,7 @@ useEffect(() => {
                           border
                         "
                         style={{
-                          borderColor: "rgba(245,241,232,0.28)",
+                          borderColor: "rgba(255,255,255,0.34)",
                         }}
                       />
 
@@ -968,15 +980,15 @@ useEffect(() => {
                           sm:text-2xl
                         "
                         style={{
-                          color: "#E8DDCA",
-                          textShadow: "0 1px 2px rgba(29,39,51,0.35)",
+                          color: palette.white,
+                          textShadow: "0 1px 2px rgba(48,40,33,0.38)",
                         }}
                       >
-                        V
+                        C
                         <span className="mx-1 text-[11px] sm:text-sm">
                           &
                         </span>
-                        A
+                        L
                       </div>
                     </div>
                   </motion.div>
@@ -1008,7 +1020,7 @@ useEffect(() => {
 
                 <motion.p
                   className="
-                    mt-7
+                    mt-6
                     text-center
                     text-[9px]
                     uppercase
@@ -1028,18 +1040,18 @@ useEffect(() => {
 
                 <motion.div
                   className="
-                    mt-8
+                    mt-7
                     w-full
                     max-w-[390px]
                     border-y
                     px-4
                     py-5
                     text-center
-                    sm:mt-10
+                    sm:mt-9
                     sm:px-7
                   "
                   style={{
-                    borderColor: "rgba(164,134,84,0.35)",
+                    borderColor: "rgba(179,106,54,0.38)",
                   }}
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -1062,7 +1074,7 @@ useEffect(() => {
 
                   <p
                     className="
-                      mt-3
+                      mt-2
                       break-words
                       font-serif
                       text-xl
@@ -1081,7 +1093,7 @@ useEffect(() => {
                       w-12
                     "
                     style={{
-                      backgroundColor: "rgba(164,134,84,0.6)",
+                      backgroundColor: "rgba(179,106,54,0.68)",
                     }}
                   />
 
@@ -1121,40 +1133,42 @@ useEffect(() => {
       >
         {/* FOTOGRAFÍA */}
 
-        <motion.img
-          src="/prueba-03.jpg"
-          alt="Valeria y Alejandro"
-          className="
-            absolute
-            inset-0
-            h-full
-            w-full
-            object-cover
-            object-center
-          "
-          initial={{
-            opacity: 0,
-            scale: 1.035,
-          }}
-          animate={
-            mostrarContenido
-              ? {
-                  opacity: 1,
-                  scale: 1,
-                }
-              : {
-                  opacity: 0,
-                  scale: 1.035,
-                }
-          }
-          transition={{
-            opacity: { duration: 1.2 },
-            scale: {
-              duration: 7,
-              ease: "easeOut",
-            },
-          }}
-        />
+       <motion.img
+  src="/FOTOPORTADA.jpg"
+  alt="Cecilia y Luis"
+  className="
+    absolute
+    inset-0
+    h-full
+    w-full
+    object-cover
+  "
+  style={{
+    objectPosition: "50% 30%",
+  }}
+  initial={{
+    opacity: 0,
+    scale: 1.035,
+  }}
+  animate={
+    mostrarContenido
+      ? {
+          opacity: 1,
+          scale: 1,
+        }
+      : {
+          opacity: 0,
+          scale: 1.035,
+        }
+  }
+  transition={{
+    opacity: { duration: 1.2 },
+    scale: {
+      duration: 7,
+      ease: "easeOut",
+    },
+  }}
+/>
 
         {/* OVERLAY CINEMATOGRÁFICO DISCRETO */}
 
@@ -1205,31 +1219,7 @@ useEffect(() => {
           }}
         />
 
-        {/* MARCO */}
-
-        <motion.div
-          className="
-            pointer-events-none
-            absolute
-            inset-4
-            z-10
-            border
-            sm:inset-7
-            lg:inset-9
-          "
-          style={{
-            borderColor: "rgba(245,241,232,0.34)",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: mostrarContenido ? 1 : 0,
-          }}
-          transition={{
-            duration: 1,
-            delay: 0.35,
-          }}
-        />
-
+        
         {/* CONTENIDO */}
 
         <motion.div
@@ -1241,14 +1231,17 @@ useEffect(() => {
             w-full
             flex-col
             items-center
-            justify-between
+            justify-end
             px-7
-            py-12
+            pb-10
+            pt-28
             text-center
             sm:px-12
-            sm:py-16
+            sm:pb-14
+            sm:pt-32
             lg:px-16
-            lg:py-20
+            lg:pb-16
+            lg:pt-36
           "
           initial={{ opacity: 0 }}
           animate={{
@@ -1259,41 +1252,7 @@ useEffect(() => {
             delay: 0.2,
           }}
         >
-          {/* ENCABEZADO */}
-
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={
-              mostrarContenido
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {
-                    opacity: 0,
-                    y: -12,
-                  }
-            }
-            transition={{
-              ...transition,
-              delay: 0.5,
-            }}
-          >
-           
-            <div
-              className="
-                mx-auto
-                mt-4
-                h-px
-                w-14
-              "
-              style={{
-                backgroundColor: "rgba(245,241,232,0.7)",
-              }}
-            />
-
-
-          </motion.div>
+          {/* CONTENIDO INFERIOR */}
 
           {/* NOMBRES */}
 
@@ -1327,20 +1286,20 @@ useEffect(() => {
             <h1
               className="
                 font-serif
-                text-[50px]
+                text-[44px]
                 font-normal
                 leading-[0.9]
                 tracking-[-0.035em]
                 text-[#FBF9F4]
-                sm:text-[72px]
-                md:text-[88px]
-                lg:text-[104px]
+                sm:text-[62px]
+                md:text-[72px]
+                lg:text-[82px]
               "
               style={{
                 textShadow: "0 4px 24px rgba(0,0,0,0.32)",
               }}
             >
-              Valeria
+              Cecilia
             </h1>
 
             <div className="my-3 flex items-center gap-4 sm:my-4 sm:gap-6">
@@ -1383,44 +1342,32 @@ useEffect(() => {
             <h1
               className="
                 font-serif
-                text-[50px]
+                text-[44px]
                 font-normal
                 leading-[0.9]
                 tracking-[-0.035em]
                 text-[#FBF9F4]
-                sm:text-[72px]
-                md:text-[88px]
-                lg:text-[104px]
+                sm:text-[62px]
+                md:text-[72px]
+                lg:text-[82px]
               "
               style={{
                 textShadow: "0 4px 24px rgba(0,0,0,0.32)",
               }}
             >
-              Alejandro
+              Luis
             </h1>
 
-            <p
-              className="
-                mt-8
-                max-w-xl
-                font-serif
-                text-sm
-                italic
-                leading-7
-                text-[#F5F1E8]/85
-                sm:text-base
-              "
-            >
-              Un nuevo capítulo comienza y queremos que formes parte de él.
-            </p>
           </motion.div>
 
           {/* CONTADOR */}
 
           <motion.div
             className="
+              mt-7
               w-full
               max-w-4xl
+              sm:mt-9
             "
             initial={{ opacity: 0, y: 18 }}
             animate={
@@ -1453,7 +1400,7 @@ useEffect(() => {
               }}
             />
 
-            <Countdown targetDate="2027-06-11T00:00:00" />
+            <Countdown targetDate="2026-11-21T00:00:00" />
 
             <motion.div
               className="
@@ -1472,17 +1419,6 @@ useEffect(() => {
                 delay: 1.1,
               }}
             >
-              <p
-                className="
-                  text-[8px]
-                  uppercase
-                  tracking-[0.38em]
-                  text-[#F5F1E8]/65
-                  sm:text-[9px]
-                "
-              >
-                Desliza para continuar
-              </p>
 
               <div
                 className="

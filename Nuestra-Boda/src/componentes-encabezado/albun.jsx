@@ -6,14 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E5DED2",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F9F6EE",
+  paperDark: "#F1D1B0",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#66594F",
 };
 
 const albumCode = "MXat19tb26";
@@ -153,14 +153,14 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
         }}
       />
 
       <span
         className="h-[5px] w-[5px] rotate-45 border"
         style={{
-          borderColor: "rgba(164,134,84,0.72)",
+          borderColor: "rgba(179,106,54,0.72)",
         }}
       />
 
@@ -168,7 +168,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
         }}
       />
     </div>
@@ -379,8 +379,8 @@ const Album = () => {
             backgroundImage: `
               repeating-linear-gradient(
                 0deg,
-                rgba(29,39,51,0.025) 0px,
-                rgba(29,39,51,0.025) 1px,
+                rgba(48,40,33,0.025) 0px,
+                rgba(48,40,33,0.025) 1px,
                 transparent 1px,
                 transparent 5px
               )
@@ -400,7 +400,7 @@ const Album = () => {
             lg:inset-10
           "
           style={{
-            borderColor: "rgba(164,134,84,0.25)",
+            borderColor: "rgba(179,106,54,0.25)",
           }}
         />
 
@@ -414,7 +414,7 @@ const Album = () => {
             lg:inset-[46px]
           "
           style={{
-            borderColor: "rgba(164,134,84,0.1)",
+            borderColor: "rgba(179,106,54,0.10)",
           }}
         />
 
@@ -428,7 +428,7 @@ const Album = () => {
             top-6
             h-16
             w-16
-            text-[#A48654]/25
+            text-[#B36A36]/25
             sm:left-9
             sm:top-9
             sm:h-20
@@ -445,7 +445,7 @@ const Album = () => {
             h-16
             w-16
             rotate-90
-            text-[#A48654]/25
+            text-[#B36A36]/25
             sm:right-9
             sm:top-9
             sm:h-20
@@ -462,7 +462,7 @@ const Album = () => {
             h-16
             w-16
             -rotate-90
-            text-[#A48654]/25
+            text-[#B36A36]/25
             sm:bottom-9
             sm:left-9
             sm:h-20
@@ -479,7 +479,7 @@ const Album = () => {
             h-16
             w-16
             rotate-180
-            text-[#A48654]/25
+            text-[#B36A36]/25
             sm:bottom-9
             sm:right-9
             sm:h-20
@@ -496,7 +496,7 @@ const Album = () => {
             h-[250px]
             w-[145px]
             -rotate-12
-            text-[#A48654]/10
+            text-[#AEB49C]/28
             sm:h-[310px]
             sm:w-[180px]
             lg:left-2
@@ -512,7 +512,7 @@ const Album = () => {
             h-[250px]
             w-[145px]
             rotate-[168deg]
-            text-[#A48654]/10
+            text-[#AEB49C]/28
             sm:h-[310px]
             sm:w-[180px]
             lg:right-2
@@ -548,7 +548,7 @@ const Album = () => {
             "
             style={{
               color: palette.antiqueGoldDark,
-              borderColor: "rgba(164,134,84,0.42)",
+              borderColor: "rgba(179,106,54,0.42)",
             }}
             initial={{
               opacity: 0,
@@ -674,7 +674,7 @@ const Album = () => {
               sm:px-10
             "
             style={{
-              borderColor: "rgba(164,134,84,0.3)",
+              borderColor: "rgba(179,106,54,0.30)",
             }}
             initial={{
               opacity: 0,
@@ -741,7 +741,7 @@ const Album = () => {
               backgroundColor: palette.ink,
               borderColor: palette.ink,
               color: palette.paperLight,
-              boxShadow: "0 12px 28px rgba(29,39,51,0.12)",
+              boxShadow: "0 12px 28px rgba(48,40,33,0.12)",
             }}
             whileHover={{
               y: -2,
@@ -785,7 +785,7 @@ const Album = () => {
               items-center
               justify-center
               overflow-hidden
-              bg-[#111820]/78
+              bg-[#302821]/78
               px-4
               py-5
               backdrop-blur-sm
@@ -829,7 +829,7 @@ const Album = () => {
               "
               style={{
                 backgroundColor: palette.paperLight,
-                borderColor: "rgba(164,134,84,0.48)",
+                borderColor: "rgba(179,106,54,0.48)",
                 boxShadow: "0 30px 100px rgba(0,0,0,0.34)",
               }}
               initial={{
@@ -865,8 +865,8 @@ const Album = () => {
                   backgroundImage: `
                     repeating-linear-gradient(
                       0deg,
-                      rgba(29,39,51,0.025) 0px,
-                      rgba(29,39,51,0.025) 1px,
+                      rgba(48,40,33,0.025) 0px,
+                      rgba(48,40,33,0.025) 1px,
                       transparent 1px,
                       transparent 5px
                     )
@@ -884,7 +884,7 @@ const Album = () => {
                   border
                 "
                 style={{
-                  borderColor: "rgba(164,134,84,0.15)",
+                  borderColor: "rgba(179,106,54,0.15)",
                 }}
               />
 
@@ -905,13 +905,13 @@ const Album = () => {
                   items-center
                   justify-center
                   border
-                  bg-[#FBF9F4]
+                  bg-[#F9F6EE]
                   sm:right-6
                   sm:top-6
                 "
                 style={{
                   color: palette.ink,
-                  borderColor: "rgba(164,134,84,0.42)",
+                  borderColor: "rgba(179,106,54,0.42)",
                 }}
                 whileHover={{
                   scale: 1.04,
@@ -948,7 +948,7 @@ const Album = () => {
                   "
                   style={{
                     color: palette.antiqueGoldDark,
-                    borderColor: "rgba(164,134,84,0.42)",
+                    borderColor: "rgba(179,106,54,0.42)",
                   }}
                 >
                   <CameraIcon />
@@ -1036,8 +1036,8 @@ const Album = () => {
                       sm:px-7
                     "
                     style={{
-                      backgroundColor: "rgba(245,241,232,0.52)",
-                      borderColor: "rgba(164,134,84,0.28)",
+                      backgroundColor: "rgba(226,180,136,0.34)",
+                      borderColor: "rgba(179,106,54,0.28)",
                     }}
                   >
                     <p
@@ -1116,7 +1116,7 @@ const Album = () => {
                         w-20
                       "
                       style={{
-                        backgroundColor: "rgba(164,134,84,0.38)",
+                        backgroundColor: "rgba(179,106,54,0.38)",
                       }}
                     />
 
@@ -1144,12 +1144,12 @@ const Album = () => {
                         justify-between
                         gap-3
                         border
-                        bg-[#FBF9F4]
+                        bg-[#F9F6EE]
                         px-4
                         py-4
                       "
                       style={{
-                        borderColor: "rgba(164,134,84,0.34)",
+                        borderColor: "rgba(179,106,54,0.34)",
                       }}
                     >
                       <span
@@ -1185,7 +1185,7 @@ const Album = () => {
                           color: copied
                             ? palette.antiqueGoldDark
                             : palette.ink,
-                          borderColor: "rgba(164,134,84,0.38)",
+                          borderColor: "rgba(179,106,54,0.38)",
                         }}
                         whileHover={{
                           backgroundColor: palette.paper,
@@ -1244,7 +1244,7 @@ const Album = () => {
                     "
                     style={{
                       backgroundColor: palette.paperLight,
-                      borderColor: "rgba(164,134,84,0.28)",
+                      borderColor: "rgba(179,106,54,0.28)",
                     }}
                   >
                     <p
@@ -1269,8 +1269,8 @@ const Album = () => {
                         p-3
                       "
                       style={{
-                        borderColor: "rgba(164,134,84,0.34)",
-                        boxShadow: "0 12px 30px rgba(29,39,51,0.08)",
+                        borderColor: "rgba(179,106,54,0.34)",
+                        boxShadow: "0 12px 30px rgba(48,40,33,0.08)",
                       }}
                     >
                       <img

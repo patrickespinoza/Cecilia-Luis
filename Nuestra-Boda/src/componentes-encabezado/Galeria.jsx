@@ -1,27 +1,56 @@
-import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 /* =========================================
    GALERÍA EDITORIAL CLÁSICA
 ========================================= */
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E4DDD1",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F9F6EE",
+  paperDark: "#F1D1B0",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#66594F",
 };
 
+/*
+  POSICIÓN DE CADA IMAGEN:
+
+  Cambia "position" para mover el encuadre dentro del carrusel.
+
+  Ejemplos:
+  "center center"  → centrada
+  "center 30%"     → sube la fotografía
+  "center 70%"     → baja la fotografía
+  "left center"    → mueve el encuadre hacia la izquierda
+  "right center"   → mueve el encuadre hacia la derecha
+  "65% 40%"        → control horizontal y vertical personalizado
+*/
+
 const images = [
-  "/carrusel01.jpeg",
-  "/carusel02.jpeg",
-  "/carusel03.jpeg",
-  "/carusel04.jpeg",
-  "/carusel05.jpeg",
+  {
+    src: "/CARRUSEL1.jpg",
+    position: "center 40%",
+  },
+  {
+    src: "/CARRUSEL2.jpg",
+    position: "center 50%",
+  },
+  {
+    src: "/CARRUSEL3.jpg",
+    position: "center 100%",
+  },
+  {
+    src: "/CARRUSEL4.jpg",
+    position: "center 50%",
+  },
+  {
+    src: "/CARRUSEL5.jpg",
+    position: "center 70%",
+  },
 ];
 
 const fadeUp = {
@@ -159,14 +188,14 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
         }}
       />
 
       <span
         className="h-[5px] w-[5px] rotate-45 border"
         style={{
-          borderColor: "rgba(164,134,84,0.72)",
+          borderColor: "rgba(179,106,54,0.72)",
         }}
       />
 
@@ -174,7 +203,7 @@ function DecorativeDivider() {
         className="h-px w-10 sm:w-16"
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
         }}
       />
     </div>
@@ -224,37 +253,35 @@ function NextIcon() {
 ========================================= */
 
 export default function Galeria() {
+  const carouselRef = useRef(null);
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
-  const [isPaused, setIsPaused] = useState(false);
 
   const totalImages = images.length;
 
   useEffect(() => {
-    if (isPaused) return undefined;
+    images.forEach((image) => {
+      const preloadedImage = new Image();
+      preloadedImage.src = image.src;
+    });
+  }, []);
 
+  useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setDirection(1);
-
       setIndex((previousIndex) => {
         return (previousIndex + 1) % totalImages;
       });
     }, 4500);
 
     return () => window.clearInterval(intervalId);
-  }, [isPaused, totalImages]);
+  }, [totalImages]);
 
   const nextImage = () => {
-    setDirection(1);
-
     setIndex((previousIndex) => {
       return (previousIndex + 1) % totalImages;
     });
   };
 
   const previousImage = () => {
-    setDirection(-1);
-
     setIndex((previousIndex) => {
       return previousIndex === 0
         ? totalImages - 1
@@ -263,7 +290,6 @@ export default function Galeria() {
   };
 
   const goToImage = (imageIndex) => {
-    setDirection(imageIndex > index ? 1 : -1);
     setIndex(imageIndex);
   };
 
@@ -311,8 +337,8 @@ export default function Galeria() {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(29,39,51,0.025) 0px,
-              rgba(29,39,51,0.025) 1px,
+              rgba(48,40,33,0.025) 0px,
+              rgba(48,40,33,0.025) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -332,7 +358,7 @@ export default function Galeria() {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(164,134,84,0.25)",
+          borderColor: "rgba(179,106,54,0.25)",
         }}
       />
 
@@ -346,7 +372,7 @@ export default function Galeria() {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(164,134,84,0.1)",
+          borderColor: "rgba(179,106,54,0.1)",
         }}
       />
 
@@ -360,7 +386,7 @@ export default function Galeria() {
           top-6
           h-16
           w-16
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:left-9
           sm:top-9
           sm:h-20
@@ -377,7 +403,7 @@ export default function Galeria() {
           h-16
           w-16
           rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:right-9
           sm:top-9
           sm:h-20
@@ -394,7 +420,7 @@ export default function Galeria() {
           h-16
           w-16
           -rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:bottom-9
           sm:left-9
           sm:h-20
@@ -411,7 +437,7 @@ export default function Galeria() {
           h-16
           w-16
           rotate-180
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:bottom-9
           sm:right-9
           sm:h-20
@@ -428,7 +454,7 @@ export default function Galeria() {
           h-[250px]
           w-[145px]
           -rotate-12
-          text-[#A48654]/10
+          text-[#B36A36]/10
           sm:h-[310px]
           sm:w-[180px]
           lg:left-2
@@ -444,7 +470,7 @@ export default function Galeria() {
           h-[250px]
           w-[145px]
           rotate-[168deg]
-          text-[#A48654]/10
+          text-[#B36A36]/10
           sm:h-[310px]
           sm:w-[180px]
           lg:right-2
@@ -571,14 +597,15 @@ export default function Galeria() {
             delay: 0.12,
             ease: [0.22, 1, 0.36, 1],
           }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          ref={carouselRef}
         >
           {/* MARCO DE PAPEL */}
 
           <div
             className="
               relative
+              overflow-hidden
+              rounded-[32px]
               border
               p-3
               sm:p-5
@@ -586,10 +613,24 @@ export default function Galeria() {
             "
             style={{
               backgroundColor: palette.paperLight,
-              borderColor: "rgba(164,134,84,0.34)",
-              boxShadow: "0 24px 65px rgba(29,39,51,0.1)",
+              borderColor: "rgba(179,106,54,0.34)",
+              boxShadow: "0 24px 65px rgba(48,40,33,0.1)",
             }}
           >
+            {/* GLOW SUAVE — SIN TONOS VERDES */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                scale-110
+                rounded-[32px]
+                bg-[#B36A36]/10
+                blur-3xl
+              "
+            />
+
             {/* BORDE INTERIOR */}
 
             <div
@@ -597,10 +638,11 @@ export default function Galeria() {
                 pointer-events-none
                 absolute
                 inset-[7px]
+                rounded-[26px]
                 border
               "
               style={{
-                borderColor: "rgba(164,134,84,0.12)",
+                borderColor: "rgba(179,106,54,0.12)",
               }}
             />
 
@@ -611,71 +653,73 @@ export default function Galeria() {
                 relative
                 h-[390px]
                 overflow-hidden
-                bg-[#E4DDD1]
+                rounded-[26px]
+                bg-[#F8F5EF]
                 sm:h-[540px]
                 md:h-[620px]
                 lg:h-[680px]
               "
             >
-              <AnimatePresence custom={direction} mode="wait">
-                <motion.img
-                  key={images[index]}
-                  custom={direction}
-                  src={images[index]}
-                  alt={`Momento ${index + 1} de ${totalImages}`}
-                  className="
-                    absolute
-                    inset-0
-                    h-full
-                    w-full
-                    object-cover
-                    object-center
-                  "
-                  initial={{
-                    opacity: 0,
-                    scale: 1.025,
-                    x: direction > 0 ? 18 : -18,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    x: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 1.012,
-                    x: direction > 0 ? -16 : 16,
-                  }}
-                  transition={{
-                    opacity: {
-                      duration: 0.65,
-                    },
-                    scale: {
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                    x: {
-                      duration: 0.8,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                  }}
-                />
-              </AnimatePresence>
+              {/* 
+                TODAS LAS IMÁGENES PERMANECEN APILADAS.
+                La anterior no desaparece hasta que la nueva ya está visible,
+                evitando el destello o fondo blanco durante el cambio.
+              */}
 
-              {/* OVERLAY MUY DISCRETO */}
+              {images.map((image, imageIndex) => {
+                const isActive = index === imageIndex;
+
+                return (
+                  <motion.img
+                    key={image.src}
+                    src={image.src}
+                    alt={`Momento ${imageIndex + 1} de ${totalImages}`}
+                    className="
+                      absolute
+                      inset-0
+                      h-full
+                      w-full
+                      rounded-[26px]
+                      object-cover
+                    "
+                    style={{
+                      objectPosition: image.position,
+                      zIndex: isActive ? 2 : 1,
+                    }}
+                    initial={false}
+                    animate={{
+                      opacity: isActive ? 1 : 0,
+                      scale: isActive ? 1 : 1.025,
+                    }}
+                    transition={{
+                      opacity: {
+                        duration: 0.75,
+                        ease: "easeInOut",
+                      },
+                      scale: {
+                        duration: 1.15,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    }}
+                  />
+                );
+              })}
+
+              {/* OVERLAY SUAVE */}
 
               <div
                 className="
                   pointer-events-none
                   absolute
                   inset-0
+                  rounded-[26px]
                 "
                 style={{
                   background: `
                     linear-gradient(
-                      180deg,
-                      transparent 55%,
-                      rgba(20,27,34,0.22) 100%
+                      to top,
+                      rgba(0,0,0,0.18),
+                      transparent 40%
                     )
                   `,
                 }}
@@ -683,37 +727,7 @@ export default function Galeria() {
 
               {/* NUMERACIÓN */}
 
-              <div
-                className="
-                  absolute
-                  bottom-4
-                  left-4
-                  z-20
-                  border
-                  bg-[#FBF9F4]/90
-                  px-4
-                  py-2
-                  sm:bottom-6
-                  sm:left-6
-                "
-                style={{
-                  borderColor: "rgba(164,134,84,0.34)",
-                }}
-              >
-                <p
-                  className="
-                    text-[8px]
-                    uppercase
-                    tracking-[0.3em]
-                    sm:text-[9px]
-                  "
-                  style={{
-                    color: palette.inkSoft,
-                  }}
-                >
-                  Fotografía {String(index + 1).padStart(2, "0")}
-                </p>
-              </div>
+
 
               {/* BOTÓN ANTERIOR */}
 
@@ -732,24 +746,26 @@ export default function Galeria() {
                   -translate-y-1/2
                   items-center
                   justify-center
+                  rounded-full
                   border
-                  bg-[#FBF9F4]/92
+                  bg-[#F9F6EE]/92
+                  backdrop-blur-sm
                   sm:left-5
                   sm:h-12
                   sm:w-12
                 "
                 style={{
-                  borderColor: "rgba(164,134,84,0.4)",
+                  borderColor: "rgba(179,106,54,0.4)",
                   color: palette.ink,
-                  boxShadow: "0 8px 20px rgba(29,39,51,0.08)",
+                  boxShadow: "0 8px 20px rgba(48,40,33,0.10)",
                 }}
                 whileHover={{
                   y: "-50%",
-                  scale: 1.04,
+                  scale: 1.06,
                   backgroundColor: palette.paperLight,
                 }}
                 whileTap={{
-                  scale: 0.97,
+                  scale: 0.96,
                 }}
               >
                 <PreviousIcon />
@@ -772,24 +788,26 @@ export default function Galeria() {
                   -translate-y-1/2
                   items-center
                   justify-center
+                  rounded-full
                   border
-                  bg-[#FBF9F4]/92
+                  bg-[#F9F6EE]/92
+                  backdrop-blur-sm
                   sm:right-5
                   sm:h-12
                   sm:w-12
                 "
                 style={{
-                  borderColor: "rgba(164,134,84,0.4)",
+                  borderColor: "rgba(179,106,54,0.4)",
                   color: palette.ink,
-                  boxShadow: "0 8px 20px rgba(29,39,51,0.08)",
+                  boxShadow: "0 8px 20px rgba(48,40,33,0.10)",
                 }}
                 whileHover={{
                   y: "-50%",
-                  scale: 1.04,
+                  scale: 1.06,
                   backgroundColor: palette.paperLight,
                 }}
                 whileTap={{
-                  scale: 0.97,
+                  scale: 0.96,
                 }}
               >
                 <NextIcon />
@@ -864,7 +882,7 @@ export default function Galeria() {
 
               <div
                 className="
-                  mt-5
+                  mt-6
                   flex
                   items-center
                   justify-center
@@ -882,25 +900,33 @@ export default function Galeria() {
                       aria-label={`Mostrar fotografía ${imageIndex + 1}`}
                       aria-current={isActive ? "true" : undefined}
                       className="
-                        h-[7px]
-                        border
+                        relative
+                        overflow-hidden
+                        rounded-full
                       "
                       animate={{
-                        width: isActive ? 32 : 7,
+                        scale: isActive ? 1.2 : 1,
                       }}
                       transition={{
                         duration: 0.4,
-                        ease: [0.22, 1, 0.36, 1],
                       }}
-                      style={{
-                        backgroundColor: isActive
-                          ? palette.ink
-                          : "transparent",
-                        borderColor: isActive
-                          ? palette.ink
-                          : "rgba(164,134,84,0.45)",
-                      }}
-                    />
+                    >
+                      <span
+                        className={`
+                          block
+                          h-[9px]
+                          rounded-full
+                          transition-all
+                          duration-500
+                          ${isActive ? "w-10" : "w-2"}
+                        `}
+                        style={{
+                          background: isActive
+                            ? "linear-gradient(90deg, #B36A36, #844820)"
+                            : "rgba(102,89,79,0.32)",
+                        }}
+                      />
+                    </motion.button>
                   );
                 })}
               </div>
@@ -955,7 +981,7 @@ export default function Galeria() {
               w-16
             "
             style={{
-              backgroundColor: "rgba(164,134,84,0.48)",
+              backgroundColor: "rgba(179,106,54,0.48)",
             }}
           />
 

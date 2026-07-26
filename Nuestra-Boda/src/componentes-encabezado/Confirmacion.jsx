@@ -6,31 +6,17 @@ import { useEffect, useMemo, useState } from "react";
 ========================================= */
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxklU9PTlqxkcu9pBUfWYhByQZ_7kJWuFENeeQhlEW-C6eh2cVbTK3z2AbMJiWVL1ME/exec";
-
-/*
-  Coloca los números con código de país, sin:
-  +, espacios, guiones ni paréntesis.
-
-  Ejemplo México:
-  5215512345678
-*/
-
-const NUMERO_NOVIA = "521XXXXXXXXXX";
-const NUMERO_NOVIO = "521XXXXXXXXXX";
-
-const NOMBRE_NOVIA = "Allison";
-const NOMBRE_NOVIO = "David";
+  "https://script.google.com/macros/s/AKfycbxlEh0BV6ZwOtBjgfu34voch5Hb5pUV7mbbtK1b5RypvV_ORjEfjnCU8CZ5DEmPUzbP/exec";
 
 const palette = {
-  ink: "#1D2733",
-  inkSoft: "#39434D",
-  paper: "#F5F1E8",
-  paperLight: "#FBF9F4",
-  paperDark: "#E5DED2",
-  antiqueGold: "#A48654",
-  antiqueGoldDark: "#725B37",
-  warmGray: "#777168",
+  ink: "#302821",
+  inkSoft: "#51463E",
+  paper: "#E2B488",
+  paperLight: "#F9F6EE",
+  paperDark: "#F1D1B0",
+  antiqueGold: "#B36A36",
+  antiqueGoldDark: "#844820",
+  warmGray: "#66594F",
   error: "#8B3A3A",
   success: "#49644D",
 };
@@ -244,14 +230,14 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to right, transparent, rgba(179,106,54,0.72))",
         }}
       />
 
       <span
         className="h-[5px] w-[5px] rotate-45 border"
         style={{
-          borderColor: "rgba(164,134,84,0.72)",
+          borderColor: "rgba(179,106,54,0.72)",
         }}
       />
 
@@ -259,7 +245,7 @@ function DecorativeDivider({ compact = false }) {
         className={compact ? "h-px w-8 sm:w-12" : "h-px w-10 sm:w-16"}
         style={{
           background:
-            "linear-gradient(to left, transparent, rgba(164,134,84,0.72))",
+            "linear-gradient(to left, transparent, rgba(179,106,54,0.72))",
         }}
       />
     </div>
@@ -284,24 +270,6 @@ function EnvelopeIcon() {
     >
       <rect x="3" y="5" width="18" height="14" />
       <path d="m3 7 9 7 9-7" />
-    </svg>
-  );
-}
-
-function WhatsAppIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.35"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="h-4 w-4"
-    >
-      <path d="M20.5 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.2-4.6A8.5 8.5 0 1 1 20.5 11.5Z" />
-      <path d="M8.2 7.8c.3-.4.6-.4.9-.1l1.1 1.5c.2.3.2.6 0 .9l-.6.8c-.2.3 0 .7.3 1.1.7 1 1.5 1.8 2.6 2.4.4.2.8.3 1.1 0l.8-.8c.3-.3.6-.3.9-.1l1.5 1c.4.2.4.6.2.9-.5 1-1.4 1.6-2.5 1.6-1.6 0-3.8-1.2-5.6-3-1.7-1.7-2.9-3.9-2.9-5.4 0-.9.4-1.9 1.2-2.8Z" />
     </svg>
   );
 }
@@ -370,11 +338,11 @@ function AttendanceOption({
       "
       style={{
         backgroundColor: isSelected
-          ? "rgba(29,39,51,0.055)"
+          ? "rgba(48,40,33,0.055)"
           : palette.paperLight,
         borderColor: isSelected
           ? palette.antiqueGold
-          : "rgba(164,134,84,0.3)",
+          : "rgba(179,106,54,0.3)",
       }}
     >
       <input
@@ -462,7 +430,7 @@ const Confirmacion = () => {
   const [invitados, setInvitados] = useState(1);
 
   const [error, setError] = useState("");
-  const [loadingSide, setLoadingSide] = useState("");
+  const [loading, setLoading] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const [urlError, setUrlError] = useState("");
 
@@ -566,54 +534,11 @@ const Confirmacion = () => {
   }, [pasesAsignados]);
 
   /* =========================================
-     MENSAJE DE WHATSAPP
-  ========================================= */
-
-  const createWhatsAppMessage = (recipientName) => {
-    const attendanceText =
-      asistencia === "Sí asistiré"
-        ? `Sí asistiré con ${invitados} ${
-            invitados === 1 ? "persona" : "personas"
-          }.`
-        : "Lamentablemente no podré asistir.";
-
-    const optionalMessage = mensajeInvitado.trim()
-      ? `\n\nMensaje: ${mensajeInvitado.trim()}`
-      : "";
-
-    return [
-      `Hola ${recipientName}.`,
-      "",
-      `Soy ${nombreInvitado.trim()}.`,
-      attendanceText,
-      optionalMessage,
-      "",
-      "Gracias por la invitación.",
-    ]
-      .join("\n")
-      .replace(/\n{3,}/g, "\n\n");
-  };
-
-  const openWhatsApp = (phoneNumber, recipientName) => {
-    const message = createWhatsAppMessage(recipientName);
-
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-
-    window.location.href = whatsappUrl;
-  };
-
-  /* =========================================
      ENVIAR CONFIRMACIÓN
   ========================================= */
 
-  const enviarConfirmacion = async ({
-    side,
-    phoneNumber,
-    recipientName,
-  }) => {
-    if (loadingSide) return;
+  const enviarConfirmacion = async () => {
+    if (loading) return;
 
     if (!nombreInvitado.trim()) {
       setError("Escribe el nombre del invitado.");
@@ -639,14 +564,13 @@ const Confirmacion = () => {
 
     setError("");
     setEnviado(false);
-    setLoadingSide(side);
+    setLoading(true);
 
     const confirmationData = {
       nombre: nombreInvitado.trim(),
       asistencia,
       invitados: asistencia === "Sí asistiré" ? invitados : 0,
       mensaje: mensajeInvitado.trim(),
-      lado: side,
       pasesAsignados,
     };
 
@@ -666,15 +590,7 @@ const Confirmacion = () => {
       });
 
       setEnviado(true);
-
-      /*
-        Conservamos nombre y pases porque vienen del generador.
-        Solo limpiamos la respuesta y el mensaje.
-      */
-
-      window.setTimeout(() => {
-        openWhatsApp(phoneNumber, recipientName);
-      }, 650);
+      setLoading(false);
     } catch (requestError) {
       console.error("Error enviando la confirmación:", requestError);
 
@@ -682,7 +598,7 @@ const Confirmacion = () => {
         "No pudimos enviar tu confirmación. Intenta nuevamente en unos momentos."
       );
 
-      setLoadingSide("");
+      setLoading(false);
     }
   };
 
@@ -738,8 +654,8 @@ const Confirmacion = () => {
           backgroundImage: `
             repeating-linear-gradient(
               0deg,
-              rgba(29,39,51,0.025) 0px,
-              rgba(29,39,51,0.025) 1px,
+              rgba(48,40,33,0.025) 0px,
+              rgba(48,40,33,0.025) 1px,
               transparent 1px,
               transparent 5px
             )
@@ -759,7 +675,7 @@ const Confirmacion = () => {
           lg:inset-10
         "
         style={{
-          borderColor: "rgba(164,134,84,0.25)",
+          borderColor: "rgba(179,106,54,0.25)",
         }}
       />
 
@@ -773,7 +689,7 @@ const Confirmacion = () => {
           lg:inset-[46px]
         "
         style={{
-          borderColor: "rgba(164,134,84,0.1)",
+          borderColor: "rgba(179,106,54,0.1)",
         }}
       />
 
@@ -787,7 +703,7 @@ const Confirmacion = () => {
           top-6
           h-16
           w-16
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:left-9
           sm:top-9
           sm:h-20
@@ -804,7 +720,7 @@ const Confirmacion = () => {
           h-16
           w-16
           rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:right-9
           sm:top-9
           sm:h-20
@@ -821,7 +737,7 @@ const Confirmacion = () => {
           h-16
           w-16
           -rotate-90
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:bottom-9
           sm:left-9
           sm:h-20
@@ -838,7 +754,7 @@ const Confirmacion = () => {
           h-16
           w-16
           rotate-180
-          text-[#A48654]/25
+          text-[#B36A36]/25
           sm:bottom-9
           sm:right-9
           sm:h-20
@@ -857,7 +773,7 @@ const Confirmacion = () => {
           h-[250px]
           w-[145px]
           -rotate-12
-          text-[#A48654]/10
+          text-[#AEB49C]/28
           sm:h-[310px]
           sm:w-[180px]
           lg:left-2
@@ -873,7 +789,7 @@ const Confirmacion = () => {
           h-[250px]
           w-[145px]
           rotate-[168deg]
-          text-[#A48654]/10
+          text-[#AEB49C]/28
           sm:h-[310px]
           sm:w-[180px]
           lg:right-2
@@ -927,7 +843,7 @@ const Confirmacion = () => {
             "
             style={{
               color: palette.antiqueGoldDark,
-              borderColor: "rgba(164,134,84,0.42)",
+              borderColor: "rgba(179,106,54,0.42)",
             }}
           >
             <EnvelopeIcon />
@@ -1008,8 +924,8 @@ const Confirmacion = () => {
           "
           style={{
             backgroundColor: "rgba(251,249,244,0.84)",
-            borderColor: "rgba(164,134,84,0.34)",
-            boxShadow: "0 24px 65px rgba(29,39,51,0.08)",
+            borderColor: "rgba(179,106,54,0.34)",
+            boxShadow: "0 24px 65px rgba(48,40,33,0.08)",
           }}
           initial={{
             opacity: 0,
@@ -1037,7 +953,7 @@ const Confirmacion = () => {
               border
             "
             style={{
-              borderColor: "rgba(164,134,84,0.12)",
+              borderColor: "rgba(179,106,54,0.12)",
             }}
           />
 
@@ -1098,7 +1014,7 @@ const Confirmacion = () => {
                   mt-4
                   w-full
                   border
-                  bg-[#FBF9F4]
+                  bg-[#F9F6EE]
                   px-5
                   py-4
                   font-serif
@@ -1108,7 +1024,7 @@ const Confirmacion = () => {
                 "
                 style={{
                   color: palette.ink,
-                  borderColor: "rgba(164,134,84,0.34)",
+                  borderColor: "rgba(179,106,54,0.34)",
                   cursor: datosDesdeGenerador ? "not-allowed" : "text",
                 }}
               />
@@ -1151,7 +1067,7 @@ const Confirmacion = () => {
                 pt-9
               "
               style={{
-                borderColor: "rgba(164,134,84,0.26)",
+                borderColor: "rgba(179,106,54,0.26)",
               }}
             >
               <p
@@ -1205,7 +1121,7 @@ const Confirmacion = () => {
                     pt-9
                   "
                   style={{
-                    borderColor: "rgba(164,134,84,0.26)",
+                    borderColor: "rgba(179,106,54,0.26)",
                   }}
                   initial={{
                     opacity: 0,
@@ -1261,7 +1177,7 @@ const Confirmacion = () => {
                       w-full
                       appearance-none
                       border
-                      bg-[#FBF9F4]
+                      bg-[#F9F6EE]
                       px-5
                       py-4
                       text-center
@@ -1272,7 +1188,7 @@ const Confirmacion = () => {
                     "
                     style={{
                       color: palette.ink,
-                      borderColor: "rgba(164,134,84,0.34)",
+                      borderColor: "rgba(179,106,54,0.34)",
                     }}
                   >
                     {availablePasses.map((passNumber) => (
@@ -1314,7 +1230,7 @@ const Confirmacion = () => {
                 pt-9
               "
               style={{
-                borderColor: "rgba(164,134,84,0.26)",
+                borderColor: "rgba(179,106,54,0.26)",
               }}
             >
               <label
@@ -1346,7 +1262,7 @@ const Confirmacion = () => {
                   w-full
                   resize-none
                   border
-                  bg-[#FBF9F4]
+                  bg-[#F9F6EE]
                   px-5
                   py-4
                   font-serif
@@ -1357,7 +1273,7 @@ const Confirmacion = () => {
                 "
                 style={{
                   color: palette.ink,
-                  borderColor: "rgba(164,134,84,0.34)",
+                  borderColor: "rgba(179,106,54,0.34)",
                 }}
               />
 
@@ -1447,50 +1363,40 @@ const Confirmacion = () => {
                   }}
                 >
                   <CheckIcon />
-                  Confirmación registrada. Abriendo WhatsApp…
+                  Confirmación registrada correctamente.
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* BOTONES */}
+            {/* BOTÓN DE CONFIRMACIÓN */}
 
-            <div
-              className="
-                mt-9
-                grid
-                gap-3
-                sm:grid-cols-2
-              "
-            >
+            <div className="mt-9 flex justify-center">
               <motion.button
                 type="button"
-                onClick={() =>
-                  enviarConfirmacion({
-                    side: "Novia",
-                    phoneNumber: NUMERO_NOVIA,
-                    recipientName: NOMBRE_NOVIA,
-                  })
-                }
-                disabled={Boolean(loadingSide)}
+                onClick={enviarConfirmacion}
+                disabled={loading}
                 className="
                   inline-flex
                   min-h-[58px]
+                  min-w-[250px]
                   items-center
                   justify-center
                   gap-3
                   border
-                  px-5
+                  px-8
                   py-4
                   disabled:cursor-not-allowed
                   disabled:opacity-60
+                  sm:min-w-[310px]
                 "
                 style={{
                   backgroundColor: palette.ink,
                   borderColor: palette.ink,
                   color: palette.paperLight,
+                  boxShadow: "0 12px 28px rgba(48,40,33,0.12)",
                 }}
                 whileHover={
-                  loadingSide
+                  loading
                     ? undefined
                     : {
                         y: -2,
@@ -1498,14 +1404,14 @@ const Confirmacion = () => {
                       }
                 }
                 whileTap={
-                  loadingSide
+                  loading
                     ? undefined
                     : {
                         scale: 0.985,
                       }
                 }
               >
-                {loadingSide === "Novia" ? (
+                {loading ? (
                   <span
                     className="
                       h-4
@@ -1518,7 +1424,7 @@ const Confirmacion = () => {
                     "
                   />
                 ) : (
-                  <WhatsAppIcon />
+                  <CheckIcon />
                 )}
 
                 <span
@@ -1529,82 +1435,7 @@ const Confirmacion = () => {
                     sm:text-[9px]
                   "
                 >
-                  {loadingSide === "Novia"
-                    ? "Enviando"
-                    : `Confirmar con ${NOMBRE_NOVIA}`}
-                </span>
-              </motion.button>
-
-              <motion.button
-                type="button"
-                onClick={() =>
-                  enviarConfirmacion({
-                    side: "Novio",
-                    phoneNumber: NUMERO_NOVIO,
-                    recipientName: NOMBRE_NOVIO,
-                  })
-                }
-                disabled={Boolean(loadingSide)}
-                className="
-                  inline-flex
-                  min-h-[58px]
-                  items-center
-                  justify-center
-                  gap-3
-                  border
-                  px-5
-                  py-4
-                  disabled:cursor-not-allowed
-                  disabled:opacity-60
-                "
-                style={{
-                  backgroundColor: palette.paperLight,
-                  borderColor: palette.ink,
-                  color: palette.ink,
-                }}
-                whileHover={
-                  loadingSide
-                    ? undefined
-                    : {
-                        y: -2,
-                        backgroundColor: palette.paper,
-                      }
-                }
-                whileTap={
-                  loadingSide
-                    ? undefined
-                    : {
-                        scale: 0.985,
-                      }
-                }
-              >
-                {loadingSide === "Novio" ? (
-                  <span
-                    className="
-                      h-4
-                      w-4
-                      animate-spin
-                      rounded-full
-                      border-2
-                      border-[#1D2733]/25
-                      border-t-[#1D2733]
-                    "
-                  />
-                ) : (
-                  <WhatsAppIcon />
-                )}
-
-                <span
-                  className="
-                    text-[8px]
-                    uppercase
-                    tracking-[0.24em]
-                    sm:text-[9px]
-                  "
-                >
-                  {loadingSide === "Novio"
-                    ? "Enviando"
-                    : `Confirmar con ${NOMBRE_NOVIO}`}
+                  {loading ? "Registrando" : "Confirmar asistencia"}
                 </span>
               </motion.button>
             </div>
@@ -1625,8 +1456,8 @@ const Confirmacion = () => {
                 color: palette.warmGray,
               }}
             >
-              Al confirmar, registraremos tu respuesta y te dirigiremos a
-              WhatsApp para enviar el mensaje correspondiente.
+              Al confirmar, tu respuesta quedará registrada directamente en
+              nuestra lista de invitados.
             </p>
           </div>
         </motion.div>
